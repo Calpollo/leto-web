@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "serve",
+      "path": "app",
+      "problemMatcher": [],
+      "label": "npm: serve - app",
+      "detail": "vue-cli-service serve"
+    }
+  ]
+}
