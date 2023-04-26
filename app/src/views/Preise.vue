@@ -94,9 +94,11 @@
     </section>
     <section>
       <b-row no-gutters>
-        <b-col class="p-2">
+        <b-col class="p-4">
           <h2 class="my-4">Vergleich</h2>
-          <b-table :items="funktionenItems" />
+          <div class="mx-auto" :style="{ maxWidth: '1000px' }">
+            <b-table :items="funktionenItems" />
+          </div>
         </b-col>
         <b-col cols="4">
           <img
@@ -134,36 +136,43 @@ export default {
           " ": "Benutzer",
           Lokal: 1,
           Basis: 5,
+          Kooperation: "unbegrenzt",
         },
         {
           " ": "Rechnungen",
           Lokal: "mit Wasserzeichen",
-          Basis: "mit Unternehmenslabel",
+          Basis: "mit Unternehmenslogo",
+          Kooperation: "mit Unternehmenslogo",
         },
         {
           " ": "E-Mail-Versand",
           Lokal: "manuell",
           Basis: "über unsere E-Mailserver",
+          Kooperation: "über unsere E-Mailserver",
         },
         {
           " ": "ICD-10-Support",
           Lokal: "voll",
           Basis: "voll",
+          Kooperation: "voll",
         },
         {
           " ": "Backup",
           Lokal: "nur lokal",
           Basis: "in der Cloud",
+          Kooperation: "in der Cloud",
         },
         {
           " ": "Online-Zugang",
           Lokal: "eingeschränkt",
           Basis: "weltweit erreichbar",
+          Kooperation: "weltweit erreichbar",
         },
         {
           " ": "Support",
           Lokal: "per E-Mail",
           Basis: "per E-Mail und telefonisch",
+          Kooperation: "per E-Mail und telefonisch",
         },
       ],
     };

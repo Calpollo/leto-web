@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.11.5",
+    "@paypal/paypal-js": "^5.1.6",
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.17.3",
     "core-js": "^3.8.3",
