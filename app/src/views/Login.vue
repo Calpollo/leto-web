@@ -19,6 +19,7 @@
             <b-input
               id="username-input"
               type="text"
+              v-model="username"
               placeholder="Benutzername"
             />
           </b-form-group>
@@ -26,6 +27,7 @@
             <b-input
               id="password-input"
               type="password"
+              v-model="password"
               placeholder="Passwort"
             />
           </b-form-group>
@@ -40,7 +42,7 @@
             <b-col :style="{ textAlign: 'end' }">
               <b-button
                 variant="primary"
-                type="submit"
+                @click="login"
                 :style="{ color: 'white' }"
               >
                 Einloggen
@@ -55,6 +57,7 @@
 
 <script>
 import bbblurry from "@/assets/backgrounds/bbblurry.svg";
+import UserService from "@/services/UserService";
 export default {
   name: "LoginView",
   data() {
@@ -63,6 +66,23 @@ export default {
       username: null,
       password: null,
     };
+  },
+  methods: {
+    login() {
+      UserService.login(this.username, this.password)
+        .then(() => {
+          this.$router.push("/account");
+        })
+        .catch((err) => {
+          console.warn(err);
+          this.$bvToast.toast(err.response?.data, {
+            title: "Login unsuccessful",
+            autoHideDelay: 5000,
+            variant: "danger",
+            solid: true,
+          });
+        });
+    },
   },
 };
 </script>

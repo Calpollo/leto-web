@@ -23,11 +23,21 @@
           </b-nav-item>
           <b-nav-item :to="{ name: 'Preise' }" class="my-1">Preise</b-nav-item>
           <b-button
+            v-if="!this.$store.state.loggedIn"
             :to="{ name: 'Login' }"
             variant="outline-primary"
             class="my-1 mx-1"
           >
             Einloggen
+          </b-button>
+          <b-button
+            v-else
+            :to="{ name: 'Account' }"
+            variant="outline-primary"
+            class="my-1 mx-1"
+          >
+            <b-icon-person></b-icon-person>
+            {{ $store.state.me?.username || "Mein Konto" }}
           </b-button>
         </b-navbar-nav>
       </b-collapse>
