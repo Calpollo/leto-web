@@ -1,0 +1,9 @@
+$primary: #6927d3;
+$secondary: #495f41;
+$danger: #fa8253;
+$warning: #ffbb00;
+
+// Bootstrap and its default variables
+@import "@/../node_modules/bootstrap/scss/bootstrap.scss";
+// BootstrapVue and its default variables
+@import "@/../node_modules/bootstrap-vue/src/index.scss";

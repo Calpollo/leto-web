@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" sticky>
+    <b-navbar toggleable="lg" sticky variant="white">
       <b-navbar-brand :to="{ name: 'Home' }">
         <img
           src="@/assets/Leto - Text.svg"
@@ -20,7 +20,7 @@
           <b-button
             :to="{ name: 'Login' }"
             variant="outline-primary"
-            class="my-1"
+            class="my-1 mx-1"
           >
             Einloggen
           </b-button>
@@ -28,7 +28,9 @@
       </b-collapse>
     </b-navbar>
 
-    <router-view id="view" />
+    <router-view class="view" />
+
+    <footer>Leto @ 2023</footer>
   </div>
 </template>
 
@@ -39,25 +41,38 @@ export default {
 </script>
 
 <style lang="scss">
-// Your variable overrides
-$primary: #6927d3;
-$secondary: #495f41;
-$danger: #fa8253;
-$warning: #ffbb00;
-
-// Bootstrap and its default variables
-@import "../node_modules/bootstrap/scss/bootstrap";
-// BootstrapVue and its default variables
-@import "../node_modules/bootstrap-vue/src/index.scss";
+@import "@/assets/colors.scss";
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+html {
+  scroll-behavior: smooth;
+}
+
 #app {
+  $primary: #6927d3;
+  $secondary: #495f41;
+  $danger: #fa8253;
+  $warning: #ffbb00;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-#view {
+
+.view {
   text-align: center;
+  min-height: 90vh;
+}
+
+footer {
+  text-align: center;
+  background-color: $primary;
+  color: white;
+  padding: 8pt;
+}
+
+.navbar {
+  height: 10vh;
+  box-shadow: 0 0 20px #495f4133;
 }
 
 #nav-collapse > .nav-link {
