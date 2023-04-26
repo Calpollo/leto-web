@@ -7,7 +7,7 @@
         backgroundSize: 'cover',
       }"
     >
-      <div>
+      <div class="d-none d-lg-flex">
         <!-- spacer -->
       </div>
       <div>
@@ -17,7 +17,11 @@
           Abrechnungen.
         </p>
       </div>
-      <b-row align-v="stretch" :style="{ width: '80%' }">
+      <b-row
+        align-v="stretch"
+        :style="{ width: '80%' }"
+        class="d-none d-lg-flex"
+      >
         <b-col>
           <b-card title="Termine" :style="{ height: '100%' }">
             <b-card-text>
@@ -75,8 +79,8 @@
 
     <!-- Termine -->
     <section>
-      <b-row no-gutters>
-        <b-col cols="6">
+      <b-row no-gutters :style="{ minHeight: '90vh' }">
+        <b-col cols="12" md="6" class="d-none d-md-block">
           <img
             :src="paarArbeit"
             alt=""
@@ -84,7 +88,18 @@
             :style="{
               height: '90vh',
               objectFit: 'cover',
-              // objectPosition: '70%',
+            }"
+          />
+        </b-col>
+        <b-col cols="12" md="6" class="d-md-none">
+          <img
+            :src="paarArbeit"
+            alt=""
+            width="100%"
+            :style="{
+              height: '40vh',
+              minHeight: '100%',
+              objectFit: 'cover',
             }"
           />
         </b-col>
@@ -114,7 +129,20 @@
 
     <!-- Verwaltung -->
     <section>
-      <b-row no-gutters>
+      <b-row no-gutters :style="{ minHeight: '90vh' }">
+        <b-col cols="12" md="6" class="d-md-none">
+          <img
+            :src="verwaltungLaptop"
+            alt=""
+            width="100%"
+            :style="{
+              height: '40vh',
+              minHeight: '100%',
+              objectFit: 'cover',
+              // objectPosition: '70%',
+            }"
+          />
+        </b-col>
         <b-col>
           <div
             :style="{ display: 'grid', height: '100%', placeItems: 'center' }"
@@ -129,7 +157,7 @@
             </p>
           </div>
         </b-col>
-        <b-col cols="6">
+        <b-col cols="12" md="6" class="d-none d-md-block">
           <img
             :src="verwaltungLaptop"
             alt=""
@@ -146,8 +174,8 @@
 
     <!-- Abrechnung -->
     <section>
-      <b-row no-gutters>
-        <b-col cols="6">
+      <b-row no-gutters :style="{ minHeight: '90vh' }">
+        <b-col cols="12" md="6" class="d-none d-md-block">
           <img
             :src="floatingMac"
             alt=""
@@ -155,7 +183,18 @@
             :style="{
               height: '90vh',
               objectFit: 'cover',
-              // objectPosition: '70%',
+            }"
+          />
+        </b-col>
+        <b-col cols="12" md="6" class="d-md-none">
+          <img
+            :src="floatingMac"
+            alt=""
+            width="100%"
+            :style="{
+              height: '40vh',
+              minHeight: '100%',
+              objectFit: 'cover',
             }"
           />
         </b-col>
@@ -199,7 +238,7 @@ export default {
 @import "@/assets/colors.scss";
 
 section {
-  height: 90vh;
+  min-height: 90vh;
 
   &#landingsection {
     display: grid;

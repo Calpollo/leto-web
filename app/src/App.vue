@@ -11,7 +11,12 @@
 
       <b-navbar-toggle target="nav-collapse" />
 
-      <b-collapse id="nav-collapse" is-nav>
+      <b-collapse
+        id="nav-collapse"
+        is-nav
+        class="p-2"
+        :style="{ backgroundColor: 'white', width: '100%' }"
+      >
         <b-navbar-nav class="ml-auto">
           <b-nav-item :to="{ name: 'Funktionen' }" class="my-1">
             Funktionen

@@ -7,7 +7,7 @@
         backgroundSize: 'cover',
       }"
     >
-      <div>
+      <div class="d-none d-lg-flex">
         <!-- spacer -->
       </div>
       <div>
@@ -17,7 +17,11 @@
           haben wir einen Preis, der für jeden passt.
         </p>
       </div>
-      <b-row align-v="stretch" :style="{ width: '80%' }">
+      <b-row
+        align-v="stretch"
+        :style="{ width: '80%' }"
+        class="d-none d-lg-flex"
+      >
         <b-col>
           <b-card title="Lokal" :style="{ height: '100%' }">
             <b-list-group class="mt-4">
@@ -67,8 +71,8 @@
       </b-row>
     </section>
     <section>
-      <b-row no-gutters>
-        <b-col cols="4">
+      <b-row no-gutters :style="{ minHeight: '90vh' }">
+        <b-col cols="5">
           <img
             :src="appleDevices"
             alt=""
@@ -76,7 +80,7 @@
             :style="{
               height: '90vh',
               objectFit: 'cover',
-              objectPosition: '70%',
+              objectPosition: '72%',
             }"
           />
         </b-col>
@@ -93,14 +97,14 @@
       </b-row>
     </section>
     <section>
-      <b-row no-gutters>
+      <b-row no-gutters :style="{ minHeight: '90vh' }">
         <b-col class="p-4">
           <h2 class="my-4">Vergleich</h2>
           <div class="mx-auto" :style="{ maxWidth: '1000px' }">
             <b-table :items="funktionenItems" />
           </div>
         </b-col>
-        <b-col cols="4">
+        <b-col cols="4" class="d-none d-lg-block">
           <img
             :src="wohnungMac"
             alt=""

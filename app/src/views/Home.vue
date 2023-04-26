@@ -11,12 +11,12 @@
         <!-- spacer -->
       </div>
       <div>
-        <img :src="LetoText" alt="" />
+        <img :src="LetoText" alt="" :style="{ width: '100%' }" />
         <p class="mt-2">
           <b>Dein Terminplaner</b>
         </p>
       </div>
-      <div :style="{ width: '50%', maxWidth: '500px' }">
+      <div :style="{ width: '50%', maxWidth: '500px', minWidth: '250px' }">
         <b-row id="tags">
           <b-col>
             <b>Schnell</b>
@@ -34,8 +34,8 @@
       </div>
     </section>
     <section id="sectionB">
-      <b-row no-gutters>
-        <b-col cols="6">
+      <b-row no-gutters :style="{ minHeight: '90vh' }">
+        <b-col cols="12" md="6" class="d-none d-md-block">
           <img
             :src="floatingMac"
             alt=""
@@ -46,9 +46,22 @@
             }"
           />
         </b-col>
-        <b-col>
+        <b-col cols="12" md="6" class="d-md-none">
+          <img
+            :src="workingLady"
+            alt=""
+            width="100%"
+            :style="{ height: '40vh', objectFit: 'cover' }"
+          />
+        </b-col>
+        <b-col cols="12" md="6">
           <div
-            :style="{ display: 'grid', height: '100%', placeItems: 'center' }"
+            :style="{
+              display: 'grid',
+              height: '100%',
+              minHeight: '300px',
+              placeItems: 'center',
+            }"
           >
             <p>Termine automatisch planen</p>
             <p>Rechnungen verschicken</p>
@@ -62,10 +75,23 @@
       </b-row>
     </section>
     <section id="sectionC">
-      <b-row no-gutters>
-        <b-col>
+      <b-row no-gutters :style="{ minHeight: '90vh' }">
+        <b-col cols="12" md="6" class="d-md-none">
+          <img
+            :src="workingLady"
+            alt=""
+            width="100%"
+            :style="{ height: '40vh', objectFit: 'cover', minHeight: '100%' }"
+          />
+        </b-col>
+        <b-col cols="12" md="6">
           <div
-            :style="{ display: 'grid', height: '100%', placeItems: 'center' }"
+            :style="{
+              display: 'grid',
+              height: '100%',
+              minHeight: '300px',
+              placeItems: 'center',
+            }"
           >
             <p>über 97% verfügbar</p>
             <p>Persönlicher Support</p>
@@ -76,7 +102,7 @@
             </b-button>
           </div>
         </b-col>
-        <b-col cols="6">
+        <b-col cols="12" md="6" class="d-none d-md-block">
           <img
             :src="workingLady"
             alt=""
@@ -112,7 +138,7 @@ export default {
 @import "@/assets/colors.scss";
 
 section {
-  height: 90vh;
+  min-height: 90vh;
 
   &#landingsection {
     display: grid;
