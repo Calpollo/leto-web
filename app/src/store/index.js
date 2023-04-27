@@ -1,3 +1,4 @@
+import router from "@/router";
 import UserService from "@/services/UserService";
 import Vue from "vue";
 import Vuex from "vuex";
@@ -18,7 +19,11 @@ export default new Vuex.Store({
         logOut: (state) => {
             state.loggedIn = false
             state.me = null
+            router.push("/")
         },
+        updateMe: (state) => {
+            UserService.me().then(me => state.me = me)
+        }
     },
     actions: {},
     modules: {},

@@ -1,19 +1,11 @@
 import store from "@/store";
-import axios from "axios";
-
-const ax = axios.create({
-    baseURL:
-        process.env.NODE_ENV == "production"
-            ? "https://leto.andreasnicklaus.de/api/auth/"
-            : "http://localhost:8080/auth/",
-});
+import ax from "./RequestService";
 
 export default {
     signup(username, email, password) {
         return ax
-            .post("/", { username, email, password })
+            .post("/auth/", { username, email, password })
             .then((response) => {
-                console.log({ response })
                 ax.defaults.headers.common.Authorization =
                     "Bearer " + response.data.token;
                 store.commit("logIn");
@@ -26,9 +18,8 @@ export default {
     },
     login(username, password) {
         return ax
-            .post("/login", { username, password })
+            .post("/auth/login", { username, password })
             .then((response) => {
-                console.log({ response })
                 ax.defaults.headers.common.Authorization =
                     "Bearer " + response.data.token;
                 store.commit("logIn");
@@ -39,9 +30,19 @@ export default {
                 throw err;
             });
     },
+    logout() {
+        ax.defaults.headers.common.Authorization = null;
+        store.commit("logOut")
+    },
     me() {
-        return ax.get("/me").then((response) => {
+        return ax.get("/auth/me").then((response) => {
             return response.data;
         });
+    },
+    downgrade() {
+        return ax.post("/auth/down").then(response => {
+            store.commit("updateMe")
+            return response.data
+        })
     }
 }

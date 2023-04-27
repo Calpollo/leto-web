@@ -1,11 +1,4 @@
-import axios from "axios";
-
-const ax = axios.create({
-    baseURL:
-        process.env.NODE_ENV == "production"
-            ? "https://leto.andreasnicklaus.de/api/"
-            : "http://localhost:8080/",
-});
+import ax from "./RequestService";
 
 const Paypal = {
     // eslint-disable-next-line no-unused-vars
@@ -37,21 +30,14 @@ const Paypal = {
                 let msg = "Sorry, your transaction could not be processed.";
                 if (errorDetail.description) msg += "" + errorDetail.description;
                 if (details.debug_id) msg += " (" + details.debug_id + ")";
-                // TODO: route to error page
-                return alert(msg);
+                console.warn(msg)
+                Promise.reject(msg)
             }
 
-            console.log("Capture result", details, JSON.stringify(details, null, 2));
-            const transaction = details.purchase_units[0].payments.captures[0];
-            // TODO: route to success page
-            // TODO: save information on the backend
-            alert(
-                "Transaction " +
-                transaction.status +
-                ": " +
-                transaction.id +
-                "See console for all available details"
-            );
+            return "Upgrade erfolgreich"
+        }).catch(error => {
+            console.warn(error)
+            Promise.reject(error.response.data)
         })
     }
 }

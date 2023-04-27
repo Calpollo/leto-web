@@ -8,7 +8,6 @@ import Paypal from "@/services/PaymentService";
 export default {
   name: "PaypalButton",
   mounted() {
-    console.log(process.env.VUE_APP_PAYPAL_CLIENT_ID);
     if (process.env.VUE_APP_PAYPAL_CLIENT_ID) {
       loadScript({
         "client-id": process.env.VUE_APP_PAYPAL_CLIENT_ID,
@@ -19,7 +18,31 @@ export default {
             .Buttons({
               fundingSource: "paypal",
               createOrder: Paypal.createOrder,
-              onApprove: Paypal.onApprove,
+              onApprove: (data, actions) =>
+                Paypal.onApprove(data, actions)
+                  .then((msg) => {
+                    this.$store.commit("updateMe");
+                    const toast = {
+                      msg,
+                      variant: "success",
+                      title: "Kauf erfolgreich",
+                    };
+                    console.log(toast);
+                    this.$router.push(
+                      "/account?toast=" + JSON.stringify(toast)
+                    );
+                  })
+                  .catch((msg) => {
+                    const toast = {
+                      msg,
+                      variant: "danger",
+                      title: "Kauf nicht erfolgreich",
+                    };
+                    console.log(toast);
+                    this.$router.push(
+                      "/account?toast=" + JSON.stringify(toast)
+                    );
+                  }),
             })
             .render("#paypal-div")
             .catch((error) => {

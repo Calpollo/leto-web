@@ -34,9 +34,9 @@
             v-else
             :to="{ name: 'Account' }"
             variant="outline-primary"
-            class="my-1 mx-1"
+            class="m-1"
           >
-            <b-icon-person></b-icon-person>
+            <b-icon-person />
             {{ $store.state.me?.username || "Mein Konto" }}
           </b-button>
         </b-navbar-nav>
@@ -64,10 +64,6 @@ html {
 }
 
 #app {
-  $primary: #6927d3;
-  $secondary: #495f41;
-  $danger: #fa8253;
-  $warning: #ffbb00;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -77,6 +73,10 @@ html {
   text-align: center;
   min-height: 90vh;
 }
+</style>
+
+<style lang="scss" scoped>
+@import "@/assets/colors.scss";
 
 footer {
   text-align: center;
