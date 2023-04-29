@@ -11,26 +11,33 @@
         <!-- spacer -->
       </div>
       <div>
-        <img :src="LetoText" alt="" :style="{ width: '100%' }" />
-        <p class="mt-2">
+        <img
+          :src="LetoText"
+          alt=""
+          :style="{ width: '100%' }"
+          data-aos="fade-up"
+        />
+        <p class="mt-2" data-aos="fade-up">
           <b>Dein Terminplaner</b>
         </p>
       </div>
       <div :style="{ width: '50%', maxWidth: '500px', minWidth: '250px' }">
         <b-row id="tags">
-          <b-col>
+          <b-col data-aos="fade-up" data-aos-delay="200">
             <b>Schnell</b>
           </b-col>
-          <b-col>
+          <b-col data-aos="fade-up" data-aos-delay="500">
             <b>Sicher</b>
           </b-col>
-          <b-col>
+          <b-col data-aos="fade-up" data-aos-delay="800">
             <b>Kostenlos</b>
           </b-col>
         </b-row>
-        <b-button variant="transparent" pill class="mt-4" href="#sectionB">
-          <b-icon-arrow-down variant="primary" />
-        </b-button>
+        <div data-aos="fade-up" data-aos-delay="1100">
+          <b-button variant="transparent" pill class="mt-4" href="#sectionB">
+            <b-icon-arrow-down variant="primary" />
+          </b-button>
+        </div>
       </div>
     </section>
     <section id="sectionB">
@@ -63,13 +70,15 @@
               placeItems: 'center',
             }"
           >
-            <p>Termine automatisch planen</p>
-            <p>Rechnungen verschicken</p>
-            <p>Statistiken ansehen</p>
-            <b-button :to="{ name: 'Funktionen' }" variant="primary">
-              <b-icon-arrow-right />
-              Funktionen
-            </b-button>
+            <p data-aos="fade-left">Termine automatisch planen</p>
+            <p data-aos="fade-left">Rechnungen verschicken</p>
+            <p data-aos="fade-left">Statistiken ansehen</p>
+            <div data-aos="fade-left">
+              <b-button :to="{ name: 'Funktionen' }" variant="primary">
+                <b-icon-arrow-right />
+                Funktionen
+              </b-button>
+            </div>
           </div>
         </b-col>
       </b-row>
@@ -93,13 +102,15 @@
               placeItems: 'center',
             }"
           >
-            <p>über 97% verfügbar</p>
-            <p>Persönlicher Support</p>
-            <p>Individuell anpassbar</p>
-            <b-button :to="{ name: 'Preise' }" variant="primary">
-              <b-icon-arrow-right />
-              Preise
-            </b-button>
+            <p data-aos="fade-left">über 97% verfügbar</p>
+            <p data-aos="fade-left">Persönlicher Support</p>
+            <p data-aos="fade-left">Individuell anpassbar</p>
+            <div data-aos="fade-left">
+              <b-button :to="{ name: 'Preise' }" variant="primary">
+                <b-icon-arrow-right />
+                Preise
+              </b-button>
+            </div>
           </div>
         </b-col>
         <b-col cols="12" md="6" class="d-none d-md-block">

@@ -4,7 +4,7 @@
 
 <script>
 import { loadScript } from "@paypal/paypal-js";
-import Paypal from "@/services/PaymentService";
+import { Paypal } from "@/services/PaymentService";
 export default {
   name: "PaypalButton",
   mounted() {
@@ -12,14 +12,19 @@ export default {
       loadScript({
         "client-id": process.env.VUE_APP_PAYPAL_CLIENT_ID,
         currency: "EUR",
+        intent: "subscription",
+        vault: true,
       })
         .then((paypal) => {
           paypal
             .Buttons({
               fundingSource: "paypal",
-              createOrder: Paypal.createOrder,
+              createSubscription: Paypal.createSubscription,
+              // createOrder: Paypal.createOrder,
+              // onApprove: (data, actions) =>
+              // Paypal.onApprove(data, actions)
               onApprove: (data, actions) =>
-                Paypal.onApprove(data, actions)
+                Paypal.onSubscriptionApprove(data, actions)
                   .then((msg) => {
                     this.$store.commit("updateMe");
                     const toast = {
@@ -27,7 +32,6 @@ export default {
                       variant: "success",
                       title: "Kauf erfolgreich",
                     };
-                    console.log(toast);
                     this.$router.push(
                       "/account?toast=" + JSON.stringify(toast)
                     );

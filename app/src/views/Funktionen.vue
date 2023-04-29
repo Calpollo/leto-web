@@ -11,8 +11,8 @@
         <!-- spacer -->
       </div>
       <div>
-        <h1>Funktionen</h1>
-        <p>
+        <h1 data-aos="fade-up">Funktionen</h1>
+        <p data-aos="fade-up">
           Leto ist dein All-in-One Programm für Termine, Verwaltung und
           Abrechnungen.
         </p>
@@ -23,7 +23,12 @@
         class="d-none d-lg-flex"
       >
         <b-col>
-          <b-card title="Termine" :style="{ height: '100%' }">
+          <b-card
+            title="Termine"
+            :style="{ height: '100%' }"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
             <b-card-text>
               <b-list-group>
                 <b-list-group-item href="#">Rezeptaufnahme</b-list-group-item>
@@ -39,7 +44,12 @@
           </b-card>
         </b-col>
         <b-col>
-          <b-card title="Verwaltung" :style="{ height: '100%' }">
+          <b-card
+            title="Verwaltung"
+            :style="{ height: '100%' }"
+            data-aos="zoom-in"
+            data-aos-delay="500"
+          >
             <b-card-text>
               <b-list-group>
                 <b-list-group-item href="#">
@@ -55,7 +65,12 @@
           </b-card>
         </b-col>
         <b-col>
-          <b-card title="Abrechnung" :style="{ height: '100%' }">
+          <b-card
+            title="Abrechnung"
+            :style="{ height: '100%' }"
+            data-aos="zoom-in"
+            data-aos-delay="800"
+          >
             <b-card-text>
               <b-list-group>
                 <b-list-group-item href="#">
@@ -108,20 +123,24 @@
             :style="{ display: 'grid', height: '100%', placeItems: 'center' }"
           >
             <h2>Termine</h2>
-            <p>Neue Rezepte anlegen</p>
-            <p>Folgerezepte über Kopien oder Verlängerungen</p>
-            <p>
+            <p data-aos="fade-left">Neue Rezepte anlegen</p>
+            <p data-aos="fade-left">
+              Folgerezepte über Kopien oder Verlängerungen
+            </p>
+            <p data-aos="fade-left">
               Ärzte, Krankenkasse, Heilmittel etc. werden automatisch geladen
             </p>
-            <p>
+            <p data-aos="fade-left">
               Der Button "Patient nicht erschienen" bietet Optionen zur Absage,
               Verlegung oder Ausfallberechnung des Termins
             </p>
-            <p>
+            <p data-aos="fade-left">
               Automatische PDF-Generation für Rechnungen, Terminübersichten und
               Abrechnungen
             </p>
-            <p>Automatische E-Mail-Versand von Dokumenten</p>
+            <p data-aos="fade-left">
+              Automatische E-Mail-Versand von Dokumenten
+            </p>
           </div>
         </b-col>
       </b-row>
@@ -148,11 +167,13 @@
             :style="{ display: 'grid', height: '100%', placeItems: 'center' }"
           >
             <h2>Verwaltung</h2>
-            <p>Fehlermeldungen und Warnungen</p>
-            <p>Statistiken für deine Patienten und Rezepte</p>
-            <p>Patientenauflistungen</p>
-            <p>Rezeptauflistungen</p>
-            <p>
+            <p data-aos="fade-left">Fehlermeldungen und Warnungen</p>
+            <p data-aos="fade-left">
+              Statistiken für deine Patienten und Rezepte
+            </p>
+            <p data-aos="fade-left">Patientenauflistungen</p>
+            <p data-aos="fade-left">Rezeptauflistungen</p>
+            <p data-aos="fade-left">
               PDF-Generation für Rechnungen, Terminübersichten und Abrechnungen
             </p>
           </div>
@@ -203,11 +224,15 @@
             :style="{ display: 'grid', height: '100%', placeItems: 'center' }"
           >
             <h2>Abrechnung</h2>
-            <p>Auswahl der abzurechnenden Rezepte & Patienten</p>
-            <p>Generierung von PDF-Dokumenten</p>
-            <p>E-Mailversand von Rechnungen und Terminübersichten</p>
-            <p>Patientenauflistungen</p>
-            <p>Rezeptauflistungen</p>
+            <p data-aos="fade-left">
+              Auswahl der abzurechnenden Rezepte & Patienten
+            </p>
+            <p data-aos="fade-left">Generierung von PDF-Dokumenten</p>
+            <p data-aos="fade-left">
+              E-Mailversand von Rechnungen und Terminübersichten
+            </p>
+            <p data-aos="fade-left">Patientenauflistungen</p>
+            <p data-aos="fade-left">Rezeptauflistungen</p>
           </div>
         </b-col>
       </b-row>
@@ -243,6 +268,16 @@ section {
   &#landingsection {
     display: grid;
     place-items: center;
+
+    & h1 {
+      color: $primary;
+      font-size: 5em;
+      font-weight: 700;
+    }
+
+    & p {
+      color: $primary;
+    }
   }
 }
 

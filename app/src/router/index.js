@@ -1,3 +1,4 @@
+import store from "@/store";
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -39,6 +40,36 @@ const routes = [
         name: 'Checkout',
         component: () => import("@/views/Checkout.vue")
     },
+    {
+        path: "/stripe-success",
+        redirect: (to) => {
+            return {
+                path: "/account", query: {
+                    toast: JSON.stringify({
+                        msg: "Stripe Checkout war erfolgreich",
+                        variant: "success",
+                        title: "Zahlung erfolgreich"
+                    }),
+                    ...to.query
+                }
+            }
+        }
+    },
+    {
+        path: "/stripe-cancel",
+        redirect: (to) => {
+            return {
+                path: "/account", query: {
+                    toast: JSON.stringify({
+                        msg: "Stripe Checkout war nicht erfolgreich",
+                        variant: "danger",
+                        title: "Zahlung abgebrochen"
+                    }),
+                    ...to.query
+                }
+            }
+        }
+    }
 ];
 
 const router = new VueRouter({
@@ -48,6 +79,13 @@ const router = new VueRouter({
     scrollBehavior() {
         return { x: 0, y: 0 }
     }
+});
+
+router.beforeEach((to, from, next) => {
+    const publicPaths = ["/", "/login", "/register", "/preise", "/funktionen"];
+    if (publicPaths.includes(to.path)) next();
+    else if (!store.state.loggedIn) next("/login");
+    else next();
 });
 
 export default router;

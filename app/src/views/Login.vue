@@ -76,7 +76,7 @@ export default {
         .catch((err) => {
           console.warn(err);
           this.$bvToast.toast(err.response?.data, {
-            title: "Login unsuccessful",
+            title: "Login nicht möglich",
             autoHideDelay: 5000,
             variant: "danger",
             solid: true,

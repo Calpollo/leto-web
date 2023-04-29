@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        loggedIn: false,
+        loggedIn: sessionStorage.getItem("authToken") != null,
         me: null,
     },
     getters: {},
@@ -19,6 +19,7 @@ export default new Vuex.Store({
         logOut: (state) => {
             state.loggedIn = false
             state.me = null
+            sessionStorage.removeItem("authToken")
             router.push("/")
         },
         updateMe: (state) => {

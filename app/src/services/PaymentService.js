@@ -39,8 +39,23 @@ const Paypal = {
             console.warn(error)
             Promise.reject(error.response.data)
         })
+    },
+    createSubscription(data, actions) {
+        return actions.subscription.create({
+            plan_id: process.env.VUE_APP_PAYPAL_BASIS_PLANID
+        })
+    },
+    onSubscriptionApprove(data, actions) {
+        console.log("PaymentService.Paypal.onSubscriptionApprove")
+        console.log(data)
+        console.log(actions)
     }
 }
 
-export { Paypal }
-export default Paypal
+const Stripe = {
+    createSubscription() {
+        return ax.post("/payments/stripe/orders").then(response => response.data)
+    }
+}
+
+export { Paypal, Stripe }
