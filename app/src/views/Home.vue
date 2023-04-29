@@ -70,11 +70,24 @@
               placeItems: 'center',
             }"
           >
-            <p data-aos="fade-left">Termine automatisch planen</p>
-            <p data-aos="fade-left">Rechnungen verschicken</p>
-            <p data-aos="fade-left">Statistiken ansehen</p>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-calendar2-week scale="3" class="mr-5" />
+              Termine automatisch planen
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-journal-medical scale="3" class="mr-5" />
+              Rechnungen verschicken
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-bar-chart scale="3" class="mr-5" />
+              Statistiken ansehen
+            </div>
             <div data-aos="fade-left">
-              <b-button :to="{ name: 'Funktionen' }" variant="primary">
+              <b-button
+                :to="{ name: 'Funktionen' }"
+                variant="primary"
+                size="md"
+              >
                 <b-icon-arrow-right />
                 Funktionen
               </b-button>
@@ -102,11 +115,21 @@
               placeItems: 'center',
             }"
           >
-            <p data-aos="fade-left">über 97% verfügbar</p>
-            <p data-aos="fade-left">Persönlicher Support</p>
-            <p data-aos="fade-left">Individuell anpassbar</p>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-clock-history scale="3" class="mr-5" />
+              über 97% verfügbar
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-telephone scale="3" class="mr-5" />
+              <b-icon-envelope scale="3" class="mr-5" />
+              Persönlicher Support
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-person-badge scale="3" class="mr-5" />
+              Individuell anpassbar
+            </div>
             <div data-aos="fade-left">
-              <b-button :to="{ name: 'Preise' }" variant="primary">
+              <b-button :to="{ name: 'Preise' }" variant="primary" size="md">
                 <b-icon-arrow-right />
                 Preise
               </b-button>
@@ -155,6 +178,12 @@ section {
     display: grid;
     place-items: center;
   }
+}
+
+.feature {
+  color: $primary;
+  font-weight: 500;
+  // font-size: 1.5em;
 }
 
 b {

@@ -123,24 +123,38 @@
             :style="{ display: 'grid', height: '100%', placeItems: 'center' }"
           >
             <h2>Termine</h2>
-            <p data-aos="fade-left">Neue Rezepte anlegen</p>
-            <p data-aos="fade-left">
-              Folgerezepte über Kopien oder Verlängerungen
-            </p>
-            <p data-aos="fade-left">
-              Ärzte, Krankenkasse, Heilmittel etc. werden automatisch geladen
-            </p>
-            <p data-aos="fade-left">
-              Der Button "Patient nicht erschienen" bietet Optionen zur Absage,
-              Verlegung oder Ausfallberechnung des Termins
-            </p>
-            <p data-aos="fade-left">
-              Automatische PDF-Generation für Rechnungen, Terminübersichten und
-              Abrechnungen
-            </p>
-            <p data-aos="fade-left">
-              Automatische E-Mail-Versand von Dokumenten
-            </p>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-folder-plus scale="3" class="mr-4" />
+              <p>Neue Rezepte anlegen</p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-folder-symlink scale="3" class="mr-4" />
+              <p>Folgerezepte über Kopien oder Verlängerungen</p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-cloud-plus scale="3" class="mr-4" />
+              <p>
+                Ärzte, Krankenkasse, Heilmittel etc. werden automatisch geladen
+              </p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-person-x scale="3" class="mr-4" />
+              <p>
+                Der Button "Patient nicht erschienen" bietet Optionen zur
+                Absage, Verlegung oder Ausfallberechnung des Termins
+              </p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-printer scale="3" class="mr-4" />
+              <p>
+                Automatische PDF-Generation für Rechnungen, Terminübersichten
+                und Abrechnungen
+              </p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-envelope scale="3" class="mr-4" />
+              <p>Automatische E-Mail-Versand von Dokumenten</p>
+            </div>
           </div>
         </b-col>
       </b-row>
@@ -167,15 +181,29 @@
             :style="{ display: 'grid', height: '100%', placeItems: 'center' }"
           >
             <h2>Verwaltung</h2>
-            <p data-aos="fade-left">Fehlermeldungen und Warnungen</p>
-            <p data-aos="fade-left">
-              Statistiken für deine Patienten und Rezepte
-            </p>
-            <p data-aos="fade-left">Patientenauflistungen</p>
-            <p data-aos="fade-left">Rezeptauflistungen</p>
-            <p data-aos="fade-left">
-              PDF-Generation für Rechnungen, Terminübersichten und Abrechnungen
-            </p>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-exclamation-circle scale="3" class="mr-4" />
+              <p>Fehlermeldungen und Warnungen</p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-pie-chart scale="3" class="mr-4" />
+              <p>Statistiken für deine Patienten und Rezepte</p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-card-checklist scale="3" class="mr-4" />
+              <p>Patientenauflistungen</p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-view-list scale="3" class="mr-4" />
+              <p>Rezeptauflistungen</p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-file-earmark-pdf scale="3" class="mr-4" />
+              <p>
+                PDF-Generation für Rechnungen, Terminübersichten und
+                Abrechnungen
+              </p>
+            </div>
           </div>
         </b-col>
         <b-col cols="12" md="6" class="d-none d-md-block">
@@ -224,15 +252,26 @@
             :style="{ display: 'grid', height: '100%', placeItems: 'center' }"
           >
             <h2>Abrechnung</h2>
-            <p data-aos="fade-left">
-              Auswahl der abzurechnenden Rezepte & Patienten
-            </p>
-            <p data-aos="fade-left">Generierung von PDF-Dokumenten</p>
-            <p data-aos="fade-left">
-              E-Mailversand von Rechnungen und Terminübersichten
-            </p>
-            <p data-aos="fade-left">Patientenauflistungen</p>
-            <p data-aos="fade-left">Rezeptauflistungen</p>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-ui-checks scale="3" class="mr-4" />
+              <p>Auswahl der abzurechnenden Rezepte & Patienten</p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-file-pdf scale="3" class="mr-4" />
+              <p>Generierung von PDF-Dokumenten</p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-envelope scale="3" class="mr-4" />
+              <p>E-Mailversand von Rechnungen und Terminübersichten</p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-card-checklist scale="3" class="mr-4" />
+              <p>Patientenauflistungen</p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-view-list scale="3" class="mr-4" />
+              <p>Rezeptauflistungen</p>
+            </div>
           </div>
         </b-col>
       </b-row>
@@ -278,6 +317,23 @@ section {
     & p {
       color: $primary;
     }
+  }
+}
+
+.feature {
+  color: $primary;
+  font-weight: 500;
+  min-height: 80px;
+  padding-left: 40px;
+  display: flex;
+  flex-direction: row;
+
+  & > .b-icon {
+    display: inline-block;
+  }
+
+  & > p {
+    display: inline;
   }
 }
 

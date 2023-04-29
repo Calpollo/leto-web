@@ -10,19 +10,15 @@
       <div class="d-none d-lg-flex">
         <!-- spacer -->
       </div>
-      <div>
+      <div :style="{ padding: '30px' }">
         <h1 data-aos="fade-up">Preise im Überblick</h1>
         <p data-aos="fade-up">
           Deine Orga-Software soll dir nicht auf der Tasche liegen. Deswegen
           haben wir einen Preis, der für jeden passt.
         </p>
       </div>
-      <b-row
-        align-v="stretch"
-        :style="{ width: '80%' }"
-        class="d-none d-lg-flex"
-      >
-        <b-col>
+      <b-row align-v="stretch" :style="{ width: '80%' }">
+        <b-col class="mb-1">
           <b-card
             title="Lokal"
             :style="{ height: '100%' }"
@@ -41,7 +37,7 @@
             </template>
           </b-card>
         </b-col>
-        <b-col>
+        <b-col class="mb-1">
           <b-card
             title="Online"
             :style="{ height: '100%' }"
@@ -58,7 +54,7 @@
             <template #footer> <b class="price">15,00€ / Monat</b></template>
           </b-card>
         </b-col>
-        <b-col>
+        <b-col class="mb-1">
           <b-card
             title="Kooperation"
             :style="{ height: '100%' }"
@@ -99,10 +95,25 @@
           <div
             :style="{ display: 'grid', height: '100%', placeItems: 'center' }"
           >
-            <p data-aos="fade-left">1. Monat kostenlos</p>
-            <p data-aos="fade-left">Jährlich oder monatlich zahlen</p>
-            <p data-aos="fade-left">Zahlung über Paypal</p>
-            <p data-aos="fade-left">monatl. kündbar</p>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-currency-euro scale="3" class="mr-4" />
+              <p>1. Monat kostenlos</p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-arrow-repeat scale="3" class="mr-4" />
+              <p>Jährlich oder monatlich zahlen</p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-cart-check scale="3" class="mr-4" />
+              <p>
+                Zahlung über alle gängige Zahlungsmethoden (Paypal, SEPA, Google
+                Pay, uvm.)
+              </p>
+            </div>
+            <div data-aos="fade-left" class="feature">
+              <b-icon-cart-x scale="3" class="mr-4" />
+              <p>monatl. kündbar</p>
+            </div>
           </div>
         </b-col>
       </b-row>
@@ -209,11 +220,12 @@ export default {
 @import "@/assets/colors.scss";
 
 section {
-  height: 90vh;
+  min-height: 90vh;
 
   &#landingsection {
     display: grid;
     place-items: center;
+    min-height: 90vh;
 
     & h1 {
       color: $primary;
@@ -224,6 +236,23 @@ section {
     & p {
       color: $primary;
     }
+  }
+}
+
+.feature {
+  color: $primary;
+  font-weight: 500;
+  min-height: 80px;
+  padding-left: 40px;
+  display: flex;
+  flex-direction: row;
+
+  & > .b-icon {
+    display: inline-block;
+  }
+
+  & > p {
+    display: inline;
   }
 }
 
