@@ -21,6 +21,11 @@ const routes = [
         component: () => import("@/views/Preise.vue")
     },
     {
+        path: "/download",
+        name: 'Download',
+        component: () => import("@/views/Download.vue")
+    },
+    {
         path: "/login",
         name: 'Login',
         component: () => import("@/views/Login.vue")
@@ -82,7 +87,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    const publicPaths = ["/", "/login", "/register", "/preise", "/funktionen"];
+    const publicPaths = ["/", "/login", "/register", "/preise", "/funktionen", "/download"];
     if (publicPaths.includes(to.path)) next();
     else if (!store.state.loggedIn) next("/login");
     else next();

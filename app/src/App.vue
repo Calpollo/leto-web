@@ -22,6 +22,9 @@
             Funktionen
           </b-nav-item>
           <b-nav-item :to="{ name: 'Preise' }" class="my-1">Preise</b-nav-item>
+          <b-nav-item :to="{ name: 'Download' }" class="my-1"
+            >Download</b-nav-item
+          >
           <b-button
             v-if="!this.$store.state.loggedIn"
             :to="{ name: 'Login' }"
