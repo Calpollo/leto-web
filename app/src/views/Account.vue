@@ -255,7 +255,6 @@ export default {
         solid: true,
       });
     }
-    this.$store.commit("updateMe");
   },
   computed: {
     sortedUsers() {
