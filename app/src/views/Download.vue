@@ -56,6 +56,12 @@ export default {
       bbblurry,
       downloads: [
         {
+          version: "v0.1.4-alpha",
+          type: "alpha",
+          ghRef:
+            "https://github.com/Calpollo/Leto/releases/download/alpha-v0.1.4/leto.Setup.0.1.4.exe",
+        },
+        {
           version: "v0.1.3-alpha",
           type: "alpha",
           ghRef:
