@@ -96,7 +96,38 @@
         v-if="$store.state.me.RoleName == 'Admin'"
         @click="updateUsers"
       >
+        <b-container class="my-2">
+          <b-button v-b-toggle.collapse-1 variant="light" class="my-2">
+            <b-icon-filter /> Filter
+          </b-button>
+          <b-collapse id="collapse-1" :style="{ textAlign: 'start' }">
+            <b-row>
+              <b-col>
+                <b-form-group description="Benutzername">
+                  <b-form-input v-model="filterBenutzername" />
+                </b-form-group>
+              </b-col>
+              <b-col>
+                <b-form-group description="E-Mail-Adresse">
+                  <b-form-input v-model="filterEmail" />
+                </b-form-group>
+              </b-col>
+              <b-col>
+                <b-form-group description="Status" v-slot="{ ariaDescribedby }">
+                  <b-form-checkbox-group
+                    id="checkbox-group-1"
+                    v-model="filterStati"
+                    :options="stati"
+                    :aria-describedby="ariaDescribedby"
+                    name="flavour-1"
+                  ></b-form-checkbox-group>
+                </b-form-group>
+              </b-col>
+            </b-row>
+          </b-collapse>
+        </b-container>
         <b-list-group :style="{ textAlign: 'start' }">
+          <!-- TODO: password reset (with notification email) -->
           <b-list-group-item>
             <b-row>
               <b-col><b>Benutzername</b></b-col>
@@ -189,6 +220,14 @@ export default {
     return {
       Leto,
       users: [],
+      filterBenutzername: null,
+      filterEmail: null,
+      filterStati: ["Admin", "Basis", "Standard"],
+      stati: [
+        { text: "Admin", value: "Admin" },
+        { text: "Basis", value: "Basis" },
+        { text: "Standard", value: "Standard" },
+      ],
     };
   },
   methods: {
@@ -229,6 +268,7 @@ export default {
       });
     },
     deleteUser(id) {
+      // TODO: confirm before deletion
       UserService.deleteUser(id).then(() => {
         this.updateUsers();
         this.users = this.users.filter((u) => u.id != id);
@@ -258,15 +298,28 @@ export default {
   },
   computed: {
     sortedUsers() {
-      return [...this.users].sort((a, b) => {
-        let comparison = 0;
-        if (a.RoleName > b.RoleName) comparison = 1;
-        if (a.RoleName < b.RoleName) comparison = -1;
+      return [...this.users]
+        .filter(
+          (user) =>
+            (!this.filterBenutzername ||
+              user.username
+                .toLowerCase()
+                .indexOf(this.filterBenutzername.toLowerCase()) != -1) &&
+            (!this.filterEmail ||
+              user.email
+                .toLowerCase()
+                .indexOf(this.filterEmail.toLowerCase()) != -1) &&
+            this.filterStati.includes(user.RoleName)
+        )
+        .sort((a, b) => {
+          let comparison = 0;
+          if (a.RoleName > b.RoleName) comparison = 1;
+          if (a.RoleName < b.RoleName) comparison = -1;
 
-        if (a.username > b.username) comparison += 0.1;
-        if (a.username < b.username) comparison -= 0.1;
-        return comparison;
-      });
+          if (a.username > b.username) comparison += 0.1;
+          if (a.username < b.username) comparison -= 0.1;
+          return comparison;
+        });
     },
   },
 };
