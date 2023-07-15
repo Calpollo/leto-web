@@ -22,6 +22,12 @@
               <summary>Konto-Aktionen</summary>
               <b-button-group>
                 <b-button
+                  v-b-modal.changePasswordModal
+                  variant="outline-primary"
+                >
+                  Passwort ändern
+                </b-button>
+                <b-button
                   v-if="$store.state.me.RoleName == 'Standard'"
                   :to="{ name: 'Checkout' }"
                   variant="success"
@@ -163,6 +169,9 @@
                   >
                     <b-icon-chevron-double-down />
                   </b-button>
+                  <b-button @click="changeUserPassword(user.id)">
+                    <b-icon-key />
+                  </b-button>
                   <b-button variant="danger" @click="deleteUser(user.id)">
                     <b-icon-trash />
                   </b-button>
@@ -207,6 +216,48 @@
         </b-button>
       </template>
     </b-modal>
+    <b-modal id="changePasswordModal" title="Password ändern" variant="white">
+      <b-form-group label="Neues Passwort:" label-for="password-input">
+        <b-form-input
+          id="password-input"
+          type="password"
+          placeholder="Passwort"
+          v-model="passwordReplacement"
+          required
+          :state="passwordValid"
+        />
+
+        <b-form-invalid-feedback id="password-input-feedback">
+          Dein Passwort muss die folgenden Anforderungen erfüllen:
+          <ul class="ml-4">
+            <li>Mindestens 8 Zeichen</li>
+            <li>Mindestens 1 Ziffer</li>
+          </ul>
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+      <template #modal-footer="{}">
+        <b-button
+          @click="updatePassword(selectedUserId)"
+          :disabled="!passwordValid"
+          variant="danger"
+        >
+          Bestätigen
+        </b-button>
+        <b-button
+          @click="
+            () => {
+              $bvModal.hide('changePasswordModal');
+              selectedUserId = null;
+            }
+          "
+          variant="outline-danger"
+          class="ml-auto"
+        >
+          Abbrechen
+        </b-button>
+      </template>
+    </b-modal>
   </div>
 </template>
 
@@ -223,11 +274,13 @@ export default {
       filterBenutzername: null,
       filterEmail: null,
       filterStati: ["Admin", "Basis", "Standard"],
+      selectedUserId: null,
       stati: [
         { text: "Admin", value: "Admin" },
         { text: "Basis", value: "Basis" },
         { text: "Standard", value: "Standard" },
       ],
+      passwordReplacement: null,
     };
   },
   methods: {
@@ -283,6 +336,21 @@ export default {
     updateUsers() {
       UserService.getAll().then((users) => (this.users = users));
     },
+    changeUserPassword(id) {
+      this.selectedUserId = id;
+      this.$bvModal.show("changePasswordModal");
+    },
+    updatePassword(id = null) {
+      UserService.changePassword(this.passwordReplacement, id).then(() => {
+        this.$bvToast.toast("Passwort erfolgreich neu gesetzt", {
+          title: "Passwort geändert",
+          autoHideDelay: 5000,
+          variant: "info",
+          solid: true,
+        });
+        this.$bvModal.hide("changePasswordModal");
+      });
+    },
   },
   mounted() {
     if (!this.$store.state.loggedIn) return this.$router.push("/");
@@ -320,6 +388,13 @@ export default {
           if (a.username < b.username) comparison -= 0.1;
           return comparison;
         });
+    },
+    passwordValid() {
+      return (
+        this.passwordReplacement &&
+        this.passwordReplacement.length >= 8 &&
+        /\d/.test(this.passwordReplacement)
+      );
     },
   },
 };

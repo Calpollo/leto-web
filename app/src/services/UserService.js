@@ -56,6 +56,15 @@ export default {
             return response.data
         })
     },
+    changePassword(password, id = null) {
+        if (id) return ax.put("/auth/password/" + id, { password }).then(response => {
+            return response.data
+        })
+        return ax.put("/auth/password", { password }).then(response => {
+            // store.commit("updateMe")
+            return response.data
+        })
+    },
     getAll() {
         return ax.get("/auth/").then(response => response.data)
     },
