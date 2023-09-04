@@ -13,7 +13,8 @@ import VueMatomo from 'vue-matomo'
 
 Vue.use(VueMatomo, {
   host: 'https://matomo.andreasnicklaus.de/',
-  siteId: 2
+  siteId: 2,
+  router,
 });
 
 
