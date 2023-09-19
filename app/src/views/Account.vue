@@ -1,7 +1,7 @@
 <template>
   <div id="Account" :style="{ display: 'grid', placeItems: 'center' }">
     <b-spinner v-if="!$store.state.me" />
-    <b-tabs v-else id="content">
+    <b-tabs v-else id="content" justified>
       <b-tab title="Dein Profil">
         <b-card>
           <b-card-text>
@@ -97,89 +97,8 @@
           </b-list-group-item>
         </b-list-group>
       </b-tab>
-      <b-tab
-        title="Admin-Dashboard"
-        v-if="$store.state.me.RoleName == 'Admin'"
-        @click="updateUsers"
-      >
-        <b-container class="my-2">
-          <b-button v-b-toggle.collapse-1 variant="light" class="my-2">
-            <b-icon-filter /> Filter
-          </b-button>
-          <b-collapse id="collapse-1" :style="{ textAlign: 'start' }">
-            <b-row>
-              <b-col>
-                <b-form-group description="Benutzername">
-                  <b-form-input v-model="filterBenutzername" />
-                </b-form-group>
-              </b-col>
-              <b-col>
-                <b-form-group description="E-Mail-Adresse">
-                  <b-form-input v-model="filterEmail" />
-                </b-form-group>
-              </b-col>
-              <b-col>
-                <b-form-group description="Status" v-slot="{ ariaDescribedby }">
-                  <b-form-checkbox-group
-                    id="checkbox-group-1"
-                    v-model="filterStati"
-                    :options="stati"
-                    :aria-describedby="ariaDescribedby"
-                    name="flavour-1"
-                  ></b-form-checkbox-group>
-                </b-form-group>
-              </b-col>
-            </b-row>
-          </b-collapse>
-        </b-container>
-        <b-list-group :style="{ textAlign: 'start' }">
-          <!-- TODO: password reset (with notification email) -->
-          <b-list-group-item>
-            <b-row>
-              <b-col><b>Benutzername</b></b-col>
-              <b-col><b>E-Mail</b></b-col>
-              <b-col :style="{ textAlign: 'center' }"><b>Abo-Status</b></b-col>
-              <b-col :style="{ textAlign: 'end' }"><b>Aktionen</b></b-col>
-            </b-row>
-          </b-list-group-item>
-          <b-list-group-item v-for="user in sortedUsers" :key="user.id">
-            <b-row>
-              <b-col cols="3">
-                {{ user.username }}
-              </b-col>
-              <b-col cols="3">
-                {{ user.email }}
-              </b-col>
-              <b-col cols="3" :style="{ textAlign: 'center' }">
-                {{ user.RoleName }}
-              </b-col>
-              <b-col cols="3" :style="{ textAlign: 'end' }">
-                <b-button-group>
-                  <b-button
-                    variant="success"
-                    v-if="user.RoleName != 'Admin'"
-                    @click="upgradeUser(user.id)"
-                  >
-                    <b-icon-chevron-double-up />
-                  </b-button>
-                  <b-button
-                    variant="warning"
-                    v-if="user.RoleName != 'Standard'"
-                    @click="downgradeUser(user.id)"
-                  >
-                    <b-icon-chevron-double-down />
-                  </b-button>
-                  <b-button @click="changeUserPassword(user.id)">
-                    <b-icon-key />
-                  </b-button>
-                  <b-button variant="danger" @click="deleteUser(user.id)">
-                    <b-icon-trash />
-                  </b-button>
-                </b-button-group>
-              </b-col>
-            </b-row>
-          </b-list-group-item>
-        </b-list-group>
+      <b-tab title="Admin-Dashboard" v-if="$store.state.me.RoleName == 'Admin'">
+        <AdminDashboard />
       </b-tab>
     </b-tabs>
 
@@ -264,22 +183,14 @@
 <script>
 import Leto from "@/assets/Leto.svg";
 import UserService from "@/services/UserService";
+import AdminDashboard from "@/components/AdminDashboard";
 
 export default {
   name: "AccountView",
+  components: { AdminDashboard },
   data() {
     return {
       Leto,
-      users: [],
-      filterBenutzername: null,
-      filterEmail: null,
-      filterStati: ["Admin", "Basis", "Standard"],
-      selectedUserId: null,
-      stati: [
-        { text: "Admin", value: "Admin" },
-        { text: "Basis", value: "Basis" },
-        { text: "Standard", value: "Standard" },
-      ],
       passwordReplacement: null,
     };
   },
@@ -288,7 +199,6 @@ export default {
     deleteMe: UserService.deleteMe,
     downgrade() {
       UserService.downgrade().then(() => {
-        this.updateUsers();
         this.$bvToast.toast("Abo-Status erfolgreich herabgesetzt", {
           title: "Abo-Status geupdated",
           autoHideDelay: 5000,
@@ -297,48 +207,6 @@ export default {
         });
       });
       this.$bvModal.hide("userDowngradeModal");
-    },
-    downgradeUser(id) {
-      UserService.downgrade(id).then(() => {
-        this.updateUsers();
-        this.$bvToast.toast("Abo-Status erfolgreich herabgesetzt", {
-          title: "Abo-Status geupdated",
-          autoHideDelay: 5000,
-          variant: "success",
-          solid: true,
-        });
-      });
-    },
-    upgradeUser(id) {
-      UserService.upgrade(id).then(() => {
-        this.updateUsers();
-        this.$bvToast.toast("Abo-Status erfolgreich hochgesetzt", {
-          title: "Abo-Status geupdated",
-          autoHideDelay: 5000,
-          variant: "success",
-          solid: true,
-        });
-      });
-    },
-    deleteUser(id) {
-      // TODO: confirm before deletion
-      UserService.deleteUser(id).then(() => {
-        this.updateUsers();
-        this.users = this.users.filter((u) => u.id != id);
-        this.$bvToast.toast("Benutzer erfolgreich gelöscht", {
-          title: "Nutzer gelöscht",
-          autoHideDelay: 5000,
-          variant: "warning",
-          solid: true,
-        });
-      });
-    },
-    updateUsers() {
-      UserService.getAll().then((users) => (this.users = users));
-    },
-    changeUserPassword(id) {
-      this.selectedUserId = id;
-      this.$bvModal.show("changePasswordModal");
     },
     updatePassword(id = null) {
       UserService.changePassword(this.passwordReplacement, id).then(() => {
@@ -365,30 +233,6 @@ export default {
     }
   },
   computed: {
-    sortedUsers() {
-      return [...this.users]
-        .filter(
-          (user) =>
-            (!this.filterBenutzername ||
-              user.username
-                .toLowerCase()
-                .indexOf(this.filterBenutzername.toLowerCase()) != -1) &&
-            (!this.filterEmail ||
-              user.email
-                .toLowerCase()
-                .indexOf(this.filterEmail.toLowerCase()) != -1) &&
-            this.filterStati.includes(user.RoleName)
-        )
-        .sort((a, b) => {
-          let comparison = 0;
-          if (a.RoleName > b.RoleName) comparison = 1;
-          if (a.RoleName < b.RoleName) comparison = -1;
-
-          if (a.username > b.username) comparison += 0.1;
-          if (a.username < b.username) comparison -= 0.1;
-          return comparison;
-        });
-    },
     passwordValid() {
       return (
         this.passwordReplacement &&
