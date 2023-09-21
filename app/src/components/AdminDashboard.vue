@@ -100,8 +100,11 @@
           {{ data.item.phone }}
         </template>
         <template #cell(ansprechpartner)="data">
-          {{ data.item.personName }}, {{ data.item.personEmail }},
-          {{ data.item.personPhone }}
+          <span v-if="data.item.personName">
+            {{ data.item.personName }}, {{ data.item.personEmail }},
+            {{ data.item.personPhone }}
+          </span>
+          <em v-else>Kein Ansprechpartner</em>
         </template>
         <template #cell(aktionen)="data">
           <b-dropdown no-caret variant="light" right>
@@ -109,11 +112,17 @@
               <b-icon-three-dots />
             </template>
             <!-- TODO: Button onClicks -->
-            <b-dropdown-item v-if="data.item.email">
+            <b-dropdown-item
+              v-if="data.item.personEmail"
+              :href="'mailto:' + data.item.personEmail"
+            >
               <b-icon-envelope /> Ansprechpartner mailen
             </b-dropdown-item>
-            <b-dropdown-item v-if="data.item.personEmail">
-              <b-icon-envelope /> Nachricht schreiben
+            <b-dropdown-item
+              v-if="data.item.email"
+              :href="'mailto:' + data.item.email"
+            >
+              <b-icon-envelope /> E-Mail schreiben
             </b-dropdown-item>
             <b-dropdown-item variant="danger">
               <b-icon-trash /> Entfernen
@@ -144,7 +153,11 @@
                   required
                 />
               </b-form-group>
-              <b-form-group label="Allg. Telefonnummer:">
+              <b-form-group
+                label="Allg. Telefonnummer:"
+                :state="newCustomerTelValid"
+                invalid-feedback="Keine Telefonnummer"
+              >
                 <b-form-input type="tel" v-model="newCustomerTel" required />
               </b-form-group>
               <b-form-group label="Addresse:">
@@ -170,7 +183,11 @@
                   v-model="newCustomerPersonEmail"
                 />
               </b-form-group>
-              <b-form-group label="Telefonnummer Ansprechpartner/-in:">
+              <b-form-group
+                label="Telefonnummer Ansprechpartner/-in:"
+                :state="newCustomerPersonTelValid"
+                invalid-feedback="Keine Telefonnummer"
+              >
                 <b-form-input type="tel" v-model="newCustomerPersonTel" />
               </b-form-group>
             </b-col>
@@ -221,7 +238,9 @@
                 </b-col>
                 <b-col>
                   <b-card>
-                    <b-card-header>Betreff</b-card-header>
+                    <b-card-header>{{
+                      messageSelection || "Betreff"
+                    }}</b-card-header>
                     <b-card-text>
                       <div class="my-2" v-html="selectedEmailHtml"></div>
                     </b-card-text>
@@ -266,6 +285,7 @@ export default {
       messageRecipients: [],
       messageTemplates: [],
       messageSelection: null,
+      phoneRegex: /[?:+]?[0-9]{1,}/i,
     };
   },
   mounted() {
@@ -405,6 +425,15 @@ export default {
     selectedEmailHtml() {
       return this.messageTemplates.find((m) => m.file == this.messageSelection)
         ?.html;
+    },
+    newCustomerTelValid() {
+      return this.newCustomerTel && this.phoneRegex.test(this.newCustomerTel);
+    },
+    newCustomerPersonTelValid() {
+      return (
+        this.newCustomerPersonTel &&
+        this.phoneRegex.test(this.newCustomerPersonTel)
+      );
     },
   },
 };

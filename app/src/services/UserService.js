@@ -35,6 +35,12 @@ export default {
     logout() {
         ax.defaults.headers.common.Authorization = null;
         sessionStorage.removeItem("authToken")
+        this.$bvToast.toast("Du wurdest ausgeloggt", {
+            title: "Logout",
+            autoHideDelay: 5000,
+            variant: "danger",
+            solid: true,
+        });
         store.commit("logOut")
     },
     me() {

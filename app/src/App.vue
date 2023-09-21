@@ -33,15 +33,20 @@
           >
             Einloggen
           </b-button>
-          <b-button
-            v-else
-            :to="{ name: 'Account' }"
-            variant="outline-primary"
-            class="m-1"
-          >
-            <b-icon-person />
-            {{ $store.state.me?.username || "Mein Konto" }}
-          </b-button>
+          <b-dropdown v-else variant="outline-primary" class="m-1" right>
+            <template #button-content>
+              <b-icon-person />
+              {{ $store.state.me?.username || "Mein Konto" }}
+            </template>
+            <b-dropdown-item :to="{ name: 'Account' }">
+              <b-icon-person />
+              Mein Profil
+            </b-dropdown-item>
+            <b-dropdown-item variant="danger" @click="logout">
+              <b-icon-door-open />
+              Ausloggen
+            </b-dropdown-item>
+          </b-dropdown>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -53,10 +58,14 @@
 </template>
 
 <script>
+import UserService from "./services/UserService";
 export default {
   name: "App",
   mounted() {
     this.$store.commit("updateMe");
+  },
+  methods: {
+    logout: UserService.logout,
   },
 };
 </script>
