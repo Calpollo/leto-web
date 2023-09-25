@@ -17,7 +17,7 @@
         class="p-2"
         :style="{ backgroundColor: 'white', width: '100%' }"
       >
-        <b-navbar-nav class="ml-auto">
+        <b-navbar-nav>
           <b-nav-item :to="{ name: 'Funktionen' }" class="my-1">
             Funktionen
           </b-nav-item>
@@ -25,15 +25,34 @@
           <b-nav-item :to="{ name: 'Download' }" class="my-1"
             >Download</b-nav-item
           >
+        </b-navbar-nav>
+
+        <b-navbar-nav class="ml-auto">
+          <b-button-group>
+            <b-button
+              variant="outline-primary"
+              v-if="$store.state?.me?.RoleName == 'Admin'"
+              :to="{ name: 'AdminDashboard' }"
+            >
+              Admin-Dashboard
+            </b-button>
+            <b-button
+              variant="primary"
+              v-if="$store.state.loggedIn"
+              href="https://app.leto.andreasnicklaus.de"
+            >
+              <b-icon-box-arrow-up-right />
+              Zur App
+            </b-button>
+          </b-button-group>
           <b-button
             v-if="!this.$store.state.loggedIn"
             :to="{ name: 'Login' }"
             variant="outline-primary"
-            class="my-1 mx-1"
           >
-            Einloggen
+            Einloggen / Registrieren
           </b-button>
-          <b-dropdown v-else variant="outline-primary" class="m-1" right>
+          <b-nav-item-dropdown v-else right>
             <template #button-content>
               <b-icon-person />
               {{ $store.state.me?.username || "Mein Konto" }}
@@ -46,14 +65,36 @@
               <b-icon-door-open />
               Ausloggen
             </b-dropdown-item>
-          </b-dropdown>
+          </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
 
     <router-view class="view" />
 
-    <footer>Leto @ 2023</footer>
+    <footer>
+      <b-row align-h="around" class="p-2">
+        <b-col cols="11" md="auto">
+          <h4>Über Leto</h4>
+          <b-nav vertical>
+            <b-nav-item :to="{ name: 'Funktionen' }">Funktionen</b-nav-item>
+            <b-nav-item :to="{ name: 'Preise' }">Preise</b-nav-item>
+            <b-nav-item :to="{ name: 'Kundeninformationen' }"
+              >Kundeninformationen</b-nav-item
+            >
+            <b-nav-item :to="{ name: 'Download' }">Download</b-nav-item>
+          </b-nav>
+        </b-col>
+        <b-col cols="11" md="auto">
+          <h4>Mitglieder</h4>
+          <b-nav vertical>
+            <b-nav-item href="app.leto.andreasnicklaus.de">Zur App</b-nav-item>
+            <b-nav-item :to="{ name: 'Account' }">Dein Profil</b-nav-item>
+          </b-nav>
+        </b-col>
+      </b-row>
+      <div class="bottom-bar">Leto @ 2023</div>
+    </footer>
   </div>
 </template>
 
@@ -93,7 +134,7 @@ html {
 <style lang="scss" scoped>
 @import "@/assets/colors.scss";
 
-footer {
+div .bottom-bar {
   text-align: center;
   background-color: $primary;
   color: white;

@@ -26,6 +26,11 @@ const routes = [
         component: () => import("@/views/Download.vue")
     },
     {
+        path: "/kundeninformationen",
+        name: 'Kundeninformationen',
+        component: () => import("@/views/KundenInformationen.vue")
+    },
+    {
         path: "/login",
         name: 'Login',
         component: () => import("@/views/Login.vue")
@@ -39,6 +44,11 @@ const routes = [
         path: "/account",
         name: 'Account',
         component: () => import("@/views/Account.vue")
+    },
+    {
+        path: "/admin-dashboard",
+        name: 'AdminDashboard',
+        component: () => import("@/views/AdminDashboard.vue")
     },
     {
         path: "/checkout",

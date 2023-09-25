@@ -97,9 +97,6 @@
           </b-list-group-item>
         </b-list-group>
       </b-tab>
-      <b-tab title="Admin-Dashboard" v-if="$store.state.me.RoleName == 'Admin'">
-        <AdminDashboard />
-      </b-tab>
     </b-tabs>
 
     <b-modal id="userDowngradeModal" title="Bist du sicher?" variant="white">
@@ -183,11 +180,9 @@
 <script>
 import Leto from "@/assets/Leto.svg";
 import UserService from "@/services/UserService";
-import AdminDashboard from "@/components/AdminDashboard";
 
 export default {
   name: "AccountView",
-  components: { AdminDashboard },
   data() {
     return {
       Leto,
