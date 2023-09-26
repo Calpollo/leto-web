@@ -79,7 +79,20 @@
     </section>
     <section>
       <b-row no-gutters :style="{ minHeight: '90vh' }">
-        <b-col cols="5">
+        <b-col cols="12" md="5" class="d-md-none">
+          <img
+            :src="appleDevices"
+            alt=""
+            width="100%"
+            :style="{
+              height: '40vh',
+              objectFit: 'cover',
+              objectPosition: '72%',
+              minHeight: '100%',
+            }"
+          />
+        </b-col>
+        <b-col cols="12" md="5" class="d-none d-md-block">
           <img
             :src="appleDevices"
             alt=""
@@ -91,7 +104,7 @@
             }"
           />
         </b-col>
-        <b-col>
+        <b-col cols="12" md="7">
           <div
             :style="{ display: 'grid', height: '100%', placeItems: 'center' }"
           >
@@ -119,34 +132,19 @@
       </b-row>
     </section>
     <section>
-      <b-row no-gutters :style="{ minHeight: '90vh' }">
-        <b-col class="p-4">
+      <b-row>
+        <b-col>
           <h2 class="my-4">Vergleich</h2>
-          <div
-            class="mx-auto"
-            :style="{ maxWidth: '1000px' }"
-            data-aos="zoom-in"
-            data-aos-duration="1000"
-          >
+          <div data-aos="zoom-in" data-aos-duration="1000">
             <b-table
               striped
               hover
               :items="funktionenItems"
               head-variant="light"
+              responsive
+              class="m-2"
             />
           </div>
-        </b-col>
-        <b-col cols="4" class="d-none d-lg-block">
-          <img
-            :src="wohnungMac"
-            alt=""
-            width="100%"
-            :style="{
-              height: '90vh',
-              objectFit: 'cover',
-              objectPosition: '20%',
-            }"
-          />
         </b-col>
       </b-row>
     </section>
@@ -243,9 +241,9 @@ section {
   color: $primary;
   font-weight: 500;
   min-height: 80px;
-  padding-left: 40px;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: max-content fit-content(60vw);
+  place-items: center;
 
   & > .b-icon {
     display: inline-block;
@@ -253,6 +251,7 @@ section {
 
   & > p {
     display: inline;
+    margin: 0;
   }
 }
 

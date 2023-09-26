@@ -16,32 +16,35 @@
           Finde den Download, der zu deinem System passt.
         </p>
       </div>
-      <div
+      <b-row
         data-aos="fade-up"
         data-aos-delay="200"
         data-aos-duration="1000"
-        :style="{ width: '500px', maxWidth: '90%' }"
+        :style="{ width: '100%' }"
+        align-h="center"
       >
-        <b-list-group>
-          <b-list-group-item
-            v-for="({ version, type, ghRef }, index) in downloads"
-            :key="version"
-            class="d-flex justify-content-between align-items-center"
-          >
-            <span>
-              Leto Version {{ version }}
-              <b-badge v-if="type">{{ type }}</b-badge>
-            </span>
-            <b-button
-              :href="ghRef"
-              :variant="index == 0 ? 'primary' : 'outline-secondary'"
+        <b-col cols="11" md="7">
+          <b-list-group>
+            <b-list-group-item
+              v-for="({ version, type, ghRef }, index) in downloads"
+              :key="version"
+              class="d-flex justify-content-between align-items-center"
             >
-              <b-icon-download class="mr-2" />
-              Download
-            </b-button>
-          </b-list-group-item>
-        </b-list-group>
-      </div>
+              <span>
+                Leto Version {{ version }}
+                <b-badge v-if="type">{{ type }}</b-badge>
+              </span>
+              <b-button
+                :href="ghRef"
+                :variant="index == 0 ? 'primary' : 'outline-secondary'"
+              >
+                <b-icon-download class="mr-2" />
+                Download
+              </b-button>
+            </b-list-group-item>
+          </b-list-group>
+        </b-col>
+      </b-row>
     </section>
   </div>
 </template>

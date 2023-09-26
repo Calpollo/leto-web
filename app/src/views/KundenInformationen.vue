@@ -11,33 +11,38 @@
         <!-- spacer -->
       </div>
       <div :style="{ padding: '30px' }">
-        <h1 data-aos="fade-up">kundeninformationen</h1>
+        <h1 data-aos="fade-up" class="text-break">
+          Kunden&shy;informa&shy;tionen
+        </h1>
         <p data-aos="fade-up">
           Hier findest du all das Info-Material, das wir für dich
           zusammengestellt haben, nochmal zum Download
         </p>
       </div>
-      <div
+      <b-row
+        :style="{ width: '100%' }"
+        align-h="center"
         data-aos="fade-up"
         data-aos-delay="200"
         data-aos-duration="1000"
-        :style="{ width: '500px', maxWidth: '90%' }"
       >
-        <b-list-group>
-          <b-list-group-item
-            v-for="{ filename, link } in kundeninformationen"
-            :key="link"
-            class="d-flex justify-content-between align-items-center"
-          >
-            <span>
-              {{ filename }}
-            </span>
-            <b-button :href="link" target="_blank">
-              <b-icon-download />
-            </b-button>
-          </b-list-group-item>
-        </b-list-group>
-      </div>
+        <b-col cols="11" md="7">
+          <b-list-group>
+            <b-list-group-item
+              v-for="{ filename, link } in kundeninformationen"
+              :key="link"
+              class="d-flex justify-content-between align-items-center"
+            >
+              <span>
+                {{ filename }}
+              </span>
+              <b-button :href="link" target="_blank">
+                <b-icon-download />
+              </b-button>
+            </b-list-group-item>
+          </b-list-group>
+        </b-col>
+      </b-row>
     </section>
   </div>
 </template>
