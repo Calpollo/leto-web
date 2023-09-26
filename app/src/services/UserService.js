@@ -9,8 +9,7 @@ export default {
                 ax.defaults.headers.common.Authorization =
                     "Bearer " + response.data.token;
                 sessionStorage.setItem("authToken", response.data.token)
-                store.commit("logIn");
-                return true;
+                return store.dispatch("logIn").then(() => true);
             })
             .catch((err) => {
                 console.error(err);
@@ -24,8 +23,7 @@ export default {
                 ax.defaults.headers.common.Authorization =
                     "Bearer " + response.data.token;
                 sessionStorage.setItem("authToken", response.data.token)
-                store.commit("logIn");
-                return true;
+                return store.dispatch("logIn").then(() => true);
             })
             .catch((err) => {
                 console.error(err);
@@ -58,7 +56,7 @@ export default {
             return response.data
         })
         return ax.post("/auth/down").then(response => {
-            store.commit("updateMe")
+            store.dispatch("updateMe")
             return response.data
         })
     },
@@ -67,7 +65,7 @@ export default {
             return response.data
         })
         return ax.put("/auth/password", { password }).then(response => {
-            // store.commit("updateMe")
+            // store.dispatch("updateMe")
             return response.data
         })
     },

@@ -71,7 +71,7 @@ export default {
     login() {
       UserService.login(this.username, this.password)
         .then(() => {
-          this.$router.push("/account");
+          this.$router.push(this.$route.query?.redirectUrl || "/account");
         })
         .catch((err) => {
           console.warn(err);
@@ -83,6 +83,17 @@ export default {
           });
         });
     },
+  },
+  mounted() {
+    if (this.$route.query?.toast) {
+      const toast = JSON.parse(this.$route.query.toast);
+      this.$bvToast.toast(toast.msg, {
+        title: toast.title || "Benachrichtigung",
+        autoHideDelay: 5000,
+        variant: toast.variant,
+        solid: true,
+      });
+    }
   },
 };
 </script>

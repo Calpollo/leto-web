@@ -88,7 +88,7 @@
         <b-col cols="11" md="auto">
           <h4>Mitglieder</h4>
           <b-nav vertical>
-            <b-nav-item href="app.leto.andreasnicklaus.de">Zur App</b-nav-item>
+            <b-nav-item href="https://app.leto.andreasnicklaus.de">Zur App</b-nav-item>
             <b-nav-item :to="{ name: 'Account' }">Dein Profil</b-nav-item>
           </b-nav>
         </b-col>
@@ -103,7 +103,7 @@ import UserService from "./services/UserService";
 export default {
   name: "App",
   mounted() {
-    this.$store.commit("updateMe");
+    this.$store.dispatch("updateMe");
   },
   methods: {
     logout: UserService.logout,

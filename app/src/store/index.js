@@ -14,7 +14,6 @@ export default new Vuex.Store({
     mutations: {
         logIn: (state) => {
             state.loggedIn = true
-            UserService.me().then(me => state.me = me)
         },
         logOut: (state) => {
             state.loggedIn = false
@@ -22,10 +21,19 @@ export default new Vuex.Store({
             sessionStorage.removeItem("authToken")
             router.push("/")
         },
-        updateMe: (state) => {
-            UserService.me().then(me => state.me = me)
+        setMe(state, me) {
+            state.me = me
+        },
+    },
+    actions: {
+        logIn(state) {
+            console.log("Store action logIn")
+            state.commit("logIn")
+            return state.dispatch("updateMet")
+        },
+        updateMe(state) {
+            return UserService.me().then(me => state.commit("setMe", me))
         }
     },
-    actions: {},
     modules: {},
 });

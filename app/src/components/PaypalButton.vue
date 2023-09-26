@@ -26,7 +26,7 @@ export default {
               onApprove: (data, actions) =>
                 Paypal.onSubscriptionApprove(data, actions)
                   .then((msg) => {
-                    this.$store.commit("updateMe");
+                    this.$store.dispatch("updateMe");
                     const toast = {
                       msg,
                       variant: "success",

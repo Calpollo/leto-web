@@ -97,9 +97,29 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    const publicPaths = ["/", "/login", "/register", "/preise", "/funktionen", "/download"];
-    if (publicPaths.includes(to.path)) next();
-    else if (!store.state.loggedIn) next("/login");
+    const publicPathNames = ["Home", "Login", "Register", "Preise", "Funktionen", "Download", "Kundeninformationen", "Checkout"];
+    const adminPathNames = ["AdminDashboard"];
+    if (publicPathNames.includes(to.name)) next();
+    else if (adminPathNames.includes(to.name)) {
+        if (store.state.loggedIn && store.state.me?.RoleName == "Admin") next();
+        else next({
+            name: "Login", query: {
+                toast: JSON.stringify({
+                    msg: "Du musst ein Administrator sein, um auf diese Ressource zuzugreifen",
+                    variant: "danger",
+                    title: "Zugriff verweigert"
+                }),
+                redirectUrl: to.path,
+                ...to.query
+            }
+        });
+    }
+    else if (!store.state.loggedIn) next({
+        name: "Login", query: {
+            redirectUrl: to.path,
+            ...to.query
+        }
+    });
     else next();
 });
 
