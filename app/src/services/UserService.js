@@ -46,6 +46,17 @@ export default {
             return response.data;
         });
     },
+    createNew(username, email, password, status) {
+        return ax
+            .post("/auth/new", { username, email, password, status })
+            .then((response) => {
+                return response.data;
+            })
+            .catch((err) => {
+                console.error(err);
+                throw err;
+            });
+    },
     upgrade(id) {
         return ax.post("/auth/up/" + id).then(response => {
             return response.data
@@ -79,5 +90,8 @@ export default {
     },
     deleteUser(id) {
         return ax.delete("/auth/" + id).then(response => response.data)
+    },
+    restoreUser(id) {
+        return ax.post("/auth/restore/" + id).then(response => response.data)
     }
 }

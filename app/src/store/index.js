@@ -29,7 +29,7 @@ export default new Vuex.Store({
         logIn(state) {
             console.log("Store action logIn")
             state.commit("logIn")
-            return state.dispatch("updateMet")
+            return state.dispatch("updateMe")
         },
         updateMe(state) {
             return UserService.me().then(me => state.commit("setMe", me))

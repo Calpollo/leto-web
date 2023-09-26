@@ -2,15 +2,28 @@
   <b-container>
     <b-tabs justified class="m-2">
       <b-tab title="Nutzer">
-        <b-button
-          v-b-toggle.collapse-1
-          variant="outline-primary"
-          class="my-2"
-          block
-        >
-          <b-icon-filter /> Filter
-        </b-button>
-        <b-collapse id="collapse-1" :style="{ textAlign: 'start' }">
+        <b-row class="my-2">
+          <b-col>
+            <b-button
+              v-b-toggle.userFilterCollapse
+              variant="outline-primary"
+              block
+            >
+              <b-icon-filter /> Filter
+            </b-button>
+          </b-col>
+          <b-col cols="auto">
+            <b-button
+              variant="primary"
+              v-b-toggle.newUserCollapse
+              href="#newUserCollapse"
+            >
+              <b-icon-plus />
+              Neuer Nutzer
+            </b-button>
+          </b-col>
+        </b-row>
+        <b-collapse id="userFilterCollapse" :style="{ textAlign: 'start' }">
           <b-row>
             <b-col>
               <b-form-group description="Benutzername">
@@ -32,6 +45,11 @@
                   name="flavour-1"
                 ></b-form-checkbox-group>
               </b-form-group>
+            </b-col>
+            <b-col cols="auto">
+              <b-form-checkbox v-model="filterShowDeleted"
+                >Gelöschte Nutzer anzeigen
+              </b-form-checkbox>
             </b-col>
           </b-row>
         </b-collapse>
@@ -57,18 +75,35 @@
           smalled
           hover
           striped
+          responsive
         >
+          <template #cell(username)="data">
+            {{ data.item.username }}
+            <b-icon-trash-fill
+              v-b-tooltip.hover
+              title="Benutzer wurde gelöscht"
+              v-if="data.item.deletedAt"
+            />
+          </template>
           <template #cell(email)="data">
             <a :href="'mailto:' + data.item.email">{{ data.item.email }}</a>
           </template>
           <template #cell(RoleName)="data">
             <span
               :style="{
-                color: data.item.RoleName == 'Admin' ? '#6927d3' : 'black',
-                fontWeight: data.item.RoleName == 'Standard' ? null : 'bold',
+                color:
+                  !data.item.deletedAt && data.item.RoleName == 'Admin'
+                    ? '#6927d3'
+                    : 'black',
+                fontWeight:
+                  data.item.deletedAt || data.item.RoleName == 'Standard'
+                    ? null
+                    : 'bold',
+                fontStyle: data.item.deletedAt ? 'italic' : null,
               }"
             >
               {{ data.item.RoleName }}
+              <span v-if="data.item.deletedAt">(gelöscht)</span>
             </span>
           </template>
           <template #cell(aktionen)="data">
@@ -85,6 +120,7 @@
                   variant="success"
                   v-if="data.item.RoleName != 'Admin'"
                   @click="upgradeUser(data.item.id)"
+                  :disabled="data.item.deletedAt != null"
                 >
                   <b-icon-chevron-double-up />
                   Upgrade
@@ -93,20 +129,33 @@
                   variant="warning"
                   v-if="data.item.RoleName != 'Standard'"
                   @click="downgradeUser(data.item.id)"
+                  :disabled="data.item.deletedAt != null"
                 >
                   <b-icon-chevron-double-down />
                   Downgrade
                 </b-dropdown-item>
-                <b-dropdown-item @click="changeUserPassword(data.item.id)">
+                <b-dropdown-item
+                  @click="changeUserPassword(data.item.id)"
+                  :disabled="data.item.deletedAt != null"
+                >
                   <b-icon-key />
                   Passwort ändern
                 </b-dropdown-item>
                 <b-dropdown-item
                   variant="danger"
                   @click="deleteUser(data.item.id)"
+                  :disabled="data.item.deletedAt != null"
                 >
                   <b-icon-trash />
                   Löschen
+                </b-dropdown-item>
+                <b-dropdown-item
+                  variant="danger"
+                  @click="restoreUser(data.item.id)"
+                  v-if="data.item.deletedAt != null"
+                >
+                  <b-icon-arrow-counterclockwise />
+                  Nutzer wiederherstellen
                 </b-dropdown-item>
               </b-dropdown>
             </b-button-group>
@@ -150,11 +199,64 @@
             class="mx-auto"
           />
         </div>
+        <b-collapse id="newUserCollapse" class="my-2">
+          <hr />
+          <b-form :style="{ textAlign: 'start' }" @submit="createNewUser">
+            <b-form-group label="Benutzername:">
+              <b-form-input
+                type="text"
+                placeholder="Benutzername"
+                v-model="newUserUsername"
+                required
+              />
+            </b-form-group>
+            <b-form-group label="E-Mail:">
+              <b-form-input
+                type="email"
+                placeholder="info@praxis.de"
+                v-model="newUserEmail"
+                required
+              />
+            </b-form-group>
+            <b-form-group label="Password:">
+              <b-form-input
+                type="password"
+                v-model="newUserPassword"
+                required
+              />
+            </b-form-group>
+            <b-form-group label="Status:" v-slot="{ ariaDescribedby }">
+              <b-form-radio-group
+                required
+                id="newUserStatus-group-1"
+                v-model="newUserStatus"
+                :options="[
+                  { text: 'Standard', value: 'Standard' },
+                  { text: 'Basis', value: 'Basis' },
+                  { text: 'Admin', value: 'Admin' },
+                ]"
+                :aria-describedby="ariaDescribedby"
+              />
+            </b-form-group>
+            <b-row align-h="between" no-gutters>
+              <b-button variant="outline-danger" v-b-toggle.newUserCollapse>
+                Abbrechen
+              </b-button>
+              <b-button variant="success" type="submit">
+                <b-icon-check />Bestätigen
+              </b-button>
+            </b-row>
+          </b-form>
+        </b-collapse>
       </b-tab>
       <b-tab title="Kunden">
         <b-row class="my-2">
           <b-col>
-            <b-button v-b-toggle.kundenFilter-1 variant="outline-primary" block>
+            <b-button
+              v-b-toggle.kundenFilterCollapse
+              variant="outline-primary"
+              block
+            >
               <b-icon-filter /> Filter
             </b-button>
           </b-col>
@@ -182,7 +284,7 @@
             </b-dropdown>
           </b-col>
         </b-row>
-        <b-collapse id="kundenFilter-1">
+        <b-collapse id="kundenFilterCollapse">
           <b-row align-v="baseline">
             <b-col>
               <b-form-group label="Name:">
@@ -243,6 +345,7 @@
           smalled
           hover
           striped
+          responsive
         >
           <template #cell(email)="data">
             <a :href="'mailto:' + data.item.email">{{ data.item.email }}</a>
@@ -497,6 +600,7 @@ export default {
       filterBenutzername: null,
       filterEmail: null,
       filterStati: ["Admin", "Basis", "Standard"],
+      filterShowDeleted: false,
       stati: [
         { text: "Admin", value: "Admin" },
         { text: "Basis", value: "Basis" },
@@ -511,6 +615,10 @@ export default {
       kundenFilterTel: null,
       kundenFilterAdresse: null,
       kundenFilterAnsprechpartner: null,
+      newUserUsername: null,
+      newUserEmail: null,
+      newUserPassword: null,
+      newUserStatus: "Standard",
       newCustomerName: null,
       newCustomerEmail: null,
       newCustomerTel: null,
@@ -566,14 +674,23 @@ export default {
       });
     },
     deleteUser(id) {
-      // TODO: confirm before deletion
       UserService.deleteUser(id).then(() => {
         this.updateUsers();
-        this.users = this.users.filter((u) => u.id != id);
         this.$bvToast.toast("Benutzer erfolgreich gelöscht", {
           title: "Nutzer gelöscht",
           autoHideDelay: 5000,
           variant: "warning",
+          solid: true,
+        });
+      });
+    },
+    restoreUser(id) {
+      UserService.restoreUser(id).then(() => {
+        this.updateUsers();
+        this.$bvToast.toast("Benutzer erfolgreich wiederhergestellt", {
+          title: "Nutzer wiederhergestellt",
+          autoHideDelay: 5000,
+          variant: "success",
           solid: true,
         });
       });
@@ -593,6 +710,15 @@ export default {
         this.newCustomerPersonTel,
         this.newCustomerPersonEmail
       ).then(this.updateContacts);
+    },
+    createNewUser(event) {
+      event.preventDefault();
+      UserService.createNew(
+        this.newUserUsername,
+        this.newUserEmail,
+        this.newUserPassword,
+        this.newUserStatus
+      ).then(this.updateUsers);
     },
     deleteCustomer(id) {
       ContactService.deleteContact(id).then(this.updateContacts);
@@ -665,7 +791,8 @@ export default {
               user.email
                 .toLowerCase()
                 .indexOf(this.filterEmail.toLowerCase()) != -1) &&
-            this.filterStati.includes(user.RoleName)
+            this.filterStati.includes(user.RoleName) &&
+            (this.filterShowDeleted || user.deletedAt == null)
         )
         .sort((a, b) => {
           let comparison = 0;
@@ -674,6 +801,7 @@ export default {
 
           if (a.username > b.username) comparison += 0.1;
           if (a.username < b.username) comparison -= 0.1;
+
           return comparison;
         });
     },
