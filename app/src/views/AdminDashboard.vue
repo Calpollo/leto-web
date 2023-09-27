@@ -249,11 +249,11 @@
           </b-form>
         </b-collapse>
       </b-tab>
-      <b-tab title="Kunden">
+      <b-tab title="Kontakte">
         <b-row class="my-2">
           <b-col>
             <b-button
-              v-b-toggle.kundenFilterCollapse
+              v-b-toggle.contactFilterCollapse
               variant="outline-primary"
               block
             >
@@ -275,47 +275,47 @@
               <template #button-content>
                 <b-icon-box-arrow-up-right />
               </template>
-              <b-dropdown-item @click="copyKundenEmails">
+              <b-dropdown-item @click="copyContactEmails">
                 <b-icon-files /> E-Mails
               </b-dropdown-item>
-              <b-dropdown-item @click="copyKundenJson">
+              <b-dropdown-item @click="copyContactJson">
                 <b-icon-code-square /> Json
               </b-dropdown-item>
             </b-dropdown>
           </b-col>
         </b-row>
-        <b-collapse id="kundenFilterCollapse">
+        <b-collapse id="contactFilterCollapse">
           <b-row align-v="baseline">
             <b-col>
               <b-form-group label="Name:">
-                <b-form-input type="text" v-model="kundenFilterName" />
+                <b-form-input type="text" v-model="contactFilterName" />
               </b-form-group>
             </b-col>
             <b-col>
               <b-form-group label="E-Mail:">
-                <b-form-input type="email" v-model="kundenFilterEmail" />
+                <b-form-input type="email" v-model="contactFilterEmail" />
               </b-form-group>
             </b-col>
             <b-col>
               <b-form-group label="Telefon:">
-                <b-form-input type="tel" v-model="kundenFilterTel" />
+                <b-form-input type="tel" v-model="contactFilterTel" />
               </b-form-group>
             </b-col>
             <b-col>
               <b-form-group label="Adresse:">
-                <b-form-input type="text" v-model="kundenFilterAdresse" />
+                <b-form-input type="text" v-model="contactFilterAdresse" />
               </b-form-group>
             </b-col>
             <b-col>
               <b-form-group label="Ansprechpartner:">
                 <b-form-input
                   type="text"
-                  v-model="kundenFilterAnsprechpartner"
+                  v-model="contactFilterAnsprechpartner"
                 />
               </b-form-group>
             </b-col>
             <b-col cols="auto">
-              <b-button @click="resetKundenFilter">
+              <b-button @click="resetContactFilter">
                 <b-icon-x />
               </b-button>
             </b-col>
@@ -323,15 +323,15 @@
         </b-collapse>
         <div :style="{ display: 'grid', placeItems: 'center' }">
           <b-pagination
-            v-model="currentKundenPage"
-            :total-rows="sortedKunden.length"
+            v-model="currentContactPage"
+            :total-rows="sortedContacts.length"
             :per-page="tableEntriesPerPage"
-            aria-controls="kunden-table"
+            aria-controls="contact-table"
             class="mx-auto"
           />
         </div>
         <b-table
-          :items="sortedKunden"
+          :items="sortedContacts"
           :fields="[
             { key: 'name', sortable: true },
             { key: 'email', label: 'E-Mail', sortable: true },
@@ -341,7 +341,7 @@
             'aktionen',
           ]"
           :per-page="tableEntriesPerPage"
-          :current-page="currentKundenPage"
+          :current-page="currentContactPage"
           smalled
           hover
           striped
@@ -365,6 +365,7 @@
                   v-b-tooltip.hover
                   :title="data.item.personEmail"
                   :href="'mailto:' + data.item.personEmail"
+                  :disabled="!data.item.personEmail"
                 >
                   <b-icon-envelope />
                 </b-button>
@@ -373,6 +374,7 @@
                   v-b-tooltip.hover
                   :title="data.item.personPhone"
                   :href="'tel:' + data.item.personPhone"
+                  :disabled="!data.item.personPhone"
                 >
                   <b-icon-phone />
                 </b-button>
@@ -406,16 +408,16 @@
             </b-dropdown>
           </template>
         </b-table>
-        <p v-if="sortedKunden.length == 0">
+        <p v-if="sortedContacts.length == 0">
           Diese Liste ist nach dem Filtern leer.
-          <b-button @click="resetKundenFilter">Filter zurücksetzen</b-button>
+          <b-button @click="resetContactFilter">Filter zurücksetzen</b-button>
         </p>
         <div :style="{ display: 'grid', placeItems: 'center' }">
           <b-pagination
-            v-model="currentKundenPage"
-            :total-rows="sortedKunden.length"
+            v-model="currentContactPage"
+            :total-rows="sortedContacts.length"
             :per-page="tableEntriesPerPage"
-            aria-controls="kunden-table"
+            aria-controls="contact-table"
             class="mx-auto"
           />
         </div>
@@ -432,11 +434,10 @@
                     required
                   />
                 </b-form-group>
-                <b-form-group label="Allg. E-Mail:">
+                <b-form-group label="Addresse:">
                   <b-form-input
-                    type="email"
-                    placeholder="info@praxis.de"
-                    v-model="newCustomerEmail"
+                    type="text"
+                    v-model="newCustomerAddress"
                     required
                   />
                 </b-form-group>
@@ -447,10 +448,11 @@
                 >
                   <b-form-input type="tel" v-model="newCustomerTel" required />
                 </b-form-group>
-                <b-form-group label="Addresse:">
+                <b-form-group label="Allg. E-Mail:">
                   <b-form-input
-                    type="text"
-                    v-model="newCustomerAddress"
+                    type="email"
+                    placeholder="info@praxis.de"
+                    v-model="newCustomerEmail"
                     required
                   />
                 </b-form-group>
@@ -463,19 +465,19 @@
                     v-model="newCustomerPersonName"
                   />
                 </b-form-group>
-                <b-form-group label="E-Mail Ansprechpartner/-in:">
-                  <b-form-input
-                    type="email"
-                    placeholder="inhaberin@praxis.de"
-                    v-model="newCustomerPersonEmail"
-                  />
-                </b-form-group>
                 <b-form-group
                   label="Telefonnummer Ansprechpartner/-in:"
                   :state="newCustomerPersonTelValid"
                   invalid-feedback="Keine Telefonnummer"
                 >
                   <b-form-input type="tel" v-model="newCustomerPersonTel" />
+                </b-form-group>
+                <b-form-group label="E-Mail Ansprechpartner/-in:">
+                  <b-form-input
+                    type="email"
+                    placeholder="inhaberin@praxis.de"
+                    v-model="newCustomerPersonEmail"
+                  />
                 </b-form-group>
               </b-col>
             </b-row>
@@ -492,45 +494,45 @@
       </b-tab>
       <b-tab title="Nachrichten">
         <b-button
-          v-b-toggle.kundenFilter-2
+          v-b-toggle.contactFilter-2
           variant="outline-primary"
           class="my-2"
           block
         >
           <b-icon-filter /> Filter
         </b-button>
-        <b-collapse id="kundenFilter-2">
+        <b-collapse id="contactFilter-2">
           <b-row align-v="baseline">
             <b-col>
               <b-form-group label="Name:">
-                <b-form-input type="text" v-model="kundenFilterName" />
+                <b-form-input type="text" v-model="contactFilterName" />
               </b-form-group>
             </b-col>
             <b-col>
               <b-form-group label="E-Mail:">
-                <b-form-input type="email" v-model="kundenFilterEmail" />
+                <b-form-input type="email" v-model="contactFilterEmail" />
               </b-form-group>
             </b-col>
             <b-col>
               <b-form-group label="Telefon:">
-                <b-form-input type="tel" v-model="kundenFilterTel" />
+                <b-form-input type="tel" v-model="contactFilterTel" />
               </b-form-group>
             </b-col>
             <b-col>
               <b-form-group label="Adresse:">
-                <b-form-input type="text" v-model="kundenFilterAdresse" />
+                <b-form-input type="text" v-model="contactFilterAdresse" />
               </b-form-group>
             </b-col>
             <b-col>
               <b-form-group label="Ansprechpartner:">
                 <b-form-input
                   type="text"
-                  v-model="kundenFilterAnsprechpartner"
+                  v-model="contactFilterAnsprechpartner"
                 />
               </b-form-group>
             </b-col>
             <b-col cols="auto">
-              <b-button @click="resetKundenFilter">
+              <b-button @click="resetContactFilter">
                 <b-icon-x />
               </b-button>
             </b-col>
@@ -606,15 +608,15 @@ export default {
         { text: "Basis", value: "Basis" },
         { text: "Standard", value: "Standard" },
       ],
-      kunden: [],
+      contacts: [],
       tableEntriesPerPage: 15,
-      currentKundenPage: 1,
+      currentContactPage: 1,
       currentUserPage: 1,
-      kundenFilterName: null,
-      kundenFilterEmail: null,
-      kundenFilterTel: null,
-      kundenFilterAdresse: null,
-      kundenFilterAnsprechpartner: null,
+      contactFilterName: null,
+      contactFilterEmail: null,
+      contactFilterTel: null,
+      contactFilterAdresse: null,
+      contactFilterAnsprechpartner: null,
       newUserUsername: null,
       newUserEmail: null,
       newUserPassword: null,
@@ -643,7 +645,7 @@ export default {
     },
     updateContacts() {
       ContactService.getAll().then(
-        (contactList) => (this.kunden = contactList)
+        (contactList) => (this.contacts = contactList)
       );
     },
     updateMessageTemplates() {
@@ -709,7 +711,16 @@ export default {
         this.newCustomerPersonName,
         this.newCustomerPersonTel,
         this.newCustomerPersonEmail
-      ).then(this.updateContacts);
+      ).then(() => {
+        this.updateContacts();
+        this.newCustomerName = null;
+        this.newCustomerEmail = null;
+        this.newCustomerAddress = null;
+        this.newCustomerTel = null;
+        this.newCustomerPersonName = null;
+        this.newCustomerPersonTel = null;
+        this.newCustomerPersonEmail = null;
+      });
     },
     createNewUser(event) {
       event.preventDefault();
@@ -718,7 +729,13 @@ export default {
         this.newUserEmail,
         this.newUserPassword,
         this.newUserStatus
-      ).then(this.updateUsers);
+      ).then(() => {
+        this.updateUsers();
+        this.newUserUsername = null;
+        this.newUserEmail = null;
+        this.newUserPassword = null;
+        this.newUserStatu = null;
+      });
     },
     deleteCustomer(id) {
       ContactService.deleteContact(id).then(this.updateContacts);
@@ -739,16 +756,16 @@ export default {
         this.messageRecipients = [];
       });
     },
-    resetKundenFilter() {
-      this.kundenFilterName = null;
-      this.kundenFilterAdresse = null;
-      this.kundenFilterAnsprechpartner = null;
-      this.kundenFilterEmail = null;
-      this.kundenFilterTel = null;
+    resetContactFilter() {
+      this.contactFilterName = null;
+      this.contactFilterAdresse = null;
+      this.contactFilterAnsprechpartner = null;
+      this.contactFilterEmail = null;
+      this.contactFilterTel = null;
     },
-    copyKundenJson() {
+    copyContactJson() {
       navigator.clipboard
-        .writeText(JSON.stringify(this.sortedKunden, null, 2))
+        .writeText(JSON.stringify(this.sortedContacts, null, 2))
         .then(() => {
           alert("successfully copied");
         })
@@ -756,9 +773,9 @@ export default {
           alert("something went wrong");
         });
     },
-    copyKundenEmails() {
+    copyContactEmails() {
       navigator.clipboard
-        .writeText(this.sortedKunden.map((k) => k.email).join(", "))
+        .writeText(this.sortedContacts.map((k) => k.email).join(", "))
         .then(() => {
           alert("successfully copied");
         })
@@ -805,30 +822,30 @@ export default {
           return comparison;
         });
     },
-    sortedKunden() {
-      return [...this.kunden]
+    sortedContacts() {
+      return [...this.contacts]
         .filter((k) => {
           return (
-            (!this.kundenFilterName ||
+            (!this.contactFilterName ||
               k.name
                 .toLowerCase()
-                .includes(this.kundenFilterName.toLowerCase())) &&
-            (!this.kundenFilterEmail ||
+                .includes(this.contactFilterName.toLowerCase())) &&
+            (!this.contactFilterEmail ||
               k.email
                 .toLowerCase()
-                .includes(this.kundenFilterEmail.toLowerCase())) &&
-            (!this.kundenFilterTel ||
+                .includes(this.contactFilterEmail.toLowerCase())) &&
+            (!this.contactFilterTel ||
               k.phone
                 .toLowerCase()
-                .includes(this.kundenFilterTel.toLowerCase())) &&
-            (!this.kundenFilterAdresse ||
+                .includes(this.contactFilterTel.toLowerCase())) &&
+            (!this.contactFilterAdresse ||
               k.address
                 .toLowerCase()
-                .includes(this.kundenFilterAdresse.toLowerCase())) &&
-            (!this.kundenFilterAnsprechpartner ||
+                .includes(this.contactFilterAdresse.toLowerCase())) &&
+            (!this.contactFilterAnsprechpartner ||
               k.personName
                 .toLowerCase()
-                .includes(this.kundenFilterAnsprechpartner.toLowerCase()))
+                .includes(this.contactFilterAnsprechpartner.toLowerCase()))
           );
         })
         .sort((a, b) => {
@@ -840,7 +857,7 @@ export default {
         });
     },
     recipientOptions() {
-      return [...this.sortedKunden].map((k) => {
+      return [...this.sortedContacts].map((k) => {
         return {
           text: `${k.name} (${k.personName || "keine Ansprechperson"})`,
           value: k.id,
