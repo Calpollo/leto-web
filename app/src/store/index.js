@@ -27,7 +27,6 @@ export default new Vuex.Store({
     },
     actions: {
         logIn(state) {
-            console.log("Store action logIn")
             state.commit("logIn")
             return state.dispatch("updateMe")
         },

@@ -33,6 +33,7 @@
               variant="outline-primary"
               v-if="$store.state?.me?.RoleName == 'Admin'"
               :to="{ name: 'AdminDashboard' }"
+              v-b-toggle.nav-collapse
             >
               Admin-Dashboard
             </b-button>
@@ -40,6 +41,7 @@
               variant="primary"
               v-if="$store.state.loggedIn"
               href="https://app.leto.andreasnicklaus.de"
+              v-b-toggle.nav-collapse
             >
               <b-icon-box-arrow-up-right />
               Zur App
@@ -49,6 +51,7 @@
             v-if="!this.$store.state.loggedIn"
             :to="{ name: 'Login' }"
             variant="outline-primary"
+            v-b-toggle.nav-collapse
           >
             Einloggen / Registrieren
           </b-button>

@@ -51,7 +51,10 @@
               <b-list-group-item>Alle stabilen Funktionen</b-list-group-item>
               <b-list-group-item>Cloud-Backup</b-list-group-item>
             </b-list-group>
-            <template #footer> <b class="price">15,00€ / Monat</b></template>
+            <template #footer>
+              <b class="price mr-2"><s>15,00€ / Monat</s></b>
+              <b class="price">bald verfügbar</b>
+            </template>
           </b-card>
         </b-col>
         <b-col class="mb-1">

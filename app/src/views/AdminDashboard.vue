@@ -263,8 +263,8 @@
           <b-col cols="auto">
             <b-button
               variant="primary"
-              v-b-toggle.newCustomerCollapse
-              href="#newCustomerCollapse"
+              v-b-toggle.newContactCollapse
+              href="#newContactCollapse"
             >
               <b-icon-plus />
               Neuer Kontakt
@@ -401,7 +401,7 @@
               </b-dropdown-item>
               <b-dropdown-item
                 variant="danger"
-                @click="deleteCustomer(data.item.id)"
+                @click="deleteContact(data.item.id)"
               >
                 <b-icon-trash /> Entfernen
               </b-dropdown-item>
@@ -421,38 +421,38 @@
             class="mx-auto"
           />
         </div>
-        <b-collapse id="newCustomerCollapse" class="my-2">
+        <b-collapse id="newContactCollapse" class="my-2">
           <hr />
-          <b-form :style="{ textAlign: 'start' }" @submit="createNewCustomer">
+          <b-form :style="{ textAlign: 'start' }" @submit="createNewContact">
             <b-row>
               <b-col>
                 <b-form-group label="Firma / Unternehmen:">
                   <b-form-input
                     type="text"
                     placeholder="Praxisname"
-                    v-model="newCustomerName"
+                    v-model="newContactName"
                     required
                   />
                 </b-form-group>
                 <b-form-group label="Addresse:">
                   <b-form-input
                     type="text"
-                    v-model="newCustomerAddress"
+                    v-model="newContactAddress"
                     required
                   />
                 </b-form-group>
                 <b-form-group
                   label="Allg. Telefonnummer:"
-                  :state="newCustomerTelValid"
+                  :state="newContactTelValid"
                   invalid-feedback="Keine Telefonnummer"
                 >
-                  <b-form-input type="tel" v-model="newCustomerTel" required />
+                  <b-form-input type="tel" v-model="newContactTel" required />
                 </b-form-group>
                 <b-form-group label="Allg. E-Mail:">
                   <b-form-input
                     type="email"
                     placeholder="info@praxis.de"
-                    v-model="newCustomerEmail"
+                    v-model="newContactEmail"
                     required
                   />
                 </b-form-group>
@@ -462,27 +462,27 @@
                   <b-form-input
                     type="text"
                     placeholder="Inge Inhaberin"
-                    v-model="newCustomerPersonName"
+                    v-model="newContactPersonName"
                   />
                 </b-form-group>
                 <b-form-group
                   label="Telefonnummer Ansprechpartner/-in:"
-                  :state="newCustomerPersonTelValid"
+                  :state="newContactPersonTelValid"
                   invalid-feedback="Keine Telefonnummer"
                 >
-                  <b-form-input type="tel" v-model="newCustomerPersonTel" />
+                  <b-form-input type="tel" v-model="newContactPersonTel" />
                 </b-form-group>
                 <b-form-group label="E-Mail Ansprechpartner/-in:">
                   <b-form-input
                     type="email"
                     placeholder="inhaberin@praxis.de"
-                    v-model="newCustomerPersonEmail"
+                    v-model="newContactPersonEmail"
                   />
                 </b-form-group>
               </b-col>
             </b-row>
             <b-row align-h="between" no-gutters>
-              <b-button variant="outline-danger" v-b-toggle.newCustomerCollapse>
+              <b-button variant="outline-danger" v-b-toggle.newContactCollapse>
                 Abbrechen
               </b-button>
               <b-button variant="success" type="submit">
@@ -621,13 +621,13 @@ export default {
       newUserEmail: null,
       newUserPassword: null,
       newUserStatus: "Standard",
-      newCustomerName: null,
-      newCustomerEmail: null,
-      newCustomerTel: null,
-      newCustomerAddress: null,
-      newCustomerPersonName: null,
-      newCustomerPersonEmail: null,
-      newCustomerPersonTel: null,
+      newContactName: null,
+      newContactEmail: null,
+      newContactTel: null,
+      newContactAddress: null,
+      newContactPersonName: null,
+      newContactPersonEmail: null,
+      newContactPersonTel: null,
       messageRecipients: [],
       messageTemplates: [],
       messageSelection: null,
@@ -653,73 +653,78 @@ export default {
         this.messageTemplates = messageTemplateList;
       });
     },
+    toast(msg, title, variant = "success") {
+      this.$bvToast.toast(msg, {
+        title,
+        autoHideDelay: 5000,
+        variant,
+        solid: true,
+      });
+    },
     downgradeUser(id) {
       UserService.downgrade(id).then(() => {
         this.updateUsers();
-        this.$bvToast.toast("Abo-Status erfolgreich herabgesetzt", {
-          title: "Abo-Status geupdated",
-          autoHideDelay: 5000,
-          variant: "success",
-          solid: true,
-        });
+        this.toast(
+          "Abo-Status erfolgreich herabgesetzt",
+          "Abo-Status geupdated"
+        );
       });
     },
     upgradeUser(id) {
       UserService.upgrade(id).then(() => {
         this.updateUsers();
-        this.$bvToast.toast("Abo-Status erfolgreich hochgesetzt", {
-          title: "Abo-Status geupdated",
-          autoHideDelay: 5000,
-          variant: "success",
-          solid: true,
-        });
+        this.toast(
+          "Abo-Status erfolgreich hochgesetzt",
+          "Abo-Status geupdated"
+        );
       });
     },
     deleteUser(id) {
       UserService.deleteUser(id).then(() => {
         this.updateUsers();
-        this.$bvToast.toast("Benutzer erfolgreich gelöscht", {
-          title: "Nutzer gelöscht",
-          autoHideDelay: 5000,
-          variant: "warning",
-          solid: true,
-        });
+        this.toast(
+          "Benutzer erfolgreich gelöscht",
+          "Nutzer gelöscht",
+          "warning"
+        );
       });
     },
     restoreUser(id) {
       UserService.restoreUser(id).then(() => {
         this.updateUsers();
-        this.$bvToast.toast("Benutzer erfolgreich wiederhergestellt", {
-          title: "Nutzer wiederhergestellt",
-          autoHideDelay: 5000,
-          variant: "success",
-          solid: true,
-        });
+        this.toast(
+          "Benutzer erfolgreich wiederhergestellt",
+          "Nutzer wiederhergestellt"
+        );
       });
     },
     changeUserPassword(id) {
       this.selectedUserId = id;
       this.$bvModal.show("changePasswordModal");
     },
-    createNewCustomer(event) {
+    createNewContact(event) {
       event.preventDefault();
       ContactService.create(
-        this.newCustomerName,
-        this.newCustomerEmail,
-        this.newCustomerAddress,
-        this.newCustomerTel,
-        this.newCustomerPersonName,
-        this.newCustomerPersonTel,
-        this.newCustomerPersonEmail
+        this.newContactName,
+        this.newContactEmail,
+        this.newContactAddress,
+        this.newContactTel,
+        this.newContactPersonName,
+        this.newContactPersonTel,
+        this.newContactPersonEmail
       ).then(() => {
+        this.toast(
+          `Kontakt ${this.newContactName} wurde erfolgreich erstellt`,
+          "Neuer Kontakt erstellt"
+        );
         this.updateContacts();
-        this.newCustomerName = null;
-        this.newCustomerEmail = null;
-        this.newCustomerAddress = null;
-        this.newCustomerTel = null;
-        this.newCustomerPersonName = null;
-        this.newCustomerPersonTel = null;
-        this.newCustomerPersonEmail = null;
+        this.newContactName = null;
+        this.newContactEmail = null;
+        this.newContactAddress = null;
+        this.newContactTel = null;
+        this.newContactPersonName = null;
+        this.newContactPersonTel = null;
+        this.newContactPersonEmail = null;
       });
     },
     createNewUser(event) {
@@ -730,15 +735,26 @@ export default {
         this.newUserPassword,
         this.newUserStatus
       ).then(() => {
+        this.toast(
+          `Benutzerkonto ${this.newUserUsername} wurde erfolgreich erstellt`,
+          "Neues Benutzerkonto erstellt"
+        );
         this.updateUsers();
         this.newUserUsername = null;
         this.newUserEmail = null;
         this.newUserPassword = null;
-        this.newUserStatu = null;
+        this.newUserStatus = "Standard";
       });
     },
-    deleteCustomer(id) {
-      ContactService.deleteContact(id).then(this.updateContacts);
+    deleteContact(id) {
+      ContactService.deleteContact(id).then(() => {
+        this.updateContacts();
+        this.toast(
+          `Kontakt (ID: ${id}) wurde erfolgreich gelöscht`,
+          "Kontakt gelöscht",
+          "warning"
+        );
+      });
     },
     sendEmail(event) {
       event.preventDefault();
@@ -746,12 +762,7 @@ export default {
         this.messageSelection,
         this.messageRecipients
       ).then((response) => {
-        this.$bvToast.toast(response, {
-          title: "Erfolgreich",
-          autoHideDelay: 5000,
-          variant: "success",
-          solid: true,
-        });
+        this.toast(response, "Erfolgreich");
         this.messageSelection = null;
         this.messageRecipients = [];
       });
@@ -767,31 +778,30 @@ export default {
       navigator.clipboard
         .writeText(JSON.stringify(this.sortedContacts, null, 2))
         .then(() => {
-          alert("successfully copied");
+          alert("Successfully copied contacts as JSON");
         })
         .catch(() => {
-          alert("something went wrong");
+          alert("Something went wrong");
         });
     },
     copyContactEmails() {
       navigator.clipboard
         .writeText(this.sortedContacts.map((k) => k.email).join(", "))
         .then(() => {
-          alert("successfully copied");
+          alert("Successfully copied contacts' emails as string");
         })
         .catch(() => {
-          alert("something went wrong");
+          alert("Something went wrong");
         });
     },
     copyUserInfo(userinfo) {
-      console.log(userinfo);
       navigator.clipboard
         .writeText(JSON.stringify(userinfo, null, 2))
         .then(() => {
-          alert("successfully copied");
+          alert("Successfully copied user infoas JSON");
         })
         .catch(() => {
-          alert("something went wrong");
+          alert("Something went wrong");
         });
     },
   },
@@ -873,13 +883,13 @@ export default {
       return this.messageTemplates.find((m) => m.file == this.messageSelection)
         ?.html;
     },
-    newCustomerTelValid() {
-      return this.newCustomerTel && this.phoneRegex.test(this.newCustomerTel);
+    newContactTelValid() {
+      return this.newContactTel && this.phoneRegex.test(this.newContactTel);
     },
-    newCustomerPersonTelValid() {
+    newContactPersonTelValid() {
       return (
-        this.newCustomerPersonTel &&
-        this.phoneRegex.test(this.newCustomerPersonTel)
+        this.newContactPersonTel &&
+        this.phoneRegex.test(this.newContactPersonTel)
       );
     },
   },

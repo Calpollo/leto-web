@@ -32,6 +32,7 @@
                   :to="{ name: 'Checkout' }"
                   variant="success"
                   :style="{ color: 'white' }"
+                  disabled
                 >
                   <b-icon-chevron-double-up />
                   Upgraden
