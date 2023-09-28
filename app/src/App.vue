@@ -98,6 +98,27 @@
           </b-nav>
         </b-col>
       </b-row>
+      <b-row align-h="around" class="p-2">
+        <b-col cols="auto" class="businessinfo">
+          <img
+            src="@/assets/Leto - Text.svg"
+            :style="{ width: '200px' }"
+            alt="Leto"
+          />
+          <hr />
+          <p><b>Projekt Leto</b></p>
+          <p>Gründer: Andreas Nicklaus</p>
+          <p><em>gestartet: Juni 2022</em></p>
+          <p>
+            E-mail:
+            <a href="mailto:nicklaus.leto@gmail.com">nicklaus.leto@gmail.com</a>
+          </p>
+          <p v-if="$store.state.loggedIn">
+            Telefon:
+            <a href="tel:+49 160 90899730">+49 160 90899730 </a>
+          </p>
+        </b-col>
+      </b-row>
       <div class="bottom-bar">Leto @ 2023</div>
     </footer>
   </div>
@@ -153,5 +174,17 @@ div .bottom-bar {
 
 #nav-collapse > .nav-link {
   color: $primary !important;
+}
+
+.businessinfo {
+  & p {
+    margin: 0;
+  }
+  & b {
+    color: $primary;
+  }
+  & hr {
+    border-color: $primary;
+  }
 }
 </style>
