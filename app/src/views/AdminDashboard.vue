@@ -753,6 +753,49 @@
         <!-- TODO: add list of sent emails -->
       </b-tab>
     </b-tabs>
+
+    <b-modal id="changePasswordModal" title="Passwort ändern" variant="white">
+      <b-form-group label="Neues Passwort:" label-for="password-input">
+        <b-form-input
+          id="password-input"
+          type="password"
+          placeholder="Passwort"
+          v-model="passwordReplacement"
+          required
+          :state="passwordValid"
+        />
+
+        <b-form-invalid-feedback id="password-input-feedback">
+          Dein Passwort muss die folgenden Anforderungen erfüllen:
+          <ul class="ml-4">
+            <li>Mindestens 8 Zeichen</li>
+            <li>Mindestens 1 Ziffer</li>
+          </ul>
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+      <template #modal-footer="{}">
+        <b-button
+          @click="updatePassword(selectedUserId)"
+          :disabled="!passwordValid"
+          variant="danger"
+        >
+          Bestätigen
+        </b-button>
+        <b-button
+          @click="
+            () => {
+              $bvModal.hide('changePasswordModal');
+              selectedUserId = null;
+            }
+          "
+          variant="outline-danger"
+          class="ml-auto"
+        >
+          Abbrechen
+        </b-button>
+      </template>
+    </b-modal>
   </b-container>
 </template>
 
@@ -799,6 +842,7 @@ export default {
       messageSelection: null,
       phoneRegex: /[?:+]?[0-9]{1,}/i,
       contactEditIndex: null,
+      passwordReplacement: null,
     };
   },
   mounted() {
@@ -868,6 +912,12 @@ export default {
     changeUserPassword(id) {
       this.selectedUserId = id;
       this.$bvModal.show("changePasswordModal");
+    },
+    updatePassword(id) {
+      UserService.changePassword(this.passwordReplacement, id).then(() => {
+        this.toast("Passwort erfolgreich neu gesetzt", "Passwort geändert");
+        this.$bvModal.hide("changePasswordModal");
+      });
     },
     createNewContact(event) {
       event.preventDefault();
@@ -1077,6 +1127,13 @@ export default {
       return (
         this.newContactPersonTel &&
         this.phoneRegex.test(this.newContactPersonTel)
+      );
+    },
+    passwordValid() {
+      return (
+        this.passwordReplacement &&
+        this.passwordReplacement.length >= 8 &&
+        /\d/.test(this.passwordReplacement)
       );
     },
   },
