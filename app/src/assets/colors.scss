@@ -11,6 +11,14 @@ $warning: #ffbb00;
   color: white !important;
 }
 
+.btn-success {
+  color: white !important;
+}
+
+.btn-danger {
+  color: white !important;
+}
+
 // Bootstrap and its default variables
 @import "@/../node_modules/bootstrap/scss/bootstrap.scss";
 // BootstrapVue and its default variables

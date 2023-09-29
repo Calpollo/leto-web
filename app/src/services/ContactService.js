@@ -24,6 +24,13 @@ export default {
   deleteContact(id) {
     return ax.delete("/contact/" + id).then(response => response.data)
   },
+  saveContact(contact) {
+    return ax.put(`/contact/${contact.id}`, contact).then(response => response.data)
+      .catch(error => {
+        console.warn(error);
+        throw error
+      })
+  },
   getMessageTemplates() {
     return ax.get("/email/").then(response => response.data)
   },

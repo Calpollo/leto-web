@@ -347,65 +347,152 @@
           striped
           responsive
         >
+          <template #cell(name)="data">
+            <span v-if="contactEditIndex != data.index">
+              {{ data.item.name }}
+            </span>
+            <b-form-input
+              v-else
+              v-model="data.item.name"
+              placeholder="Name der Praxis"
+            />
+          </template>
           <template #cell(email)="data">
-            <a :href="'mailto:' + data.item.email">{{ data.item.email }}</a>
+            <a
+              :href="'mailto:' + data.item.email"
+              v-if="contactEditIndex != data.index"
+            >
+              {{ data.item.email }}
+            </a>
+            <b-form-input
+              v-else
+              v-model="data.item.email"
+              type="email"
+              placeholder="Allg. E-Mail"
+            />
           </template>
           <template #cell(adresse)="data">
-            {{ data.item.address }}
+            <span v-if="contactEditIndex != data.index">
+              {{ data.item.address }}
+            </span>
+            <b-form-input
+              v-else
+              v-model="data.item.address"
+              placeholder="Anschrift"
+            />
           </template>
           <template #cell(telefon)="data">
-            <a :href="'tel:' + data.item.phone">{{ data.item.phone }}</a>
+            <a
+              :href="'tel:' + data.item.phone"
+              v-if="contactEditIndex != data.index"
+            >
+              {{ data.item.phone }}
+            </a>
+            <b-form-input
+              v-else
+              v-model="data.item.phone"
+              type="tel"
+              placeholder="Telefonnummer"
+            />
           </template>
           <template #cell(ansprechpartner)="data">
-            <span v-if="data.item.personName">
-              {{ data.item.personName }}
-              <b-button-group size="sm">
-                <b-button
-                  variant="light"
-                  v-b-tooltip.hover
-                  :title="data.item.personEmail"
-                  :href="'mailto:' + data.item.personEmail"
-                  :disabled="!data.item.personEmail"
-                >
-                  <b-icon-envelope />
-                </b-button>
-                <b-button
-                  variant="light"
-                  v-b-tooltip.hover
-                  :title="data.item.personPhone"
-                  :href="'tel:' + data.item.personPhone"
-                  :disabled="!data.item.personPhone"
-                >
-                  <b-icon-phone />
-                </b-button>
-              </b-button-group>
+            <span v-if="contactEditIndex != data.index">
+              <span v-if="data.item.personName">
+                {{ data.item.personName }}
+                <b-button-group size="sm">
+                  <b-button
+                    variant="light"
+                    v-b-tooltip.hover
+                    :title="data.item.personEmail"
+                    :href="'mailto:' + data.item.personEmail"
+                    :disabled="!data.item.personEmail"
+                  >
+                    <b-icon-envelope />
+                  </b-button>
+                  <b-button
+                    variant="light"
+                    v-b-tooltip.hover
+                    :title="data.item.personPhone"
+                    :href="'tel:' + data.item.personPhone"
+                    :disabled="!data.item.personPhone"
+                  >
+                    <b-icon-phone />
+                  </b-button>
+                </b-button-group>
+              </span>
+              <em v-else>Kein Ansprechpartner</em>
             </span>
-            <em v-else>Kein Ansprechpartner</em>
+            <b-form-group v-else>
+              <b-form-input
+                v-model="data.item.personName"
+                placeholder="Ansprechpartner"
+              />
+              <b-form-input
+                v-model="data.item.personEmail"
+                type="email"
+                placeholder="E-Mail Ansprechpartner"
+              />
+              <b-form-input
+                v-model="data.item.personPhone"
+                type="tel"
+                placeholder="Telefonnummer Ansprechpartner"
+              />
+            </b-form-group>
           </template>
           <template #cell(aktionen)="data">
-            <b-dropdown no-caret variant="light" right>
-              <template #button-content>
-                <b-icon-three-dots />
-              </template>
-              <b-dropdown-item
-                v-if="data.item.personEmail"
-                :href="'mailto:' + data.item.personEmail"
+            <b-button-group>
+              <b-button
+                v-if="contactEditIndex != data.index"
+                @click="contactEditIndex = data.index"
+                variant="light"
               >
-                <b-icon-envelope /> Ansprechpartner mailen
-              </b-dropdown-item>
-              <b-dropdown-item
-                v-if="data.item.email"
-                :href="'mailto:' + data.item.email"
+                <b-icon-pen />
+              </b-button>
+              <b-button
+                v-if="contactEditIndex == data.index"
+                @click="
+                  saveContact(data.item);
+                  contactEditIndex = null;
+                "
+                variant="success"
               >
-                <b-icon-envelope /> E-Mail schreiben
-              </b-dropdown-item>
-              <b-dropdown-item
+                <b-icon-check />
+              </b-button>
+              <b-button
+                v-if="contactEditIndex == data.index"
+                @click="
+                  updateContacts();
+                  contactEditIndex = null;
+                "
                 variant="danger"
-                @click="deleteContact(data.item.id)"
               >
-                <b-icon-trash /> Entfernen
-              </b-dropdown-item>
-            </b-dropdown>
+                <b-icon-x />
+              </b-button>
+
+              <b-dropdown no-caret variant="light" right>
+                <template #button-content>
+                  <b-icon-three-dots />
+                </template>
+                <b-dropdown-item
+                  v-if="data.item.personEmail"
+                  :href="'mailto:' + data.item.personEmail"
+                >
+                  <b-icon-envelope /> Ansprechpartner mailen
+                </b-dropdown-item>
+                <b-dropdown-item
+                  v-if="data.item.email"
+                  :href="'mailto:' + data.item.email"
+                >
+                  <b-icon-envelope /> E-Mail schreiben
+                </b-dropdown-item>
+                <b-dropdown-item
+                  variant="danger"
+                  @click="deleteContact(data.item.id)"
+                >
+                  <b-icon-trash /> Entfernen
+                </b-dropdown-item>
+              </b-dropdown>
+            </b-button-group>
           </template>
         </b-table>
         <p v-if="sortedContacts.length == 0">
@@ -632,6 +719,7 @@ export default {
       messageTemplates: [],
       messageSelection: null,
       phoneRegex: /[?:+]?[0-9]{1,}/i,
+      contactEditIndex: null,
     };
   },
   mounted() {
@@ -755,6 +843,26 @@ export default {
           "warning"
         );
       });
+    },
+    saveContact(contact) {
+      ContactService.saveContact(contact)
+        .then(() => {
+          this.updateContacts();
+          this.toast(
+            `Kontakt ${contact.name} wurde erfolgreich gespeichert`,
+            "Kontakt gespeichert"
+          );
+        })
+        .catch((error) => {
+          this.updateContacts();
+
+          this.toast(
+            error?.response.data.errors.map((e) => e.message).join(". ") ||
+              "Ein unbekannter Serverfehler ist aufgetreten",
+            error?.response.data.name || "Error",
+            "danger"
+          );
+        });
     },
     sendEmail(event) {
       event.preventDefault();
