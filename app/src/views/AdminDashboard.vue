@@ -357,6 +357,7 @@
           :items="sortedContacts"
           :fields="[
             { key: 'name', sortable: true },
+            { key: 'status', sortable: true },
             { key: 'email', label: 'E-Mail', sortable: true },
             { key: 'telefon', sortable: true },
             'adresse',
@@ -378,6 +379,31 @@
               v-else
               v-model="data.item.name"
               placeholder="Name der Praxis"
+            />
+          </template>
+          <template #cell(status)="data">
+            <b-badge
+              v-if="contactEditIndex != data.index"
+              :variant="
+                data.item.status.split('_')[0] == 'NONE'
+                  ? null
+                  : data.item.status.split('_')[0].toLowerCase()
+              "
+            >
+              {{ data.item.status.split("_")[1] }}
+            </b-badge>
+            <b-form-radio-group
+              v-else
+              :id="'statusSelect-group-' + data.index"
+              v-model="data.item.status"
+              :options="[
+                'NONE_no contact',
+                'DANGER_not interested',
+                'WARNING_unsure',
+                'SUCCESS_interested',
+                'SUCCESS_customer',
+              ]"
+              name="statusSelect"
             />
           </template>
           <template #cell(email)="data">
