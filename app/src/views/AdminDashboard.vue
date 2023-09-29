@@ -1,7 +1,9 @@
 <template>
   <b-container>
     <b-tabs justified class="m-2">
+      <!-- Nutzer Tab -->
       <b-tab title="Nutzer">
+        <!-- Button Bar -->
         <b-row class="my-2">
           <b-col>
             <b-button
@@ -23,6 +25,8 @@
             </b-button>
           </b-col>
         </b-row>
+
+        <!-- Nutzer Filter -->
         <b-collapse id="userFilterCollapse" :style="{ textAlign: 'start' }">
           <b-row>
             <b-col>
@@ -53,6 +57,8 @@
             </b-col>
           </b-row>
         </b-collapse>
+
+        <!-- Top Nutzer Pagination -->
         <div :style="{ display: 'grid', placeItems: 'center' }">
           <b-pagination
             v-model="currentUserPage"
@@ -62,6 +68,8 @@
             class="mx-auto"
           />
         </div>
+
+        <!-- Nutzer Table -->
         <b-table
           :items="sortedUsers"
           :fields="[
@@ -190,6 +198,10 @@
             </b-tooltip>
           </template>
         </b-table>
+
+        <!-- HINT: No user info is missing because the current user is always existant if this is visible -->
+
+        <!-- Bottom Nutzer Pagination -->
         <div :style="{ display: 'grid', placeItems: 'center' }">
           <b-pagination
             v-model="currentUserPage"
@@ -199,6 +211,8 @@
             class="mx-auto"
           />
         </div>
+
+        <!-- New Nutzer Form -->
         <b-collapse id="newUserCollapse" class="my-2">
           <hr />
           <b-form :style="{ textAlign: 'start' }" @submit="createNewUser">
@@ -249,7 +263,10 @@
           </b-form>
         </b-collapse>
       </b-tab>
+
+      <!-- Contact Tab -->
       <b-tab title="Kontakte">
+        <!-- Button Bar -->
         <b-row class="my-2">
           <b-col>
             <b-button
@@ -284,6 +301,8 @@
             </b-dropdown>
           </b-col>
         </b-row>
+
+        <!-- Contact Filter -->
         <b-collapse id="contactFilterCollapse">
           <b-row align-v="baseline">
             <b-col>
@@ -321,6 +340,8 @@
             </b-col>
           </b-row>
         </b-collapse>
+
+        <!-- Top Contact Pagination -->
         <div :style="{ display: 'grid', placeItems: 'center' }">
           <b-pagination
             v-model="currentContactPage"
@@ -330,6 +351,8 @@
             class="mx-auto"
           />
         </div>
+
+        <!-- Contact Table -->
         <b-table
           :items="sortedContacts"
           :fields="[
@@ -495,10 +518,14 @@
             </b-button-group>
           </template>
         </b-table>
+
+        <!-- No Contacts Message -->
         <p v-if="sortedContacts.length == 0">
           Diese Liste ist nach dem Filtern leer.
           <b-button @click="resetContactFilter">Filter zurücksetzen</b-button>
         </p>
+
+        <!-- Bottom Contact Pagination -->
         <div :style="{ display: 'grid', placeItems: 'center' }">
           <b-pagination
             v-model="currentContactPage"
@@ -508,6 +535,8 @@
             class="mx-auto"
           />
         </div>
+
+        <!-- New Contact Form -->
         <b-collapse id="newContactCollapse" class="my-2">
           <hr />
           <b-form :style="{ textAlign: 'start' }" @submit="createNewContact">
@@ -579,7 +608,10 @@
           </b-form>
         </b-collapse>
       </b-tab>
+
+      <!-- Nachrichten Tab -->
       <b-tab title="Nachrichten">
+        <!-- Button Bar -->
         <b-button
           v-b-toggle.contactFilter-2
           variant="outline-primary"
@@ -588,6 +620,8 @@
         >
           <b-icon-filter /> Filter
         </b-button>
+
+        <!-- Contact Filter (for message recipients) -->
         <b-collapse id="contactFilter-2">
           <b-row align-v="baseline">
             <b-col>
@@ -625,10 +659,13 @@
             </b-col>
           </b-row>
         </b-collapse>
+
+        <!-- Message creation -->
         <b-card>
           <b-card-header> Verfassen </b-card-header>
           <b-card-body :style="{ textAlign: 'start' }">
             <b-form @submit="sendEmail">
+              <!-- Recipients -->
               <b-form-group label="Empfänger:" v-slot="{ ariaDescribedby }">
                 <b-form-checkbox-group
                   v-if="recipientOptions.length > 0"
@@ -643,6 +680,8 @@
                   Es stehen nach dem Filtern keine Empfänger zur Verfügung.
                 </p>
               </b-form-group>
+
+              <!-- Message Selection -->
               <b-row>
                 <b-col cols="auto">
                   <b-form-group label="Nachricht:" v-slot="{ ariaDescribedby }">
@@ -656,6 +695,8 @@
                     ></b-form-radio-group>
                   </b-form-group>
                 </b-col>
+
+                <!-- Message Preview -->
                 <b-col>
                   <b-card>
                     <b-card-header>{{
@@ -667,10 +708,22 @@
                   </b-card>
                 </b-col>
               </b-row>
-              <b-button variant="success" type="submit"> Senden </b-button>
+              <b-button
+                :disabled="
+                  !messageRecipients ||
+                  messageRecipients.length == 0 ||
+                  !messageSelection
+                "
+                variant="success"
+                type="submit"
+                block
+              >
+                Senden
+              </b-button>
             </b-form>
           </b-card-body>
         </b-card>
+
         <!-- TODO: add list of sent emails -->
       </b-tab>
     </b-tabs>
