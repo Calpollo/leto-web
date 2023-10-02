@@ -305,31 +305,55 @@
         <!-- Contact Filter -->
         <b-collapse id="contactFilterCollapse">
           <b-row align-v="baseline">
-            <b-col>
+            <b-col cols="12" md="3">
               <b-form-group label="Name:">
                 <b-form-input type="text" v-model="contactFilterName" />
               </b-form-group>
             </b-col>
-            <b-col>
+            <b-col cols="12" md="3">
               <b-form-group label="E-Mail:">
                 <b-form-input type="email" v-model="contactFilterEmail" />
               </b-form-group>
             </b-col>
-            <b-col>
+            <b-col cols="12" md="3">
               <b-form-group label="Telefon:">
                 <b-form-input type="tel" v-model="contactFilterTel" />
               </b-form-group>
             </b-col>
-            <b-col>
+            <b-col cols="12" md="3">
               <b-form-group label="Adresse:">
                 <b-form-input type="text" v-model="contactFilterAdresse" />
               </b-form-group>
             </b-col>
-            <b-col>
+            <b-col cols="12" md="3">
               <b-form-group label="Ansprechpartner:">
                 <b-form-input
                   type="text"
                   v-model="contactFilterAnsprechpartner"
+                />
+              </b-form-group>
+            </b-col>
+            <b-col cols="12" md="3">
+              <b-form-group label="Erstellt nach:">
+                <b-form-input
+                  type="date"
+                  v-model="contactFilterCreationDateRangeEnd"
+                />
+              </b-form-group>
+            </b-col>
+            <b-col cols="12" md="3">
+              <b-form-group label="Erstellt vor:">
+                <b-form-input
+                  type="date"
+                  v-model="contactFilterCreationDateRangeStart"
+                />
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group label="Status:">
+                <b-form-select
+                  v-model="contactFilterStatus"
+                  :options="contactStatusOptions"
                 />
               </b-form-group>
             </b-col>
@@ -396,13 +420,7 @@
               v-else
               :id="'statusSelect-group-' + data.index"
               v-model="data.item.status"
-              :options="[
-                'NONE_no contact',
-                'DANGER_not interested',
-                'WARNING_unsure',
-                'SUCCESS_interested',
-                'SUCCESS_customer',
-              ]"
+              :options="contactStatusOptions"
               name="statusSelect"
             />
           </template>
@@ -650,31 +668,55 @@
         <!-- Contact Filter (for message recipients) -->
         <b-collapse id="contactFilter-2">
           <b-row align-v="baseline">
-            <b-col>
+            <b-col cols="12" md="3">
               <b-form-group label="Name:">
                 <b-form-input type="text" v-model="contactFilterName" />
               </b-form-group>
             </b-col>
-            <b-col>
+            <b-col cols="12" md="3">
               <b-form-group label="E-Mail:">
                 <b-form-input type="email" v-model="contactFilterEmail" />
               </b-form-group>
             </b-col>
-            <b-col>
+            <b-col cols="12" md="3">
               <b-form-group label="Telefon:">
                 <b-form-input type="tel" v-model="contactFilterTel" />
               </b-form-group>
             </b-col>
-            <b-col>
+            <b-col cols="12" md="3">
               <b-form-group label="Adresse:">
                 <b-form-input type="text" v-model="contactFilterAdresse" />
               </b-form-group>
             </b-col>
-            <b-col>
+            <b-col cols="12" md="3">
               <b-form-group label="Ansprechpartner:">
                 <b-form-input
                   type="text"
                   v-model="contactFilterAnsprechpartner"
+                />
+              </b-form-group>
+            </b-col>
+            <b-col cols="12" md="3">
+              <b-form-group label="Erstellt nach:">
+                <b-form-input
+                  type="date"
+                  v-model="contactFilterCreationDateRangeEnd"
+                />
+              </b-form-group>
+            </b-col>
+            <b-col cols="12" md="3">
+              <b-form-group label="Erstellt vor:">
+                <b-form-input
+                  type="date"
+                  v-model="contactFilterCreationDateRangeStart"
+                />
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group label="Status:">
+                <b-form-select
+                  v-model="contactFilterStatus"
+                  :options="contactStatusOptions"
                 />
               </b-form-group>
             </b-col>
@@ -694,14 +736,36 @@
               <!-- Recipients -->
               <b-form-group label="Empfänger:" v-slot="{ ariaDescribedby }">
                 <b-form-checkbox-group
-                  v-if="recipientOptions.length > 0"
+                  v-if="sortedContacts.length > 0"
                   required
                   id="messageRecipients-group-1"
                   v-model="messageRecipients"
-                  :options="recipientOptions"
                   :aria-describedby="ariaDescribedby"
                   name="messageRecipients-1"
-                />
+                >
+                  <b-form-checkbox
+                    v-for="contact in sortedContacts"
+                    :key="contact.name"
+                    :value="contact.id"
+                  >
+                    {{ contact.name }} ({{
+                      contact.personName || "keine Ansprechperson"
+                    }})
+                    <b-badge
+                      :variant="
+                        contact.status.split('_')[0] == 'NONE'
+                          ? null
+                          : contact.status.split('_')[0].toLowerCase()
+                      "
+                    >
+                      {{ contact.status.split("_")[1] }}
+                    </b-badge>
+                    <em>
+                      erstellt am
+                      {{ new Date(contact.createdAt).toLocaleDateString("de") }}
+                    </em>
+                  </b-form-checkbox>
+                </b-form-checkbox-group>
                 <p v-else>
                   Es stehen nach dem Filtern keine Empfänger zur Verfügung.
                 </p>
@@ -817,6 +881,13 @@ export default {
         { text: "Basis", value: "Basis" },
         { text: "Standard", value: "Standard" },
       ],
+      contactStatusOptions: [
+        "NONE_no contact",
+        "DANGER_not interested",
+        "WARNING_unsure",
+        "SUCCESS_interested",
+        "SUCCESS_customer",
+      ],
       contacts: [],
       tableEntriesPerPage: 15,
       currentContactPage: 1,
@@ -826,6 +897,9 @@ export default {
       contactFilterTel: null,
       contactFilterAdresse: null,
       contactFilterAnsprechpartner: null,
+      contactFilterCreationDateRangeStart: null,
+      contactFilterCreationDateRangeEnd: null,
+      contactFilterStatus: null,
       newUserUsername: null,
       newUserEmail: null,
       newUserPassword: null,
@@ -1008,8 +1082,11 @@ export default {
       this.contactFilterName = null;
       this.contactFilterAdresse = null;
       this.contactFilterAnsprechpartner = null;
+      this.contactFilterCreationDateRangeStart = null;
+      this.contactFilterCreationDateRangeEnd = null;
       this.contactFilterEmail = null;
       this.contactFilterTel = null;
+      this.contactFilterStatus = null;
     },
     copyContactJson() {
       navigator.clipboard
@@ -1092,7 +1169,14 @@ export default {
             (!this.contactFilterAnsprechpartner ||
               k.personName
                 .toLowerCase()
-                .includes(this.contactFilterAnsprechpartner.toLowerCase()))
+                .includes(this.contactFilterAnsprechpartner.toLowerCase())) &&
+            (!this.contactFilterCreationDateRangeStart ||
+              new Date(k.createdAt) >
+                new Date(this.contactFilterCreationDateRangeStart)) &&
+            (!this.contactFilterCreationDateRangeEnd ||
+              new Date(k.createdAt) >
+                new Date(this.contactFilterCreationDateRangeEnd)) &&
+            (!this.contactFilterStatus || k.status == this.contactFilterStatus)
           );
         })
         .sort((a, b) => {
@@ -1102,14 +1186,6 @@ export default {
 
           return comparison;
         });
-    },
-    recipientOptions() {
-      return [...this.sortedContacts].map((k) => {
-        return {
-          text: `${k.name} (${k.personName || "keine Ansprechperson"})`,
-          value: k.id,
-        };
-      });
     },
     messageOptions() {
       return [...this.messageTemplates].map((m) => {
