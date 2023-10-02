@@ -39,12 +39,11 @@ export default {
             variant: "danger",
             solid: true,
         });
-        store.commit("logOut")
+        store.dispatch("logOut").then(() => this.$router.push("/"))
+        store.dispatch("logOut").then(() => this.$router.push("/"))
     },
     me() {
-        return ax.get("/auth/me").then((response) => {
-            return response.data;
-        });
+        return ax.get("/auth/me").then((response) => response.data).catch(() => null);
     },
     createNew(username, email, password, status) {
         return ax

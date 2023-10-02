@@ -1,4 +1,3 @@
-import router from "@/router";
 import UserService from "@/services/UserService";
 import Vue from "vue";
 import Vuex from "vuex";
@@ -18,14 +17,17 @@ export default new Vuex.Store({
         logOut: (state) => {
             state.loggedIn = false
             state.me = null
-            sessionStorage.removeItem("authToken")
-            router.push("/")
         },
         setMe(state, me) {
             state.me = me
         },
     },
     actions: {
+        logOut: (state) => {
+            state.commit("logOut")
+            sessionStorage.removeItem("authToken")
+            return
+        },
         logIn(state) {
             state.commit("logIn")
             return state.dispatch("updateMe")

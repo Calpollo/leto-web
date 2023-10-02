@@ -1,3 +1,4 @@
+import router from "@/router";
 import store from "@/store";
 import axios from "axios";
 
@@ -15,10 +16,14 @@ ax.interceptors.response.use(
         console.error(error);
         switch (error.response.status) {
             case 401:
-                store.commit("logOut");
+                store.dispatch("logOut").then(() => {
+                    router.push("/login")
+                });
                 break;
             case 403:
-                store.commit("logOut");
+                store.dispatch("logOut").then(() => {
+                    router.push("/login")
+                });
                 break;
             default:
                 throw error;
