@@ -742,6 +742,7 @@
                   v-model="messageRecipients"
                   :aria-describedby="ariaDescribedby"
                   name="messageRecipients-1"
+                  stacked
                 >
                   <b-form-checkbox
                     v-for="contact in sortedContacts"
