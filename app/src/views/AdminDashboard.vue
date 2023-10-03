@@ -737,7 +737,6 @@
               <b-form-group label="Empfänger:" v-slot="{ ariaDescribedby }">
                 <b-form-checkbox-group
                   v-if="sortedContacts.length > 0"
-                  required
                   id="messageRecipients-group-1"
                   v-model="messageRecipients"
                   :aria-describedby="ariaDescribedby"
@@ -748,6 +747,7 @@
                     v-for="contact in sortedContacts"
                     :key="contact.name"
                     :value="contact.id"
+                    :name="contact.id"
                   >
                     {{ contact.name }} ({{
                       contact.personName || "keine Ansprechperson"
@@ -1211,6 +1211,13 @@ export default {
         this.passwordReplacement &&
         this.passwordReplacement.length >= 8 &&
         /\d/.test(this.passwordReplacement)
+      );
+    },
+    disableSendButton() {
+      return (
+        !this.messageRecipients ||
+        this.messageRecipients.length == 0 ||
+        !this.messageSelection
       );
     },
   },
