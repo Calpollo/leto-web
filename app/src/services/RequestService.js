@@ -16,9 +16,7 @@ ax.interceptors.response.use(
         console.error(error);
         switch (error.response.status) {
             case 401:
-                store.dispatch("logOut").then(() => {
-                    router.push("/login")
-                });
+                store.dispatch("logOut");
                 break;
             case 403:
                 store.dispatch("logOut").then(() => {
