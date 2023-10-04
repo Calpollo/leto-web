@@ -450,7 +450,7 @@
           </template>
           <template #cell(telefon)="data">
             <a
-              :href="'tel:' + data.item.phone.replace(/\s/g, '')"
+              :href="'tel:' + data.item.phone?.replace(/\s/g, '')"
               v-if="contactEditIndex != data.index"
             >
               {{ data.item.phone }}
@@ -480,7 +480,7 @@
                     variant="light"
                     v-b-tooltip.hover
                     :title="data.item.personPhone"
-                    :href="'tel:' + data.item.personPhone.replace(/\s/g, '')"
+                    :href="'tel:' + data.item.personPhone?.replace(/\s/g, '')"
                     :disabled="!data.item.personPhone"
                   >
                     <b-icon-phone />
