@@ -80,7 +80,7 @@
           ]"
           :per-page="tableEntriesPerPage"
           :current-page="currentUserPage"
-          smalled
+          small
           hover
           striped
           responsive
@@ -390,7 +390,7 @@
           ]"
           :per-page="tableEntriesPerPage"
           :current-page="currentContactPage"
-          smalled
+          small
           hover
           striped
           responsive
@@ -817,6 +817,10 @@
 
         <!-- TODO: add list of sent emails -->
       </b-tab>
+      <!-- Log Tab -->
+      <b-tab title="Logs">
+        <LogsView />
+      </b-tab>
     </b-tabs>
 
     <b-modal id="changePasswordModal" title="Passwort ändern" variant="white">
@@ -867,9 +871,12 @@
 <script>
 import UserService from "@/services/UserService";
 import ContactService from "@/services/ContactService";
+import EmailService from "@/services/EmailService";
+import LogsView from "@/components/admin-dashboard/LogsView.vue";
 
 export default {
   name: "AdminDashboard",
+  components: { LogsView },
   data() {
     return {
       users: [],
@@ -935,7 +942,7 @@ export default {
       );
     },
     updateMessageTemplates() {
-      ContactService.getMessageTemplates().then((messageTemplateList) => {
+      EmailService.getMessageTemplates().then((messageTemplateList) => {
         this.messageTemplates = messageTemplateList;
       });
     },
@@ -1070,7 +1077,7 @@ export default {
     },
     sendEmail(event) {
       event.preventDefault();
-      ContactService.sendEmail(
+      EmailService.sendEmail(
         this.messageSelection,
         this.messageRecipients
       ).then((response) => {

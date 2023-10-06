@@ -31,10 +31,4 @@ export default {
         throw error
       })
   },
-  getMessageTemplates() {
-    return ax.get("/email/").then(response => response.data)
-  },
-  sendEmail(emailidentifier, contactIdList) {
-    return ax.post("/email/" + emailidentifier, { contactIdList }).then(response => response.data)
-  }
 }
