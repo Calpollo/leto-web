@@ -40,7 +40,6 @@ export default {
             solid: true,
         });
         store.dispatch("logOut").then(() => this.$router.push("/"))
-        store.dispatch("logOut").then(() => this.$router.push("/"))
     },
     me() {
         return ax.get("/auth/me").then((response) => response.data).catch(() => null);

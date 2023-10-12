@@ -41,6 +41,7 @@
                   v-else
                   variant="outline-danger"
                   @click="$bvModal.show('userDowngradeModal')"
+                  disabled
                 >
                   <b-icon-chevron-double-down />
                   Abo beenden
@@ -118,7 +119,7 @@
     <b-modal id="accountDeletionModal" title="Bist du sicher?" variant="white">
       <p>
         Du kannst diese Aktion nicht rückgängig machen. Alle Abos, vergangene
-        Zahlungen usw. werden unwiderruflich gelöscht
+        Zahlungen usw. werden unwiderruflich gelöscht.
       </p>
       <template #modal-footer="{}">
         <b-button @click="deleteMe" variant="outline-danger">
