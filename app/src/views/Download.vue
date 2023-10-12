@@ -54,6 +54,9 @@ import bbblurry from "@/assets/backgrounds/bbblurry.svg";
 
 export default {
   name: "DownloadView",
+  metaInfo: {
+    title: "Download",
+  },
   data() {
     return {
       bbblurry,

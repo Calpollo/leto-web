@@ -185,6 +185,9 @@ import UserService from "@/services/UserService";
 
 export default {
   name: "AccountView",
+  metaInfo: {
+    title: "Mein Profil",
+  },
   data() {
     return {
       Leto,

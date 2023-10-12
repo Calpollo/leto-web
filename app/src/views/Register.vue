@@ -101,6 +101,9 @@ import bbblurry from "@/assets/backgrounds/bbblurry.svg";
 import UserService from "@/services/UserService";
 export default {
   name: "RegisterView",
+  metaInfo: {
+    title: "Registrieren",
+  },
   data() {
     return {
       bbblurry,

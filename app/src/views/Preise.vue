@@ -173,6 +173,9 @@ import wohnungMac from "@/assets/mockups/webp/macbook-mockup-featuring-a-house-e
 
 export default {
   name: "PreiseView",
+  metaInfo: {
+    title: "Preise",
+  },
   data() {
     return {
       bbblurry,

@@ -157,6 +157,10 @@ import workingLady from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-
 
 export default {
   name: "HomeView",
+  metaInfo: {
+    title: "Leto",
+    titleTemplate: null,
+  },
   data() {
     return {
       bbblurry,

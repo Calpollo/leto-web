@@ -60,6 +60,9 @@ import bbblurry from "@/assets/backgrounds/bbblurry.svg";
 import UserService from "@/services/UserService";
 export default {
   name: "LoginView",
+  metaInfo: {
+    title: "Einloggen",
+  },
   data() {
     return {
       bbblurry,

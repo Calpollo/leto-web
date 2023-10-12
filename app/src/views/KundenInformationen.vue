@@ -51,6 +51,10 @@
 import bbblurry from "@/assets/backgrounds/bbblurry.svg";
 
 export default {
+  name: "KundenInformationen",
+  metaInfo: {
+    title: "Kundeninformationen",
+  },
   data() {
     return {
       bbblurry,

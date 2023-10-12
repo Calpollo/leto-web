@@ -287,6 +287,9 @@ import floatingMac from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a
 
 export default {
   name: "FunktionenView",
+  metaInfo: {
+    title: "Funktionen",
+  },
   data() {
     return {
       bbblurry,

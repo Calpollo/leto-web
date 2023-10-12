@@ -128,6 +128,25 @@
 import UserService from "./services/UserService";
 export default {
   name: "App",
+  metaInfo: {
+    titleTemplate: "%s - Leto",
+    meta: [
+      {
+        name: "keywords",
+        content:
+          "Leto, Calpollo, Physiotherapie, Terminplaner, Software, Leto by Calpollo, Praxis, Abrechnung",
+      },
+      {
+        name: "description",
+        content:
+          "Dein Terminplaner für Physiotherapiepraxen. Schnell. Sicher. Kostenlos.",
+      },
+      {
+        name: "author",
+        content: "Leto",
+      },
+    ],
+  },
   mounted() {
     this.$store.dispatch("updateMe");
   },

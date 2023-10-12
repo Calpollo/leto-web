@@ -1,6 +1,7 @@
 import '@babel/polyfill'
 import 'mutationobserver-shim'
 import Vue from 'vue'
+import VueMeta from 'vue-meta'
 import './plugins/bootstrap-vue'
 import App from './App.vue'
 import router from './router'
@@ -10,13 +11,15 @@ import 'aos/dist/aos.css';
 import Aos from 'aos'
 import VueMatomo from 'vue-matomo'
 
+Vue.use(VueMeta, {
+  refreshOnceOnNavigation: true
+})
 
 Vue.use(VueMatomo, {
   host: 'https://matomo.andreasnicklaus.de/',
   siteId: 2,
   router,
 });
-
 
 Vue.config.productionTip = false
 

@@ -876,6 +876,9 @@ import LogsView from "@/components/admin-dashboard/LogsView.vue";
 
 export default {
   name: "AdminDashboard",
+  metaInfo: {
+    title: "Admin Dashboard",
+  },
   components: { LogsView },
   data() {
     return {

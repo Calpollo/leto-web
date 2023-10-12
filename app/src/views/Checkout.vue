@@ -16,6 +16,9 @@ import PaypalButton from "@/components/PaypalButton.vue";
 import StripeButton from "@/components/StripeButton.vue";
 export default {
   name: "CheckoutView",
+  metaInfo: {
+    title: "Checkout",
+  },
   components: { PaypalButton, StripeButton },
 };
 </script>
