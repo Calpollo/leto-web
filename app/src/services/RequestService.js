@@ -13,7 +13,6 @@ const ax = axios.create({
 ax.interceptors.response.use(
     (response) => response,
     (error) => {
-        console.error(error);
         switch (error.response.status) {
             case 401:
                 store.dispatch("logOut");
@@ -24,7 +23,7 @@ ax.interceptors.response.use(
                 });
                 break;
             default:
-                throw error;
+                console.warn(error);
         }
     }
 );

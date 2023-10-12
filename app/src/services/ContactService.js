@@ -28,7 +28,6 @@ export default {
     return ax.put(`/contact/${contact.id}`, contact).then(response => response.data)
       .catch(error => {
         console.warn(error);
-        throw error
       })
   },
 }

@@ -12,8 +12,7 @@ export default {
                 return store.dispatch("logIn").then(() => true);
             })
             .catch((err) => {
-                console.error(err);
-                throw err;
+                console.warn(err);
             });
     },
     login(username, password) {
@@ -26,8 +25,7 @@ export default {
                 return store.dispatch("logIn").then(() => true);
             })
             .catch((err) => {
-                console.error(err);
-                throw err;
+                console.warn(err);
             });
     },
     logout() {
@@ -51,8 +49,7 @@ export default {
                 return response.data;
             })
             .catch((err) => {
-                console.error(err);
-                throw err;
+                console.warn(err);
             });
     },
     upgrade(id) {
