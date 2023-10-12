@@ -168,8 +168,8 @@
 <script>
 import bbblurry from "@/assets/backgrounds/bbblurry.svg";
 import LetoText from "@/assets/Leto - Text.png";
-import appleDevices from "@/assets/mockups/mockup-of-an-iphone-13-among-other-digital-devices-m23242.png";
-import wohnungMac from "@/assets/mockups/macbook-mockup-featuring-a-house-environment-21624 (3).png";
+import appleDevices from "@/assets/mockups/webp/mockup-of-an-iphone-13-among-other-digital-devices.webp";
+import wohnungMac from "@/assets/mockups/webp/macbook-mockup-featuring-a-house-environment.webp";
 
 export default {
   name: "PreiseView",

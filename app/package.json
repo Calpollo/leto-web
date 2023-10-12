@@ -27,6 +27,7 @@
     "sass-loader": "^10.0.2",
     "vue": "^2.6.14",
     "vue-cli-plugin-bootstrap-vue": "~0.8.2",
+    "vue-cli-plugin-sitemap": "~2.3.0",
     "vue-cli-plugin-vuetify": "~2.5.8",
     "vue-matomo": "^4.2.0",
     "vue-router": "^3.5.1",
@@ -38,7 +39,6 @@
     "@babel/core": "^7.12.16",
     "eslint": "^7.32.0",
     "sass": "~1.32.0",
-    "vue-cli-plugin-sitemap": "~2.3.0",
     "vue-template-compiler": "^2.6.14"
   },
   "eslintConfig": {

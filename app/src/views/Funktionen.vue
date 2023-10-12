@@ -281,9 +281,9 @@
 
 <script>
 import bbblurry from "@/assets/backgrounds/bbblurry.svg";
-import verwaltungLaptop from "@/assets/mockups/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall-a20565 (1).png";
-import paarArbeit from "@/assets/mockups/coworkers-working-on-a-macbook-mockup-while-talking-about-it-a20769 (3).png";
-import floatingMac from "@/assets/mockups/mockup-of-a-macbook-floating-on-a-surface-with-two-colors-a20461.png";
+import verwaltungLaptop from "@/assets/mockups/webp/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall.webp";
+import paarArbeit from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it.webp";
+import floatingMac from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors.webp";
 
 export default {
   name: "FunktionenView",

@@ -152,8 +152,8 @@
 <script>
 import bbblurry from "@/assets/backgrounds/bbblurry.svg";
 import LetoText from "@/assets/Leto - Text.png";
-import floatingMac from "@/assets/mockups/mockup-of-a-macbook-floating-on-a-surface-with-two-colors-a20461.png";
-import workingLady from "@/assets/mockups/macbook-mockup-featuring-a-young-student-doing-homework-m16386-r-el2 (2).png";
+import floatingMac from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors.webp";
+import workingLady from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework.webp";
 
 export default {
   name: "HomeView",
