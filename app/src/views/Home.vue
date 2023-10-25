@@ -55,10 +55,14 @@
         </b-col>
         <b-col cols="12" md="6" class="d-md-none">
           <img
-            :src="workingLady"
+            :src="floatingMac"
             alt=""
             width="100%"
-            :style="{ height: '40vh', objectFit: 'cover' }"
+            :style="{
+              height: '40vh',
+              objectFit: 'cover',
+              objectPosition: 'center 42%',
+            }"
           />
         </b-col>
         <b-col cols="12" md="6">
