@@ -51,7 +51,7 @@
             role="tabpanel"
           >
             <b-card-body
-              class="px-5 py-2"
+              class="px-5 py-2 pt-3"
               :style="{
                 textAlign: 'start',
                 display: 'grid',
@@ -94,7 +94,7 @@
             role="tabpanel"
           >
             <b-card-body
-              class="px-5 py-2"
+              class="px-5 py-2 pt-3"
               :style="{
                 textAlign: 'start',
                 display: 'grid',
@@ -125,7 +125,7 @@
             role="tabpanel"
           >
             <b-card-body
-              class="px-5 py-2"
+              class="px-5 py-2 pt-3"
               :style="{
                 textAlign: 'start',
                 display: 'grid',
@@ -143,7 +143,7 @@
                 <p>
                   <b>
                     Als Kooperationspartner wird deine Anfrage schneller
-                    beatnwortet.
+                    beantwortet.
                   </b>
                   Stelle also sicher, dass du bei deiner Kontaktaufnahme
                   eingeloggt bist, damit sie von uns schneller bearbeitet werden
@@ -172,7 +172,7 @@
             role="tabpanel"
           >
             <b-card-body
-              class="px-5 py-2"
+              class="px-5 py-2 pt-3"
               :style="{
                 textAlign: 'start',
                 display: 'grid',
@@ -224,7 +224,7 @@
             role="tabpanel"
           >
             <b-card-body
-              class="px-5 py-2"
+              class="px-5 py-2 pt-3"
               :style="{
                 textAlign: 'start',
                 display: 'grid',
@@ -257,7 +257,7 @@
             role="tabpanel"
           >
             <b-card-body
-              class="px-5 py-2"
+              class="px-5 py-2 pt-3"
               :style="{
                 textAlign: 'start',
                 display: 'grid',
@@ -293,7 +293,7 @@
             role="tabpanel"
           >
             <b-card-body
-              class="px-5 py-2"
+              class="px-5 py-2 pt-3"
               :style="{
                 textAlign: 'start',
                 display: 'grid',
@@ -346,7 +346,7 @@
             role="tabpanel"
           >
             <b-card-body
-              class="px-5 py-2"
+              class="px-5 py-2 pt-3"
               :style="{
                 textAlign: 'start',
                 display: 'grid',
@@ -388,7 +388,7 @@
             role="tabpanel"
           >
             <b-card-body
-              class="px-5 py-2"
+              class="px-5 py-2 pt-3"
               :style="{
                 textAlign: 'start',
                 display: 'grid',
