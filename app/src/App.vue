@@ -82,19 +82,21 @@
           <b-nav vertical>
             <b-nav-item :to="{ name: 'Funktionen' }">Funktionen</b-nav-item>
             <b-nav-item :to="{ name: 'Preise' }">Preise</b-nav-item>
-            <b-nav-item :to="{ name: 'Kundeninformationen' }"
-              >Kundeninformationen</b-nav-item
-            >
+            <b-nav-item :to="{ name: 'Kundeninformationen' }">
+              Kundeninformationen
+            </b-nav-item>
             <b-nav-item :to="{ name: 'Download' }">Download</b-nav-item>
           </b-nav>
         </b-col>
         <b-col cols="11" md="auto">
-          <h4>Mitglieder</h4>
+          <h4>Nutzerbereich</h4>
           <b-nav vertical>
+            <b-nav-item :to="{ name: 'Kontakt' }">Kontakt</b-nav-item>
             <b-nav-item href="https://app.leto.andreasnicklaus.de">
               Zur App
             </b-nav-item>
             <b-nav-item :to="{ name: 'Account' }">Dein Profil</b-nav-item>
+            <b-nav-item :to="{ name: 'Hilfe' }">Hilfe</b-nav-item>
           </b-nav>
         </b-col>
       </b-row>

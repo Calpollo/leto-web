@@ -25,6 +25,16 @@ module.exports = [
     component: () => import("@/views/KundenInformationen.vue")
   },
   {
+    path: "/kontakt",
+    name: 'Kontakt',
+    component: () => import("@/views/KontaktView.vue")
+  },
+  {
+    path: "/hilfe",
+    name: 'Hilfe',
+    component: () => import("@/views/HilfeView.vue")
+  },
+  {
     path: "/login",
     name: 'Login',
     component: () => import("@/views/Login.vue")

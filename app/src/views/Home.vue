@@ -34,13 +34,18 @@
           </b-col>
         </b-row>
         <div data-aos="fade-up" data-aos-delay="1100">
-          <b-button variant="transparent" pill class="mt-4" href="#sectionB">
+          <b-button
+            variant="transparent"
+            pill
+            class="mt-4"
+            @click="$refs.sectionB.scrollIntoView()"
+          >
             <b-icon-arrow-down variant="primary" />
           </b-button>
         </div>
       </div>
     </section>
-    <section id="sectionB">
+    <section ref="sectionB">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
         <b-col cols="12" md="6" class="d-none d-md-block">
           <img

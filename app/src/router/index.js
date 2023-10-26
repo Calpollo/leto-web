@@ -15,7 +15,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    const publicPathNames = ["Home", "Login", "Register", "Preise", "Funktionen", "Download", "Kundeninformationen", "Checkout"];
+    const publicPathNames = ["Home", "Login", "Register", "Preise", "Funktionen", "Download", "Kundeninformationen", "Checkout", "Kontakt", "Hilfe"];
     const adminPathNames = ["AdminDashboard"];
     if (publicPathNames.includes(to.name)) next();
     else if (adminPathNames.includes(to.name)) {
