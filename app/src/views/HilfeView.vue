@@ -184,9 +184,10 @@
                   Wenn Änderungen, die du gemacht hast, nicht sofort übernommen
                   werden, kann es sein, dass die Änderungen bei unseren Servern
                   angekommen sind, aber in deiner Ansicht nicht angezeigt
-                  werden. Um das Problem zu beheben, kannst du immer erst 3
-                  Eskalationsstufen des Problems ausprobieren, die alle alleine
-                  das Problem lösen könnten:
+                  werden. Um das Problem zu beheben, kannst du immer
+                  <b>
+                    erst 3 Eskalationsstufen des Problems selber ausprobieren</b
+                  >, die alle alleine das Problem lösen könnten:
                 </p>
                 <ol>
                   <li>
@@ -302,18 +303,18 @@
             >
               <b-card-text>
                 <p>
-                  Leto unterstützt Feiertage, die über die Praxis verwaltet
-                  werden. Klicke dafür in den Einstellungen unter "Standort" auf
-                  die drei Punkte <b-icon-three-dots /> und klicke auf
-                  "bearbeiten". Hier kannst du Feiertage anlegen, die für deine
-                  Praxis gelten.
+                  Leto unterstützt <b>Feiertage</b>, die über die Praxis
+                  verwaltet werden. Klicke dafür in den Einstellungen unter
+                  "Standort" auf die drei Punkte <b-icon-three-dots /> und
+                  klicke auf "bearbeiten". Hier kannst du Feiertage anlegen, die
+                  für deine Praxis gelten.
                 </p>
                 <p>
-                  Zudem untersützt Leto Urlaubstage, die über deine Therapeuten
-                  verwaltet werden. Klicke dafür in den Einstellungen unter
-                  "Therapeuten" auf die drei Punkte <b-icon-three-dots /> und
-                  klicke auf "bearbeiten". Hier kannst du Urlaubstage anlegen,
-                  die für deine Therapeuten gelten.
+                  Zudem untersützt Leto <b>Urlaubstage</b>, die über deine
+                  Therapeuten verwaltet werden. Klicke dafür in den
+                  Einstellungen unter "Therapeuten" auf die drei Punkte
+                  <b-icon-three-dots /> und klicke auf "bearbeiten". Hier kannst
+                  du Urlaubstage anlegen, die für deine Therapeuten gelten.
                 </p>
                 <p>
                   Sowohl für Feiertage als auch für Urlaubstage gilt die Regel,
@@ -359,16 +360,20 @@
                   Desktopanwendung.
                 </p>
                 <p>
-                  Die Webversion kann grundsätzlich auf jedem Gerät mit
-                  Internetzugang genutzt werden, wird aber in der Entwicklung
-                  nur mit Google Chrome auf einem Windows-PC und einem
-                  Android-Handy getestet.
+                  <b
+                    >Die Webversion kann grundsätzlich auf jedem Gerät mit
+                    Internetzugang genutzt werden</b
+                  >, wird aber in der Entwicklung nur mit Google Chrome auf
+                  einem Windows-PC und einem Android-Handy getestet.
                 </p>
                 <p>
-                  Die Desktopanwendung ist grundsätzlich für alle gängigen
-                  Betriebssysteme geeignet. Es gibt ggf. für unterschiedliche
-                  Betriebssystemfamilien unterschiedliche Versionen der
-                  Software.
+                  <b>
+                    Die Desktopanwendung ist grundsätzlich für alle gängigen
+                    PC-Betriebssysteme geeignet
+                  </b>
+                  und für Windows-PCs getestet. Es gibt ggf. für
+                  unterschiedliche Betriebssystemfamilien unterschiedliche
+                  Versionen der Software.
                 </p>
               </b-card-text>
             </b-card-body>
@@ -401,20 +406,29 @@
                   Desktopanwendung.
                 </p>
                 <p>
-                  Für die Webversion brauchst du eine durchgängige
-                  Internetverbindung. Der Vorteil der Webversion ist, dass du
-                  Leto von jedem Gerät und an jedem Ort nutzen kannst, an dem du
-                  Internet hast. So kannst du zum Beispiel vor dem Schlafen
-                  gehen noch kurz am Handy deine Termine für den nächsten Morgen
-                  checken.
+                  <b>
+                    Für die Webversion brauchst du eine durchgängige
+                    Internetverbindung.
+                  </b>
+                  Der Vorteil der Webversion ist, dass du Leto von jedem Gerät
+                  und an jedem Ort nutzen kannst, an dem du Internet hast. So
+                  kannst du zum Beispiel vor dem Schlafen gehen noch kurz am
+                  Handy deine Termine für den nächsten Morgen checken.
                 </p>
                 <p>
+                  <b>
+                    Leto kann als Dektopanwendung sowohl online als auch offline
+                    genutzt werden.
+                  </b>
+
                   Die Desktopanwendung kann sich mit Internetverbindung mit den
                   Leto-Servern verbinden und ist dann funktional identisch mit
                   der Webversion. Die Anwendung kann aber auch Offline genutzt
                   werden. Im Offline-Modus kann nicht auf deine Online-Daten
                   zugegriffen werden. Deshalb wirkt die Desktopanwendung im
-                  Offline-Modus so als ob du ein neues Konto nutzen würdest.
+                  Offline-Modus so als ob du ein neues Konto nutzen würdest. Es
+                  wird also empfohlen, die Desktopanwendung entweder immer
+                  online oder immer offline zu verwenden.
                 </p>
               </b-card-text>
             </b-card-body>
@@ -466,5 +480,9 @@ section {
       color: $primary;
     }
   }
+}
+
+b {
+  color: $primary;
 }
 </style>
