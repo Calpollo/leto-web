@@ -303,18 +303,19 @@
             >
               <b-card-text>
                 <p>
-                  Leto unterstützt <b>Feiertage</b>, die über die Praxis
-                  verwaltet werden. Klicke dafür in den Einstellungen unter
-                  "Standort" auf die drei Punkte <b-icon-three-dots /> und
-                  klicke auf "bearbeiten". Hier kannst du Feiertage anlegen, die
-                  für deine Praxis gelten.
+                  Leto unterstützt
+                  <b>Feiertage, die über die Praxis verwaltet werden</b>. Klicke
+                  dafür in den Einstellungen unter "Standort" auf die drei
+                  Punkte <b-icon-three-dots /> und klicke auf "bearbeiten". Hier
+                  kannst du Feiertage anlegen, die für deine Praxis gelten.
                 </p>
                 <p>
-                  Zudem untersützt Leto <b>Urlaubstage</b>, die über deine
-                  Therapeuten verwaltet werden. Klicke dafür in den
-                  Einstellungen unter "Therapeuten" auf die drei Punkte
-                  <b-icon-three-dots /> und klicke auf "bearbeiten". Hier kannst
-                  du Urlaubstage anlegen, die für deine Therapeuten gelten.
+                  Zudem untersützt Leto
+                  <b>Urlaubstage, die über deine Therapeuten verwaltet werden</b
+                  >. Klicke dafür in den Einstellungen unter "Therapeuten" auf
+                  die drei Punkte <b-icon-three-dots /> und klicke auf
+                  "bearbeiten". Hier kannst du Urlaubstage anlegen, die für
+                  deine Therapeuten gelten.
                 </p>
                 <p>
                   Sowohl für Feiertage als auch für Urlaubstage gilt die Regel,
