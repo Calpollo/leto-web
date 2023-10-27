@@ -75,7 +75,7 @@
 
     <router-view class="view" />
 
-    <footer>
+    <footer class="pt-4">
       <b-row align-h="around" class="p-2">
         <b-col cols="11" md="auto">
           <h4>Über Leto</h4>
@@ -206,6 +206,12 @@ div .bottom-bar {
   }
   & hr {
     border-color: $primary;
+  }
+}
+
+footer {
+  & h4 {
+    color: $primary;
   }
 }
 </style>
