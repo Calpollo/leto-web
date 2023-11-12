@@ -96,6 +96,8 @@
         <b-col cols="12" md="5" class="d-md-none">
           <img
             :src="appleDevices"
+            :srcset="`${appleDevicesVerySmall} 576w, ${appleDevicesSmall} 768w, ${appleDevices} 1280w`"
+            sizes="100vw"
             alt=""
             width="100%"
             :style="{
@@ -109,6 +111,8 @@
         <b-col cols="12" md="5" class="d-none d-md-block">
           <img
             :src="appleDevices"
+            :srcset="`${appleDevicesVerySmall} 576w, ${appleDevicesSmall} 768w, ${appleDevices} 1280w`"
+            sizes="100vw"
             alt=""
             width="100%"
             :style="{
@@ -169,7 +173,8 @@
 import bbblurry from "@/assets/backgrounds/bbblurry.svg";
 import LetoText from "@/assets/Leto - Text.png";
 import appleDevices from "@/assets/mockups/webp/mockup-of-an-iphone-13-among-other-digital-devices.webp";
-import wohnungMac from "@/assets/mockups/webp/macbook-mockup-featuring-a-house-environment.webp";
+import appleDevicesSmall from "@/assets/mockups/webp/mockup-of-an-iphone-13-among-other-digital-devices_768x512.webp";
+import appleDevicesVerySmall from "@/assets/mockups/webp/mockup-of-an-iphone-13-among-other-digital-devices_576x384.webp";
 
 export default {
   name: "PreiseView",
@@ -179,9 +184,10 @@ export default {
   data() {
     return {
       bbblurry,
-      appleDevices,
       LetoText,
-      wohnungMac,
+      appleDevices,
+      appleDevicesSmall,
+      appleDevicesVerySmall,
       funktionenItems: [
         {
           " ": "Benutzer",

@@ -15,6 +15,8 @@
           :src="LetoText"
           alt=""
           :style="{ width: '100%' }"
+          width="475"
+          height="220"
           data-aos="fade-up"
         />
         <p class="mt-2" data-aos="fade-up">
@@ -50,6 +52,8 @@
         <b-col cols="12" md="6" class="d-none d-md-block">
           <img
             :src="floatingMac"
+            :srcset="`${floatingMacVerySmall} 576w, ${floatingMacSmall} 768w, ${floatingMac} 1440w`"
+            sizes="100vw"
             alt=""
             width="100%"
             :style="{
@@ -61,6 +65,8 @@
         <b-col cols="12" md="6" class="d-md-none">
           <img
             :src="floatingMac"
+            :srcset="`${floatingMacVerySmall} 576w, ${floatingMacSmall} 768w, ${floatingMac} 1440w`"
+            sizes="100vw"
             alt=""
             width="100%"
             :style="{
@@ -110,6 +116,8 @@
         <b-col cols="12" md="6" class="d-md-none">
           <img
             :src="workingLady"
+            :srcset="`${wworkingLadyVerySmall} 576w, ${workingLadySmall} 768w, ${workingLady} 1440w`"
+            sizes="100vw"
             alt=""
             width="100%"
             :style="{ height: '40vh', objectFit: 'cover', minHeight: '100%' }"
@@ -148,6 +156,8 @@
         <b-col cols="12" md="6" class="d-none d-md-block">
           <img
             :src="workingLady"
+            :srcset="`${wworkingLadyVerySmall} 576w, ${workingLadySmall} 768w, ${workingLady} 1440w`"
+            sizes="100vw"
             alt=""
             width="100%"
             :style="{ height: '90vh', objectFit: 'cover' }"
@@ -162,7 +172,11 @@
 import bbblurry from "@/assets/backgrounds/bbblurry.svg";
 import LetoText from "@/assets/Leto - Text.png";
 import floatingMac from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors.webp";
+import floatingMacSmall from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_768x1152.webp";
+import floatingMacVerySmall from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_576x864.webp";
 import workingLady from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework.webp";
+import workingLadySmall from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_768x512.webp";
+import wworkingLadyVerySmall from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_576x384.webp";
 
 export default {
   name: "HomeView",
@@ -174,8 +188,12 @@ export default {
     return {
       bbblurry,
       floatingMac,
+      floatingMacSmall,
+      floatingMacVerySmall,
       LetoText,
       workingLady,
+      workingLadySmall,
+      wworkingLadyVerySmall,
     };
   },
 };
