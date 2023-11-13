@@ -53,7 +53,7 @@
           <img
             :src="floatingMac"
             :srcset="`${floatingMacVerySmall} 576w, ${floatingMacSmall} 768w, ${floatingMac} 1440w`"
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 50vw"
             alt=""
             width="100%"
             :style="{
@@ -66,7 +66,7 @@
           <img
             :src="floatingMac"
             :srcset="`${floatingMacVerySmall} 576w, ${floatingMacSmall} 768w, ${floatingMac} 1440w`"
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 50vw"
             alt=""
             width="100%"
             :style="{
@@ -116,8 +116,8 @@
         <b-col cols="12" md="6" class="d-md-none">
           <img
             :src="workingLady"
-            :srcset="`${wworkingLadyVerySmall} 576w, ${workingLadySmall} 768w, ${workingLady} 1440w`"
-            sizes="100vw"
+            :srcset="`${workingLadyVerySmall} 576w, ${workingLadySmall} 768w, ${workingLady} 1920w`"
+            sizes="(max-width: 768px) 100vw, 50vw"
             alt=""
             width="100%"
             :style="{ height: '40vh', objectFit: 'cover', minHeight: '100%' }"
@@ -156,8 +156,8 @@
         <b-col cols="12" md="6" class="d-none d-md-block">
           <img
             :src="workingLady"
-            :srcset="`${wworkingLadyVerySmall} 576w, ${workingLadySmall} 768w, ${workingLady} 1440w`"
-            sizes="100vw"
+            :srcset="`${workingLadyVerySmall} 576w, ${workingLadySmall} 768w, ${workingLady} 1920w`"
+            sizes="(max-width: 768px) 100vw, 50vw"
             alt=""
             width="100%"
             :style="{ height: '90vh', objectFit: 'cover' }"
@@ -176,7 +176,7 @@ import floatingMacSmall from "@/assets/mockups/webp/mockup-of-a-macbook-floating
 import floatingMacVerySmall from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_576x864.webp";
 import workingLady from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework.webp";
 import workingLadySmall from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_768x512.webp";
-import wworkingLadyVerySmall from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_576x384.webp";
+import workingLadyVerySmall from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_576x384.webp";
 
 export default {
   name: "HomeView",
@@ -193,7 +193,7 @@ export default {
       LetoText,
       workingLady,
       workingLadySmall,
-      wworkingLadyVerySmall,
+      workingLadyVerySmall,
     };
   },
 };

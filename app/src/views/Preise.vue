@@ -96,8 +96,8 @@
         <b-col cols="12" md="5" class="d-md-none">
           <img
             :src="appleDevices"
-            :srcset="`${appleDevicesVerySmall} 576w, ${appleDevicesSmall} 768w, ${appleDevices} 1280w`"
-            sizes="100vw"
+            :srcset="`${appleDevicesVerySmall} 576w, ${appleDevicesSmall} 768w, ${appleDevices} 1920w`"
+            sizes="(max-width: 768px) 100vw, 50vw"
             alt=""
             width="100%"
             :style="{
@@ -111,8 +111,8 @@
         <b-col cols="12" md="5" class="d-none d-md-block">
           <img
             :src="appleDevices"
-            :srcset="`${appleDevicesVerySmall} 576w, ${appleDevicesSmall} 768w, ${appleDevices} 1280w`"
-            sizes="100vw"
+            :srcset="`${appleDevicesVerySmall} 576w, ${appleDevicesSmall} 768w, ${appleDevices} 1920w`"
+            sizes="(max-width: 768px) 100vw, 50vw"
             alt=""
             width="100%"
             :style="{
