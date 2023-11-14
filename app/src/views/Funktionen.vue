@@ -98,7 +98,7 @@
         <b-col cols="12" md="6" class="d-none d-md-block">
           <img
             :src="paarArbeit"
-            :srcset="`${paarArbeitVerySmall} 558w, ${paarArbeitSmall} 744w, ${paarArbeit} 1920w`"
+            :srcset="`${paarArbeit_1245} 1245w, ${paarArbeit_977} 977w, ${paarArbeit_842} 842w, ${paarArbeit_522} 522w, ${paarArbeit_200} 200w, ${paarArbeit} 1920w`"
             sizes="(max-width: 768px) 100vw, 50vw"
             alt=""
             width="100%"
@@ -111,8 +111,8 @@
         <b-col cols="12" md="6" class="d-md-none">
           <img
             :src="paarArbeit"
-            :srcset="`${paarArbeitVerySmall} 558w, ${paarArbeitSmall} 744w, ${paarArbeit} 1920w`"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            :srcset="`${paarArbeit_522} 522w, ${paarArbeit_200} 200w, ${paarArbeit} 1920w`"
+            sizes="100vw"
             alt=""
             width="100%"
             :style="{
@@ -170,8 +170,8 @@
         <b-col cols="12" md="6" class="d-md-none">
           <img
             :src="verwaltungLaptop"
-            :srcset="`${verwaltungLaptopVerySmall} 576w, ${verwaltungLaptopSmall} 768w, ${verwaltungLaptop} 1920w`"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            :srcset="`${verwaltungLaptop_200} 200w,${verwaltungLaptop_846} 846w,${verwaltungLaptop_1119} 1119w, ${verwaltungLaptop_1352} 1352w, ${verwaltungLaptop} 1920w`"
+            sizes="100vw"
             alt=""
             width="100%"
             :style="{
@@ -215,7 +215,7 @@
         <b-col cols="12" md="6" class="d-none d-md-block">
           <img
             :src="verwaltungLaptop"
-            :srcset="`${verwaltungLaptopVerySmall} 576w, ${verwaltungLaptopSmall} 768w, ${verwaltungLaptop} 1920w`"
+            :srcset="`${verwaltungLaptop_200} 200w,${verwaltungLaptop_846} 846w,${verwaltungLaptop_1119} 1119w, ${verwaltungLaptop_1352} 1352w, ${verwaltungLaptop} 1920w`"
             sizes="(max-width: 768px) 100vw, 50vw"
             alt=""
             width="100%"
@@ -235,7 +235,7 @@
         <b-col cols="12" md="6" class="d-none d-md-block">
           <img
             :src="floatingMac"
-            :srcset="`${floatingMacVerySmall} 576w, ${floatingMacSmall} 768w, ${floatingMac} 1440w`"
+            :srcset="`${floatingMac_200} 200w, ${floatingMac_562} 562w, ${floatingMac_789} 789w, ${floatingMac_924} 924w, ${floatingMac_1077} 1077w, ${floatingMac} 1440w`"
             sizes="(max-width: 768px) 100vw, 50vw"
             alt=""
             width="100%"
@@ -248,8 +248,8 @@
         <b-col cols="12" md="6" class="d-md-none">
           <img
             :src="floatingMac"
-            :srcset="`${floatingMacVerySmall} 576w, ${floatingMacSmall} 768w, ${floatingMac} 1440w`"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            :srcset="`${floatingMac_200} 200w, ${floatingMac_562} 562w, ${floatingMac_789} 789w, ${floatingMac_924} 924w, ${floatingMac_1077} 1077w, ${floatingMac} 1440w`"
+            sizes="100vw"
             alt=""
             width="100%"
             :style="{
@@ -294,14 +294,22 @@
 <script>
 import bbblurry from "@/assets/backgrounds/bbblurry.svg";
 import verwaltungLaptop from "@/assets/mockups/webp/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall.webp";
-import verwaltungLaptopSmall from "@/assets/mockups/webp/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall_768x512.webp";
-import verwaltungLaptopVerySmall from "@/assets/mockups/webp/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall_576x384.webp";
+import verwaltungLaptop_200 from "@/assets/mockups/webp/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall_@200.webp";
+import verwaltungLaptop_846 from "@/assets/mockups/webp/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall_@846.webp";
+import verwaltungLaptop_1119 from "@/assets/mockups/webp/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall_@1119.webp";
+import verwaltungLaptop_1352 from "@/assets/mockups/webp/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall_@1352.webp";
 import paarArbeit from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it.webp";
-import paarArbeitSmall from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it_768x496.webp";
-import paarArbeitVerySmall from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it_576x372.webp";
+import paarArbeit_200 from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it_@200.webp";
+import paarArbeit_522 from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it_@522.webp";
+import paarArbeit_842 from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it_@842.webp";
+import paarArbeit_977 from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it_@977.webp";
+import paarArbeit_1245 from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it_@1245.webp";
 import floatingMac from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors.webp";
-import floatingMacSmall from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_768x1152.webp";
-import floatingMacVerySmall from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_576x864.webp";
+import floatingMac_200 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@200.webp";
+import floatingMac_562 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@562.webp";
+import floatingMac_789 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@789.webp";
+import floatingMac_924 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@924.webp";
+import floatingMac_1077 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@1077.webp";
 
 export default {
   name: "FunktionenView",
@@ -312,14 +320,22 @@ export default {
     return {
       bbblurry,
       verwaltungLaptop,
-      verwaltungLaptopSmall,
-      verwaltungLaptopVerySmall,
+      verwaltungLaptop_200,
+      verwaltungLaptop_846,
+      verwaltungLaptop_1119,
+      verwaltungLaptop_1352,
       paarArbeit,
-      paarArbeitSmall,
-      paarArbeitVerySmall,
+      paarArbeit_200,
+      paarArbeit_522,
+      paarArbeit_842,
+      paarArbeit_977,
+      paarArbeit_1245,
       floatingMac,
-      floatingMacSmall,
-      floatingMacVerySmall,
+      floatingMac_200,
+      floatingMac_562,
+      floatingMac_789,
+      floatingMac_924,
+      floatingMac_1077,
     };
   },
 };

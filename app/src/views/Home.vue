@@ -52,7 +52,7 @@
         <b-col cols="12" md="6" class="d-none d-md-block">
           <img
             :src="floatingMac"
-            :srcset="`${floatingMacVerySmall} 576w, ${floatingMacSmall} 768w, ${floatingMac} 1440w`"
+            :srcset="`${floatingMac_200} 200w, ${floatingMac_562} 562w, ${floatingMac_789} 789w, ${floatingMac_924} 924w, ${floatingMac_1077} 1077w, ${floatingMac} 1440w`"
             sizes="(max-width: 768px) 100vw, 50vw"
             alt=""
             width="100%"
@@ -65,8 +65,8 @@
         <b-col cols="12" md="6" class="d-md-none">
           <img
             :src="floatingMac"
-            :srcset="`${floatingMacVerySmall} 576w, ${floatingMacSmall} 768w, ${floatingMac} 1440w`"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            :srcset="`${floatingMac_200} 200w, ${floatingMac_562} 562w, ${floatingMac_789} 789w, ${floatingMac_924} 924w, ${floatingMac_1077} 1077w, ${floatingMac} 1440w`"
+            sizes="100vw"
             alt=""
             width="100%"
             :style="{
@@ -116,8 +116,8 @@
         <b-col cols="12" md="6" class="d-md-none">
           <img
             :src="workingLady"
-            :srcset="`${workingLadyVerySmall} 576w, ${workingLadySmall} 768w, ${workingLady} 1920w`"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            :srcset="`${workingLady_1291} 1291w, ${workingLady_1088} 1088w, ${workingLady_659} 659w, ${workingLady_200} 200w, ${workingLady} 1920w`"
+            sizes="100vw"
             alt=""
             width="100%"
             :style="{ height: '40vh', objectFit: 'cover', minHeight: '100%' }"
@@ -156,7 +156,7 @@
         <b-col cols="12" md="6" class="d-none d-md-block">
           <img
             :src="workingLady"
-            :srcset="`${workingLadyVerySmall} 576w, ${workingLadySmall} 768w, ${workingLady} 1920w`"
+            :srcset="`${workingLady_1291} 1291w, ${workingLady_1088} 1088w, ${workingLady_659} 659w, ${workingLady_200} 200w, ${workingLady} 1920w`"
             sizes="(max-width: 768px) 100vw, 50vw"
             alt=""
             width="100%"
@@ -172,11 +172,16 @@
 import bbblurry from "@/assets/backgrounds/bbblurry.svg";
 import LetoText from "@/assets/Leto - Text.png";
 import floatingMac from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors.webp";
-import floatingMacSmall from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_768x1152.webp";
-import floatingMacVerySmall from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_576x864.webp";
+import floatingMac_200 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@200.webp";
+import floatingMac_562 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@562.webp";
+import floatingMac_789 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@789.webp";
+import floatingMac_924 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@924.webp";
+import floatingMac_1077 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@1077.webp";
 import workingLady from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework.webp";
-import workingLadySmall from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_768x512.webp";
-import workingLadyVerySmall from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_576x384.webp";
+import workingLady_1291 from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_@1291.webp";
+import workingLady_1088 from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_@1088.webp";
+import workingLady_659 from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_@659.webp";
+import workingLady_200 from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_@200.webp";
 
 export default {
   name: "HomeView",
@@ -188,12 +193,17 @@ export default {
     return {
       bbblurry,
       floatingMac,
-      floatingMacSmall,
-      floatingMacVerySmall,
+      floatingMac_200,
+      floatingMac_562,
+      floatingMac_789,
+      floatingMac_924,
+      floatingMac_1077,
       LetoText,
       workingLady,
-      workingLadySmall,
-      workingLadyVerySmall,
+      workingLady_1291,
+      workingLady_1088,
+      workingLady_659,
+      workingLady_200,
     };
   },
 };
