@@ -6,6 +6,7 @@
           src="@/assets/Leto - Text.svg"
           :style="{ minWidth: '100px' }"
           width="100"
+          height="46"
           alt="Leto"
         />
       </b-navbar-brand>
@@ -107,6 +108,7 @@
             src="@/assets/Leto - Text.svg"
             :style="{ width: '200px' }"
             width="200"
+            height="92"
             alt="Leto"
           />
           <hr />
