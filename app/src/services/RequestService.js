@@ -25,6 +25,7 @@ ax.interceptors.response.use(
             default:
                 console.warn(error);
         }
+        return Promise.reject(error);
     }
 );
 
