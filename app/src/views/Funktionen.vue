@@ -100,7 +100,7 @@
             :src="paarArbeit"
             :srcset="`${paarArbeit_1245} 1245w, ${paarArbeit_977} 977w, ${paarArbeit_842} 842w, ${paarArbeit_522} 522w, ${paarArbeit_200} 200w, ${paarArbeit} 1920w`"
             sizes="(max-width: 768px) 100vw, 50vw"
-            alt=""
+            alt="Kollegen, die an einem Macbook an Leto arbeiten und darüber reden."
             width="100%"
             :style="{
               height: '90vh',
@@ -113,7 +113,7 @@
             :src="paarArbeit"
             :srcset="`${paarArbeit_522} 522w, ${paarArbeit_200} 200w, ${paarArbeit} 1920w`"
             sizes="100vw"
-            alt=""
+            alt="Kollegen, die an einem Macbook an Leto arbeiten und darüber reden."
             width="100%"
             :style="{
               height: '40vh',
@@ -172,7 +172,7 @@
             :src="verwaltungLaptop"
             :srcset="`${verwaltungLaptop_200} 200w,${verwaltungLaptop_846} 846w,${verwaltungLaptop_1119} 1119w, ${verwaltungLaptop_1352} 1352w, ${verwaltungLaptop} 1920w`"
             sizes="100vw"
-            alt=""
+            alt="Eine Frau hält einen Laptop in beiden Hängen vor einer farbigen Wand. Auf dem Display ist die Anwendung Leto zu sehen."
             width="100%"
             :style="{
               height: '40vh',
@@ -217,7 +217,7 @@
             :src="verwaltungLaptop"
             :srcset="`${verwaltungLaptop_200} 200w,${verwaltungLaptop_846} 846w,${verwaltungLaptop_1119} 1119w, ${verwaltungLaptop_1352} 1352w, ${verwaltungLaptop} 1920w`"
             sizes="(max-width: 768px) 100vw, 50vw"
-            alt=""
+            alt="Eine Frau hält einen Laptop in beiden Hängen vor einer farbigen Wand. Auf dem Display ist die Anwendung Leto zu sehen."
             width="100%"
             :style="{
               height: '90vh',
@@ -237,7 +237,7 @@
             :src="floatingMac"
             :srcset="`${floatingMac_200} 200w, ${floatingMac_562} 562w, ${floatingMac_789} 789w, ${floatingMac_924} 924w, ${floatingMac_1077} 1077w, ${floatingMac} 1440w`"
             sizes="(max-width: 768px) 100vw, 50vw"
-            alt=""
+            alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
             width="100%"
             :style="{
               height: '90vh',
@@ -250,7 +250,7 @@
             :src="floatingMac"
             :srcset="`${floatingMac_200} 200w, ${floatingMac_562} 562w, ${floatingMac_789} 789w, ${floatingMac_924} 924w, ${floatingMac_1077} 1077w, ${floatingMac} 1440w`"
             sizes="100vw"
-            alt=""
+            alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
             width="100%"
             :style="{
               height: '40vh',

@@ -98,7 +98,7 @@
             :src="appleDevices"
             :srcset="`${appleDevices_200} 200w, ${appleDevices_783} 783w, ${appleDevices_1123} 1123w, ${appleDevices} 1920w`"
             sizes="100vw"
-            alt=""
+            alt="Ein iPhone, eine Apple Watch, Apple Airpods und eine weiße Tastatur liegen auf violettem Grund. Auf dem Display des iPhones ist das Leto-Logo zu sehen."
             width="100%"
             :style="{
               height: '40vh',
@@ -113,7 +113,7 @@
             :src="appleDevices"
             :srcset="`${appleDevices_200} 200w, ${appleDevices_783} 783w, ${appleDevices_1123} 1123w, ${appleDevices} 1920w`"
             sizes="(max-width: 768px) 100vw, calc(5/12*100vw)"
-            alt=""
+            alt="Ein iPhone, eine Apple Watch, Apple Airpods und eine weiße Tastatur liegen auf violettem Grund. Auf dem Display des iPhones ist das Leto-Logo zu sehen."
             width="100%"
             :style="{
               height: '90vh',

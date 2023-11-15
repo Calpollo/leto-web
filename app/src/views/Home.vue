@@ -13,7 +13,7 @@
       <div>
         <img
           :src="LetoText"
-          alt=""
+          alt="Das Leto-Logo. Ein Violetter Schriftzug 'Leto' mit einer Kerbe im O."
           :style="{ width: '100%' }"
           width="475"
           height="220"
@@ -54,7 +54,7 @@
             :src="floatingMac"
             :srcset="`${floatingMac_200} 200w, ${floatingMac_562} 562w, ${floatingMac_789} 789w, ${floatingMac_924} 924w, ${floatingMac_1077} 1077w, ${floatingMac} 1440w`"
             sizes="(max-width: 768px) 100vw, 50vw"
-            alt=""
+            alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
             width="100%"
             :style="{
               height: '90vh',
@@ -67,7 +67,7 @@
             :src="floatingMac"
             :srcset="`${floatingMac_200} 200w, ${floatingMac_562} 562w, ${floatingMac_789} 789w, ${floatingMac_924} 924w, ${floatingMac_1077} 1077w, ${floatingMac} 1440w`"
             sizes="100vw"
-            alt=""
+            alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
             width="100%"
             :style="{
               height: '40vh',
@@ -118,7 +118,7 @@
             :src="workingLady"
             :srcset="`${workingLady_1291} 1291w, ${workingLady_1088} 1088w, ${workingLady_659} 659w, ${workingLady_200} 200w, ${workingLady} 1920w`"
             sizes="100vw"
-            alt=""
+            alt="Eine junge Frau arbeitet am Schreibtisch an einem Laptop. Auf dem Display ist die Anwendung Leto zu sehen."
             width="100%"
             :style="{ height: '40vh', objectFit: 'cover', minHeight: '100%' }"
           />
@@ -158,7 +158,7 @@
             :src="workingLady"
             :srcset="`${workingLady_1291} 1291w, ${workingLady_1088} 1088w, ${workingLady_659} 659w, ${workingLady_200} 200w, ${workingLady} 1920w`"
             sizes="(max-width: 768px) 100vw, 50vw"
-            alt=""
+            alt="Eine junge Frau arbeitet am Schreibtisch an einem Laptop. Auf dem Display ist die Anwendung Leto zu sehen."
             width="100%"
             :style="{ height: '90vh', objectFit: 'cover' }"
           />
@@ -170,7 +170,7 @@
 
 <script>
 import bbblurry from "@/assets/backgrounds/bbblurry.svg";
-import LetoText from "@/assets/Leto - Text.png";
+import LetoText from "@/assets/Leto - Text.svg";
 import floatingMac from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors.webp";
 import floatingMac_200 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@200.webp";
 import floatingMac_562 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@562.webp";
