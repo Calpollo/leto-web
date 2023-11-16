@@ -15,10 +15,11 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    const publicPathNames = ["Home", "Login", "Register", "Preise", "Funktionen", "Download", "Kundeninformationen", "Checkout", "Kontakt", "Hilfe"];
-    const adminPathNames = ["AdminDashboard"];
-    if (publicPathNames.includes(to.name)) next();
-    else if (adminPathNames.includes(to.name)) {
+    const isPrivate = to.meta.private;
+    const isAdmin = to.meta.admin;
+
+    if (!isPrivate) next();
+    else if (isAdmin) {
         if (store.state.loggedIn && store.state.me?.RoleName == "Admin") next();
         else next({
             name: "Login", query: {

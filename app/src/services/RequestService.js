@@ -19,7 +19,7 @@ ax.interceptors.response.use(
                 break;
             case 403:
                 store.dispatch("logOut").then(() => {
-                    router.push("/login")
+                    router.push({ name: "Login" })
                 });
                 break;
             default:

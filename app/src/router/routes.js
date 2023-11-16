@@ -35,12 +35,12 @@ module.exports = [
     component: () => import("@/views/HilfeView.vue")
   },
   {
-    path: "/login",
+    path: "/einloggen",
     name: 'Login',
-    component: () => import("@/views/Login.vue")
+    component: () => import("@/views/Login.vue"),
   },
   {
-    path: "/register",
+    path: "/registrieren",
     name: 'Register',
     component: () => import("@/views/Register.vue")
   },
@@ -48,19 +48,19 @@ module.exports = [
     path: "/account",
     name: 'Account',
     component: () => import("@/views/Account.vue"),
-    meta: { sitemap: { ignoreRoute: true } }
+    meta: { sitemap: { ignoreRoute: true }, private: true }
   },
   {
     path: "/admin-dashboard",
     name: 'AdminDashboard',
     component: () => import("@/views/AdminDashboard.vue"),
-    meta: { sitemap: { ignoreRoute: true } }
+    meta: { sitemap: { ignoreRoute: true }, private: true, admin: true }
   },
   {
     path: "/checkout",
     name: 'Checkout',
     component: () => import("@/views/Checkout.vue"),
-    meta: { sitemap: { ignoreRoute: true } }
+    meta: { sitemap: { ignoreRoute: true }, private: true }
   },
   {
     path: "/stripe-success",
