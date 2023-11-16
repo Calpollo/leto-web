@@ -33,8 +33,8 @@
             </b-list-group>
 
             <template #footer>
-              <b-button variant="link" :to="{ name: 'Register' }">
-                <b class="price">0,00€</b>
+              <b-button variant="primary" :to="{ name: 'Register' }">
+                Jetzt kostenfrei loslegen
               </b-button>
             </template>
           </b-card>
@@ -54,9 +54,9 @@
               <b-list-group-item>Cloud-Backup</b-list-group-item>
             </b-list-group>
             <template #footer>
-              <b-button variant="link" disabled>
-                <b class="price mr-2"><s>15,00€ / Monat</s></b>
-                <b class="price">bald verfügbar</b>
+              <b-button variant="outline-primary" disabled>
+                <s>15,00€ / Monat</s>
+                bald verfügbar
               </b-button>
             </template>
           </b-card>
@@ -82,9 +82,9 @@
             <template #footer>
               <b-button
                 href="mailto:nicklaus.leto@gmail.com?subject=Anfrage für Kooperationskonto"
-                variant="link"
+                variant="primary"
               >
-                <b class="price"> Kooperation anfragen </b>
+                Kooperation anfragen
               </b-button>
             </template>
           </b-card>

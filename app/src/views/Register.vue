@@ -23,6 +23,7 @@
               v-model="email"
               required
               :state="emailValid"
+              autocomplete="email"
             />
             <b-form-invalid-feedback id="email-input-feedback">
               Deine E-Mail-Adresse ist nicht valid
@@ -36,6 +37,7 @@
               v-model="username"
               required
               :state="usernameValid"
+              autocomplete="username"
             />
             <b-form-invalid-feedback id="username-input-feedback">
               Dein Benutzername muss mindestens 6 Zeichen lang sein
@@ -49,6 +51,7 @@
               v-model="password"
               required
               :state="passwordValid"
+              autocomplete="new-password"
             />
 
             <b-form-invalid-feedback id="password-input-feedback">
@@ -66,6 +69,7 @@
               v-model="npassword"
               required
               :state="npasswordValid"
+              autocomplete="new-password"
             />
 
             <b-form-invalid-feedback id="npassword-input-feedback">

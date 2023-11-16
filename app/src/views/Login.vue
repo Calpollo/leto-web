@@ -21,6 +21,7 @@
               type="text"
               v-model="username"
               placeholder="Benutzername"
+              autocomplete="username"
             />
           </b-form-group>
           <b-form-group label="Passwort" label-for="password-input">
@@ -29,6 +30,7 @@
               type="password"
               v-model="password"
               placeholder="Passwort"
+              autocomplete="current-password"
             />
           </b-form-group>
 
