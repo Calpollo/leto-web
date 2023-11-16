@@ -1,11 +1,13 @@
 <template>
-  <div id="Kontakt">
+  <div id="Hilfe">
     <section
       id="landingsection"
       :style="{
         backgroundImage: 'url(' + bbblurry + ')',
         backgroundSize: 'cover',
       }"
+      role="region"
+      aria-label="Hilfe"
     >
       <div class="px-4">
         <h1 data-aos="fade-up">Hilfe</h1>
@@ -35,7 +37,13 @@
         </div>
       </div>
     </section>
-    <section id="probleme" ref="probleme" class="py-4 pt-6">
+    <section
+      id="probleme"
+      ref="probleme"
+      class="py-4 pt-6"
+      role="region"
+      aria-label="Probleme"
+    >
       <div :style="{ width: '90%' }" class="accordion" role="tablist">
         <!-- Konto erstellen -->
         <b-card no-body class="mb-1">

@@ -6,19 +6,23 @@
         backgroundImage: 'url(' + bbblurry + ')',
         backgroundSize: 'cover',
       }"
+      role="region"
+      aria-label="Leto-Logo"
     >
       <div>
         <!-- spacer -->
       </div>
       <div>
-        <img
-          :src="LetoText"
-          alt="Das Leto-Logo. Ein Violetter Schriftzug 'Leto' mit einer Kerbe im O."
-          :style="{ width: '100%' }"
-          width="475"
-          height="220"
-          data-aos="fade-up"
-        />
+        <h1>
+          <img
+            :src="LetoText"
+            alt="Das Leto-Logo. Ein Violetter Schriftzug 'Leto' mit einer Kerbe im O."
+            :style="{ width: '100%' }"
+            width="475"
+            height="220"
+            data-aos="fade-up"
+          />
+        </h1>
         <p class="mt-2" data-aos="fade-up">
           <b>Dein Terminplaner</b>
         </p>
@@ -47,7 +51,7 @@
         </div>
       </div>
     </section>
-    <section ref="sectionB">
+    <section ref="sectionB" role="region" aria-label="Funktionen">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
         <b-col cols="12" md="6" class="d-none d-md-block">
           <img
@@ -111,7 +115,7 @@
         </b-col>
       </b-row>
     </section>
-    <section id="sectionC">
+    <section id="sectionC" role="region" aria-label="Preise">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
         <b-col cols="12" md="6" class="d-md-none">
           <img

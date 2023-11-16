@@ -6,6 +6,8 @@
         backgroundImage: 'url(' + bbblurry + ')',
         backgroundSize: 'cover',
       }"
+      role="region"
+      aria-label="Funktionen-Overview"
     >
       <div class="d-none d-lg-flex">
         <!-- spacer -->
@@ -93,7 +95,7 @@
     </section>
 
     <!-- Termine -->
-    <section>
+    <section role="region" aria-label="Termine">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
         <b-col cols="12" md="6" class="d-none d-md-block">
           <img
@@ -165,7 +167,7 @@
     </section>
 
     <!-- Verwaltung -->
-    <section>
+    <section role="region" aria-label="Verwaltung">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
         <b-col cols="12" md="6" class="d-md-none">
           <img
@@ -230,7 +232,7 @@
     </section>
 
     <!-- Abrechnung -->
-    <section>
+    <section role="region" aria-label="Abrechnung">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
         <b-col cols="12" md="6" class="d-none d-md-block">
           <img

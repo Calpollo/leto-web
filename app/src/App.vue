@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" sticky variant="white">
+    <b-navbar toggleable="md" sticky variant="white">
       <b-navbar-brand :to="{ name: 'Home' }">
         <img
           src="@/assets/Leto - Text.svg"
@@ -30,33 +30,41 @@
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto">
-          <b-button-group>
-            <b-button
-              variant="outline-primary"
-              v-if="$store.state?.me?.RoleName == 'Admin'"
-              :to="{ name: 'AdminDashboard' }"
-              v-b-toggle.nav-collapse
-            >
-              Admin-Dashboard
-            </b-button>
-            <b-button
-              variant="primary"
-              v-if="$store.state.loggedIn"
-              href="https://app.leto.andreasnicklaus.de"
-              v-b-toggle.nav-collapse
-            >
-              <b-icon-box-arrow-up-right />
-              Zur App
-            </b-button>
-          </b-button-group>
-          <b-button
-            v-if="!this.$store.state.loggedIn"
-            :to="{ name: 'Login' }"
-            variant="outline-primary"
-            v-b-toggle.nav-collapse
+          <b-nav-item
+            v-if="
+              $store.state.loggedIn || $store.state?.me?.RoleName == 'Admin'
+            "
           >
-            Einloggen / Registrieren
-          </b-button>
+            <b-button-group :style="{ width: '100%' }">
+              <b-button
+                variant="outline-primary"
+                v-if="$store.state?.me?.RoleName == 'Admin'"
+                :to="{ name: 'AdminDashboard' }"
+                v-b-toggle.nav-collapse
+              >
+                Admin-Dashboard
+              </b-button>
+              <b-button
+                variant="primary"
+                v-if="$store.state.loggedIn"
+                href="https://app.leto.andreasnicklaus.de"
+                v-b-toggle.nav-collapse
+              >
+                <b-icon-box-arrow-up-right />
+                Zur App
+              </b-button>
+            </b-button-group>
+          </b-nav-item>
+          <b-nav-item v-if="!this.$store.state.loggedIn">
+            <b-button
+              :to="{ name: 'Login' }"
+              variant="outline-primary"
+              v-b-toggle.nav-collapse
+              block
+            >
+              Einloggen / Registrieren
+            </b-button>
+          </b-nav-item>
           <b-nav-item-dropdown v-else right>
             <template #button-content>
               <b-icon-person />
@@ -80,7 +88,7 @@
     <footer class="pt-4">
       <b-row align-h="around" class="p-2">
         <b-col cols="11" md="auto">
-          <h4>Über Leto</h4>
+          <h1>Über Leto</h1>
           <b-nav vertical>
             <b-nav-item :to="{ name: 'Funktionen' }">Funktionen</b-nav-item>
             <b-nav-item :to="{ name: 'Preise' }">Preise</b-nav-item>
@@ -91,7 +99,7 @@
           </b-nav>
         </b-col>
         <b-col cols="11" md="auto">
-          <h4>Nutzerbereich</h4>
+          <h1>Nutzerbereich</h1>
           <b-nav vertical>
             <b-nav-item :to="{ name: 'Kontakt' }">Kontakt</b-nav-item>
             <b-nav-item href="https://app.leto.andreasnicklaus.de">
@@ -193,7 +201,7 @@ div .bottom-bar {
 }
 
 .navbar {
-  height: 10vh;
+  min-height: 10vh;
   box-shadow: 0 0 20px #495f4133;
 }
 
@@ -214,7 +222,8 @@ div .bottom-bar {
 }
 
 footer {
-  & h4 {
+  & h1 {
+    @extend h4;
     color: $primary;
   }
 }

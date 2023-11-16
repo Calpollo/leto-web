@@ -6,6 +6,8 @@
         backgroundImage: 'url(' + bbblurry + ')',
         backgroundSize: 'cover',
       }"
+      role="region"
+      aria-label="Kontakt"
     >
       <div class="px-4">
         <h1 data-aos="fade-up">Kontakt</h1>

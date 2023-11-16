@@ -6,6 +6,8 @@
         backgroundImage: 'url(' + bbblurry + ')',
         backgroundSize: 'cover',
       }"
+      role="region"
+      aria-label="Kundeninformationen"
     >
       <div class="d-none d-lg-flex">
         <!-- spacer -->

@@ -6,6 +6,8 @@
         backgroundImage: 'url(' + bbblurry + ')',
         backgroundSize: 'cover',
       }"
+      role="region"
+      aria-label="Preise-Overview"
     >
       <div class="d-none d-lg-flex">
         <!-- spacer -->
@@ -21,11 +23,12 @@
         <b-col class="mb-1">
           <b-card
             title="Lokal"
+            title-tag="h2"
             :style="{ height: '100%' }"
             data-aos="zoom-in"
             data-aos-delay="200"
           >
-            <b-list-group class="mt-4">
+            <b-list-group>
               <b-list-group-item>Für neue Gründer und Tester</b-list-group-item>
               <b-list-group-item>Kostenlos, für immer</b-list-group-item>
               <b-list-group-item>Basisfunktionen</b-list-group-item>
@@ -42,11 +45,14 @@
         <b-col class="mb-1">
           <b-card
             title="Online"
+            title-tag="h2"
+            sub-title="+ Lokal"
+            sub-title-text-variant="primary"
+            sub-title-tag="h3"
             :style="{ height: '100%' }"
             data-aos="zoom-in"
             data-aos-delay="500"
           >
-            <b> Lokal + </b>
             <b-list-group>
               <b-list-group-item>Für seriöse Praxen</b-list-group-item>
               <b-list-group-item>Mehrere Benutzer</b-list-group-item>
@@ -64,11 +70,14 @@
         <b-col class="mb-1">
           <b-card
             title="Kooperation"
+            title-tag="h2"
+            sub-title="+ Online"
+            sub-title-text-variant="primary"
+            sub-title-tag="h3"
             :style="{ height: '100%' }"
             data-aos="zoom-in"
             data-aos-delay="800"
           >
-            <b> Online + </b>
             <b-list-group>
               <b-list-group-item>Für alle, die mehr wollen</b-list-group-item>
               <b-list-group-item
@@ -91,7 +100,7 @@
         </b-col>
       </b-row>
     </section>
-    <section>
+    <section role="region" aria-label="Leistungen">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
         <b-col cols="12" md="5" class="d-md-none">
           <img
@@ -149,7 +158,7 @@
         </b-col>
       </b-row>
     </section>
-    <section>
+    <section role="region" aria-label="Vergleich">
       <b-row>
         <b-col>
           <h2 class="my-4">Vergleich</h2>
@@ -258,6 +267,16 @@ section {
       color: $primary;
     }
   }
+}
+
+.card-title {
+  @extend h4;
+}
+
+.card-subtitle {
+  @extend h6;
+  font-weight: bold;
+  color: $primary;
 }
 
 .feature {

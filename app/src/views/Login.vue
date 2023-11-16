@@ -7,13 +7,15 @@
       backgroundImage: 'url(' + bbblurry + ')',
       backgroundSize: 'cover',
     }"
+    role="region"
+    aria-label="Login"
   >
     <b-aspect
       aspect="4:3"
       id="login-card"
       :style="{ display: 'grid', placeItems: 'center' }"
     >
-      <b-card title="Login">
+      <b-card title="Login" title-tag="h1">
         <b-form>
           <b-form-group label="Benutzername" label-for="username-input">
             <b-input
