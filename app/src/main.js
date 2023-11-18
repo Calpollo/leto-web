@@ -1,4 +1,3 @@
-import '@babel/polyfill'
 import 'mutationobserver-shim'
 import Vue from 'vue'
 import VueMeta from 'vue-meta'
@@ -15,7 +14,7 @@ Vue.use(VueMeta, {
   refreshOnceOnNavigation: true
 })
 
-Vue.use(VueMatomo, {
+if (!window.__PRERENDER_INJECTED) Vue.use(VueMatomo, {
   host: 'https://matomo.andreasnicklaus.de/',
   siteId: 2,
   router,

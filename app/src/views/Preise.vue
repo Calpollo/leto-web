@@ -1,5 +1,5 @@
 <template>
-  <div id="preise">
+  <div id="preise" data-view>
     <section
       id="landingsection"
       :style="{

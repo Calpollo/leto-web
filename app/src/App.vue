@@ -162,7 +162,7 @@ export default {
     ],
   },
   mounted() {
-    this.$store.dispatch("updateMe");
+    if (!window.__PRERENDER_INJECTED) this.$store.dispatch("updateMe");
   },
   methods: {
     logout: UserService.logout,

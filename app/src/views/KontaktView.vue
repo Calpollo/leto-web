@@ -1,5 +1,5 @@
 <template>
-  <div id="Kontakt">
+  <div id="Kontakt" data-view>
     <section
       id="landingsection"
       :style="{

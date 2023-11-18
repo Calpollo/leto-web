@@ -1,5 +1,5 @@
 <template>
-  <div id="Downloads">
+  <div id="Downloads" data-view>
     <section
       id="landingsection"
       :style="{

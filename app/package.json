@@ -12,6 +12,7 @@
     "@babel/eslint-parser": "^7.12.16",
     "@babel/polyfill": "^7.11.5",
     "@paypal/paypal-js": "^5.1.6",
+    "@dreysolano/prerender-spa-plugin": "^1.0.3",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",

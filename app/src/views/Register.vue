@@ -7,6 +7,7 @@
       backgroundImage: 'url(' + bbblurry + ')',
       backgroundSize: 'cover',
     }"
+    data-view
   >
     <b-aspect
       aspect="4:3"

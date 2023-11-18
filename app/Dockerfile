@@ -1,6 +1,8 @@
 FROM node:16 as build
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y libnotify-dev libnss3 libxss1 libasound2 xvfb
+
 COPY package*.json ./
 RUN NODE_ENV=production npm ci
 

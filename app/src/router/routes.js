@@ -2,47 +2,56 @@ module.exports = [
   {
     path: "/",
     name: 'Home',
-    component: () => import("@/views/Home.vue")
+    component: () => import("@/views/Home.vue"),
+    meta: { prerender: true }
   },
   {
     path: "/funktionen",
     name: 'Funktionen',
-    component: () => import("@/views/Funktionen.vue")
+    component: () => import("@/views/Funktionen.vue"),
+    meta: { prerender: true }
   },
   {
     path: "/preise",
     name: 'Preise',
-    component: () => import("@/views/Preise.vue")
+    component: () => import("@/views/Preise.vue"),
+    meta: { prerender: true }
   },
   {
     path: "/download",
     name: 'Download',
-    component: () => import("@/views/Download.vue")
+    component: () => import("@/views/Download.vue"),
+    meta: { prerender: true }
   },
   {
     path: "/kundeninformationen",
     name: 'Kundeninformationen',
-    component: () => import("@/views/KundenInformationen.vue")
+    component: () => import("@/views/KundenInformationen.vue"),
+    meta: { prerender: true }
   },
   {
     path: "/kontakt",
     name: 'Kontakt',
-    component: () => import("@/views/KontaktView.vue")
+    component: () => import("@/views/KontaktView.vue"),
+    meta: { prerender: true }
   },
   {
     path: "/hilfe",
     name: 'Hilfe',
-    component: () => import("@/views/HilfeView.vue")
+    component: () => import("@/views/HilfeView.vue"),
+    meta: { prerender: true }
   },
   {
     path: "/einloggen",
     name: 'Login',
     component: () => import("@/views/Login.vue"),
+    meta: { prerender: true }
   },
   {
     path: "/registrieren",
     name: 'Register',
-    component: () => import("@/views/Register.vue")
+    component: () => import("@/views/Register.vue"),
+    meta: { prerender: true }
   },
   {
     path: "/account",

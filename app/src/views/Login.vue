@@ -9,6 +9,7 @@
     }"
     role="region"
     aria-label="Login"
+    data-view
   >
     <b-aspect
       aspect="4:3"
