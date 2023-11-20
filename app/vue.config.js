@@ -13,6 +13,14 @@ const productionPlugins = [
     }),
     postProcess: (renderedRoute) => {
       renderedRoute.html = renderedRoute.html
+        .replace(
+          /<link href="(.*?)" rel="stylesheet">/g,
+          `<link rel="preload" href="$1" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="$1"></noscript>`
+        )
+        .replace(
+          /<link rel="stylesheet" (.*?)>/g,
+          `<link rel="preload" $1 as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" $1></noscript>`
+        )
         .replace(/<script (.*?)>/g, '<script $1 defer>')
         .replace('id="app"', 'id="app" data-server-rendered="true"');
 
