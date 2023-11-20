@@ -29,17 +29,33 @@
       </div>
       <div :style="{ width: '50%', maxWidth: '500px', minWidth: '250px' }">
         <b-row id="tags">
-          <b-col data-aos="fade-up" data-aos-delay="200">
+          <b-col
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-anchor-placement="bottom"
+          >
             <b>Schnell</b>
           </b-col>
-          <b-col data-aos="fade-up" data-aos-delay="500">
+          <b-col
+            data-aos="fade-up"
+            data-aos-delay="500"
+            data-aos-anchor-placement="bottom"
+          >
             <b>Sicher</b>
           </b-col>
-          <b-col data-aos="fade-up" data-aos-delay="800">
+          <b-col
+            data-aos="fade-up"
+            data-aos-delay="800"
+            data-aos-anchor-placement="bottom"
+          >
             <b>Kostenlos</b>
           </b-col>
         </b-row>
-        <div data-aos="fade-up" data-aos-delay="1100">
+        <div
+          data-aos="fade-up"
+          data-aos-delay="1100"
+          data-aos-anchor-placement="bottom"
+        >
           <b-button
             variant="transparent"
             pill
@@ -101,7 +117,7 @@
               <b-icon-bar-chart scale="3" class="mr-5" />
               Statistiken ansehen
             </div>
-            <div data-aos="fade-left">
+            <div data-aos="fade-left" data-aos-anchor-placement="bottom">
               <b-button
                 :to="{ name: 'Funktionen' }"
                 variant="primary"
@@ -149,7 +165,7 @@
               <b-icon-person-badge scale="3" class="mr-5" />
               Individuell anpassbar
             </div>
-            <div data-aos="fade-left">
+            <div data-aos="fade-left" data-aos-anchor-placement="bottom">
               <b-button :to="{ name: 'Preise' }" variant="primary" size="md">
                 <b-icon-arrow-right />
                 Preise

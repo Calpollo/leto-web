@@ -102,5 +102,11 @@ module.exports = [
       }
     },
     meta: { sitemap: { ignoreRoute: true } }
+  },
+  {
+    path: "*",
+    name: 'PageNotFound',
+    component: () => import("@/views/PageNotFound.vue"),
+    meta: { sitemap: { ignoreRoute: true } }
   }
 ];
