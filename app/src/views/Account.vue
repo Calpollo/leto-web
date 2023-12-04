@@ -5,14 +5,44 @@
       <b-tab title="Dein Profil">
         <b-card>
           <b-card-text>
-            <b-avatar variant="white" :src="Leto" />
-            <h1>
-              {{ $store.state.me.username }}
-            </h1>
-            <p>
-              {{ $store.state.me.email }}
-            </p>
-            <p>Aktueller Abo-Status: {{ $store.state.me.RoleName }}</p>
+            <b-row>
+              <b-col>
+                <b-avatar variant="white" :src="Leto" />
+                <h1>
+                  {{ $store.state.me.username }}
+                </h1>
+                <p>
+                  {{ $store.state.me.email }}
+                </p>
+                <p>Aktueller Abo-Status: {{ $store.state.me.RoleName }}</p>
+              </b-col>
+              <b-col v-if="$store.state?.me?.ReceivedAccess" cols="12" md="6">
+                <b-avatar variant="white" :src="Leto" />
+                <h4>
+                  Besitzerkonto:
+                  <em>
+                    {{ $store.state.me.ReceivedAccess.Owner.username }}
+                  </em>
+                </h4>
+                <p>
+                  <a
+                    :href="`mailto:${$store.state.me.ReceivedAccess.Owner.email}`"
+                  >
+                    {{ $store.state.me.ReceivedAccess.Owner.email }}
+                  </a>
+                </p>
+                <p v-if="$store.state.me.ReceivedAccess.enabled == false">
+                  <b-badge
+                    variant="danger"
+                    v-b-tooltip.hover
+                    title="Dein Zugang zum Besitzerkonto wurde deaktiviert. Bei deaktiviertem Zugang kannst du nicht auf die Daten des Besitzerkontos zugreifen. Kontaktiere das Besitzerkonto, um deinen Zugang wieder zu aktivieren."
+                    >Zugang deaktiviert</b-badge
+                  >
+                </p>
+              </b-col>
+            </b-row>
+
+            <hr />
 
             <b-button variant="outline-danger" @click="logout">
               Ausloggen
@@ -55,6 +85,121 @@
                 </b-button>
               </b-button-group>
             </details>
+          </b-card-text>
+        </b-card>
+        <b-card
+          :style="{ textAlign: 'start' }"
+          class="mt-4"
+          v-if="$store.state.me?.GivenAccesses?.length > 0"
+          title="Zugangskonten"
+          sub-title="Konten mit Zugang zu deinen Daten"
+        >
+          <b-card-text>
+            <b-list-group>
+              <b-list-group-item
+                v-for="access in $store.state.me.GivenAccesses"
+                :key="access.id"
+              >
+                <b-row align-v="center">
+                  <b-col>
+                    {{ access.Receiver.username }}
+                    <a :href="`mailto:${access.Receiver.email}`">
+                      {{ access.Receiver.email }}
+                    </a>
+                  </b-col>
+                  <b-col cols="auto">
+                    <b-form-checkbox
+                      :style="{ display: 'inline-block' }"
+                      v-model="access.enabled"
+                      switch
+                      variant="danger"
+                      v-b-tooltip.hover
+                      title="Zugang deaktivieren"
+                      button-variant="success"
+                      @change="(value) => switchEnable(access.id, value)"
+                    />
+                    <b-button
+                      variant="outline-danger"
+                      @click="deleteAccess(access.id)"
+                      v-b-tooltip.hover
+                      title="Zugang entfernen"
+                    >
+                      <b-icon-trash />
+                    </b-button>
+                  </b-col>
+                </b-row>
+              </b-list-group-item>
+            </b-list-group>
+
+            <b-form
+              class="mt-2"
+              @submit="
+                (event) => {
+                  event.preventDefault();
+                  createAccessUser();
+                }
+              "
+            >
+              <b-form-input
+                v-model="createUsername"
+                placeholder="Benutzername"
+                :autocomplete="`username-${Math.random()}`"
+                required
+                disabled
+              />
+              <b-form-input
+                v-model="createEmail"
+                type="email"
+                placeholder="E-Mail-Adresse"
+                :autocomplete="`email-${Math.random()}`"
+                required
+                disabled
+              />
+              <b-form-input
+                v-model="createPassword"
+                type="password"
+                placeholder="Passwort"
+                :autocomplete="`password-${Math.random()}`"
+                minLength="6"
+                required
+                disabled
+              />
+              <b-button
+                variant="outline-success"
+                block
+                type="submit"
+                :disabled="!(createUsername && createEmail && createPassword)"
+              >
+                <b-icon-plus />
+                Neuen Benutzer erstellen
+              </b-button>
+            </b-form>
+
+            <b-form
+              class="mt-2"
+              @submit="
+                (event) => {
+                  event.preventDefault();
+                }
+              "
+            >
+              <b-form-input
+                disabled
+                v-model="userSearch"
+                type="search"
+                autocomplete="userSearch"
+                placeholder="Benutzernamen suchen"
+              />
+              <b-button
+                variant="outline-success"
+                block
+                type="submit"
+                :disabled="!userSearch"
+              >
+                <b-icon-plus />
+                Nutzer suchen und hinzufügen
+              </b-button>
+            </b-form>
           </b-card-text>
         </b-card>
       </b-tab>
@@ -182,6 +327,7 @@
 <script>
 import Leto from "@/assets/Leto.svg";
 import UserService from "@/services/UserService";
+import AccessService from "@/services/AccessService";
 
 export default {
   name: "AccountView",
@@ -192,6 +338,10 @@ export default {
     return {
       Leto,
       passwordReplacement: null,
+      createUsername: null,
+      createEmail: null,
+      createPassword: null,
+      userSearch: null,
     };
   },
   methods: {
@@ -218,6 +368,19 @@ export default {
         });
         this.$bvModal.hide("changePasswordModal");
       });
+    },
+    createAccessUser() {
+      AccessService.create(
+        this.createUsername,
+        this.createEmail,
+        this.createPassword
+      );
+    },
+    switchEnable(id, value) {
+      AccessService.setEnabled(id, value);
+    },
+    deleteAccess(id) {
+      AccessService.delete(id);
     },
   },
   mounted() {
