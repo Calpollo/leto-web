@@ -1,6 +1,5 @@
-import router from "@/router";
-import store from "@/store";
 import axios from "axios";
+import UserService from "./UserService";
 
 const ax = axios.create({
     baseURL:
@@ -15,12 +14,10 @@ ax.interceptors.response.use(
     (error) => {
         switch (error.response.status) {
             case 401:
-                store.dispatch("logOut");
+                UserService.logout()
                 break;
             case 403:
-                store.dispatch("logOut").then(() => {
-                    router.push({ name: "Login" })
-                });
+                UserService.logout({ name: "Login" })
                 break;
             default:
                 console.warn(error);

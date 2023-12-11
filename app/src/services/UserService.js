@@ -1,5 +1,6 @@
 import store from "@/store";
 import ax from "./RequestService";
+import router from "@/router";
 
 export default {
     signup(username, email, password) {
@@ -28,16 +29,12 @@ export default {
                 console.warn(err);
             });
     },
-    logout() {
+    logout(routingPath = null) {
         ax.defaults.headers.common.Authorization = null;
         sessionStorage.removeItem("authToken")
-        this.$bvToast.toast("Du wurdest ausgeloggt", {
-            title: "Logout",
-            autoHideDelay: 5000,
-            variant: "danger",
-            solid: true,
-        });
-        store.dispatch("logOut").then(() => this.$router.push("/"))
+        return store.dispatch("logOut").then(() => {
+            if (routingPath) router.push(routingPath)
+        })
     },
     me() {
         return ax.get("/auth/me").then((response) => response.data).catch(() => null);

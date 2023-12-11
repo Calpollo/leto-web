@@ -25,7 +25,6 @@ export default new Vuex.Store({
     actions: {
         logOut: (state) => {
             state.commit("logOut")
-            sessionStorage.removeItem("authToken")
             return
         },
         logIn(state) {

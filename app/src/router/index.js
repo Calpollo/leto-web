@@ -18,6 +18,8 @@ router.beforeEach((to, from, next) => {
     const isPrivate = to.meta.private;
     const isAdmin = to.meta.admin;
 
+    if (from.name == to.name) return false
+
     if (!isPrivate) next();
     else if (isAdmin) {
         if (store.state.loggedIn && store.state.me?.RoleName == "Admin") next();

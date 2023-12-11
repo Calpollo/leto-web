@@ -74,7 +74,7 @@
               <b-icon-person />
               Mein Profil
             </b-dropdown-item>
-            <b-dropdown-item variant="danger" @click="logout">
+            <b-dropdown-item variant="danger" @click="logout" to="/">
               <b-icon-door-open />
               Ausloggen
             </b-dropdown-item>
@@ -165,7 +165,18 @@ export default {
     if (!window.__PRERENDER_INJECTED) this.$store.dispatch("updateMe");
   },
   methods: {
-    logout: UserService.logout,
+    logout() {
+      UserService.logout(
+        this.$route.name != "Home" ? { name: "Home" } : null
+      ).then(() => {
+        this.$bvToast.toast("Du wurdest ausgeloggt", {
+          title: "Logout",
+          autoHideDelay: 3000,
+          variant: "danger",
+          solid: true,
+        });
+      });
+    },
   },
 };
 </script>
