@@ -102,9 +102,9 @@
               >
                 <b-row align-v="center">
                   <b-col>
-                    {{ access.Receiver.username }}
-                    <a :href="`mailto:${access.Receiver.email}`">
-                      {{ access.Receiver.email }}
+                    {{ access.Receiver?.username }}
+                    <a :href="`mailto:${access.Receiver?.email}`">
+                      {{ access.Receiver?.email }}
                     </a>
                   </b-col>
                   <b-col cols="auto">
@@ -116,7 +116,14 @@
                       v-b-tooltip.hover
                       title="Zugang deaktivieren"
                       button-variant="success"
-                      @change="(value) => switchEnable(access.id, value)"
+                      @change="
+                        (value) =>
+                          switchEnable(
+                            access.id,
+                            access.Receiver.username,
+                            value
+                          )
+                      "
                     />
                     <b-button
                       variant="outline-danger"
@@ -131,75 +138,82 @@
               </b-list-group-item>
             </b-list-group>
 
-            <b-form
-              class="mt-2"
-              @submit="
-                (event) => {
-                  event.preventDefault();
-                  createAccessUser();
-                }
-              "
-            >
-              <b-form-input
-                v-model="createUsername"
-                placeholder="Benutzername"
-                :autocomplete="`username-${Math.random()}`"
-                required
-                disabled
-              />
-              <b-form-input
-                v-model="createEmail"
-                type="email"
-                placeholder="E-Mail-Adresse"
-                :autocomplete="`email-${Math.random()}`"
-                required
-                disabled
-              />
-              <b-form-input
-                v-model="createPassword"
-                type="password"
-                placeholder="Passwort"
-                :autocomplete="`password-${Math.random()}`"
-                minLength="6"
-                required
-                disabled
-              />
-              <b-button
-                variant="outline-success"
-                block
-                type="submit"
-                :disabled="!(createUsername && createEmail && createPassword)"
+            <b-overlay show opacity="0.8">
+              <b-form
+                class="mt-2"
+                @submit="
+                  (event) => {
+                    event.preventDefault();
+                    createAccessUser();
+                  }
+                "
               >
-                <b-icon-plus />
-                Neuen Benutzer erstellen
-              </b-button>
-            </b-form>
-
-            <b-form
-              class="mt-2"
-              @submit="
-                (event) => {
-                  event.preventDefault();
-                }
-              "
-            >
-              <b-form-input
-                disabled
-                v-model="userSearch"
-                type="search"
-                autocomplete="userSearch"
-                placeholder="Benutzernamen suchen"
-              />
-              <b-button
-                variant="outline-success"
-                block
-                type="submit"
-                :disabled="!userSearch"
+                <b-form-input
+                  v-model="createUsername"
+                  placeholder="Benutzername"
+                  :autocomplete="`username-${Math.random()}`"
+                  required
+                  disabled
+                />
+                <b-form-input
+                  v-model="createEmail"
+                  type="email"
+                  placeholder="E-Mail-Adresse"
+                  :autocomplete="`email-${Math.random()}`"
+                  required
+                  disabled
+                />
+                <b-form-input
+                  v-model="createPassword"
+                  type="password"
+                  placeholder="Passwort"
+                  :autocomplete="`password-${Math.random()}`"
+                  minLength="6"
+                  required
+                  disabled
+                />
+                <b-button
+                  variant="outline-success"
+                  block
+                  type="submit"
+                  :disabled="!(createUsername && createEmail && createPassword)"
+                >
+                  <b-icon-plus />
+                  Neuen Benutzer erstellen
+                </b-button>
+              </b-form>
+              <b-form
+                class="mt-2"
+                @submit="
+                  (event) => {
+                    event.preventDefault();
+                  }
+                "
               >
-                <b-icon-plus />
-                Nutzer suchen und hinzufügen
-              </b-button>
-            </b-form>
+                <b-form-input
+                  disabled
+                  v-model="userSearch"
+                  type="search"
+                  autocomplete="userSearch"
+                  placeholder="Benutzernamen suchen"
+                />
+                <b-button
+                  variant="outline-success"
+                  block
+                  type="submit"
+                  :disabled="!userSearch"
+                >
+                  <b-icon-plus />
+                  Nutzer suchen und hinzufügen
+                </b-button>
+              </b-form>
+              <template #overlay>
+                <div class="text-center">
+                  <b-icon-x font-scale="2" variant="danger" />
+                  <p>Erstellung von Zuganskonten demnächst verfügbar...</p>
+                </div>
+              </template>
+            </b-overlay>
           </b-card-text>
         </b-card>
       </b-tab>
@@ -345,7 +359,16 @@ export default {
     };
   },
   methods: {
-    logout: UserService.logout,
+    logout() {
+      UserService.logout({ name: "Login" }).then(() => {
+        this.$bvToast.toast("Du wurdest ausgeloggt", {
+          title: "Logout",
+          autoHideDelay: 3000,
+          variant: "danger",
+          solid: true,
+        });
+      });
+    },
     deleteMe: UserService.deleteMe,
     downgrade() {
       UserService.downgrade().then(() => {
@@ -374,13 +397,38 @@ export default {
         this.createUsername,
         this.createEmail,
         this.createPassword
-      );
+      ).then(() => {
+        this.$bvToast.toast("Zugriffskonto erfolgreich erstellt", {
+          title: "Zugriffskonto erstellt",
+          autoHideDelay: 5000,
+          variant: "success",
+          solid: true,
+        });
+      });
     },
-    switchEnable(id, value) {
-      AccessService.setEnabled(id, value);
+    switchEnable(id, name, value) {
+      AccessService.setEnabled(id, value).then(() => {
+        const newState = value ? "aktiviert" : "deaktiviert";
+        this.$bvToast.toast(
+          "Zugriff für " + name + " erfolgreich " + newState,
+          {
+            title: "Zugriff " + newState,
+            autoHideDelay: 5000,
+            variant: "info",
+            solid: true,
+          }
+        );
+      });
     },
     deleteAccess(id) {
-      AccessService.delete(id);
+      AccessService.delete(id).then(() => {
+        this.$bvToast.toast("Zugriffskonto erfolgreich gelöscht", {
+          title: "Zugriffskonto gelöscht",
+          autoHideDelay: 5000,
+          variant: "warning",
+          solid: true,
+        });
+      });
     },
   },
   mounted() {
