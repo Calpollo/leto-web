@@ -183,7 +183,6 @@ export default {
 
 <style lang="scss">
 @import "@/assets/colors.scss";
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 html {
   scroll-behavior: smooth;

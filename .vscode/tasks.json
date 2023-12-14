@@ -8,6 +8,18 @@
       "problemMatcher": [],
       "label": "npm: serve - app",
       "detail": "vue-cli-service serve"
+    },
+    {
+      "label": "Docker-compose",
+      "type": "docker-compose",
+      "dockerCompose": {
+        "up": {
+          "detached": false,
+          "build": true
+        },
+        "files": ["${workspaceFolder}/docker-compose.yml"]
+      },
+      "problemMatcher": []
     }
   ]
 }
