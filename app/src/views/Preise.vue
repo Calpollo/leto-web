@@ -102,34 +102,25 @@
     </section>
     <section role="region" aria-label="Leistungen">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
-        <b-col cols="12" md="5" class="d-md-none">
-          <img
-            :src="appleDevices"
-            :srcset="`${appleDevices_200} 200w, ${appleDevices_783} 783w, ${appleDevices_1123} 1123w, ${appleDevices} 1920w`"
-            sizes="100vw"
-            alt="Ein iPhone, eine Apple Watch, Apple Airpods und eine weiße Tastatur liegen auf violettem Grund. Auf dem Display des iPhones ist das Leto-Logo zu sehen."
-            width="100%"
-            :style="{
-              height: '40vh',
-              objectFit: 'cover',
-              objectPosition: '72%',
-              minHeight: '100%',
-            }"
-          />
-        </b-col>
-        <b-col cols="12" md="5" class="d-none d-md-block">
-          <img
-            :src="appleDevices"
-            :srcset="`${appleDevices_200} 200w, ${appleDevices_783} 783w, ${appleDevices_1123} 1123w, ${appleDevices} 1920w`"
-            sizes="(max-width: 768px) 100vw, calc(5/12*100vw)"
-            alt="Ein iPhone, eine Apple Watch, Apple Airpods und eine weiße Tastatur liegen auf violettem Grund. Auf dem Display des iPhones ist das Leto-Logo zu sehen."
-            width="100%"
-            :style="{
-              height: '90vh',
-              objectFit: 'cover',
-              objectPosition: '72%',
-            }"
-          />
+        <b-col cols="12" md="5">
+          <picture>
+            <source
+              :srcset="`${appleDevices_avif_1} 200w, ${appleDevices_avif_2} 783w, ${appleDevices_avif_3} 1123w, ${appleDevices_avif} 1920w`"
+            />
+            <source
+              :srcset="`${appleDevices_webp_1} 200w, ${appleDevices_webp_2} 783w, ${appleDevices_webp_3} 1123w, ${appleDevices_webp} 1920w`"
+            />
+            <img
+              :src="appleDevices_webp"
+              alt="Ein iPhone, eine Apple Watch, Apple Airpods und eine weiße Tastatur liegen auf violettem Grund. Auf dem Display des iPhones ist das Leto-Logo zu sehen."
+              width="100%"
+              :style="{
+                height: this.$vuetify.breakpoint.width < 768 ? '40vh' : '90vh',
+                objectFit: 'cover',
+                objectPosition: '72%',
+              }"
+            />
+          </picture>
         </b-col>
         <b-col cols="12" md="7">
           <div
@@ -180,10 +171,14 @@
 
 <script>
 import bbblurry from "@/assets/backgrounds/bbblurry.svg";
-import appleDevices from "@/assets/mockups/webp/mockup-of-an-iphone-13-among-other-digital-devices.webp";
-import appleDevices_1123 from "@/assets/mockups/webp/mockup-of-an-iphone-13-among-other-digital-devices_@1123.webp";
-import appleDevices_783 from "@/assets/mockups/webp/mockup-of-an-iphone-13-among-other-digital-devices_@783.webp";
-import appleDevices_200 from "@/assets/mockups/webp/mockup-of-an-iphone-13-among-other-digital-devices_@200.webp";
+import appleDevices_webp from "@/assets/mockups/webp/mockup-iphone.webp";
+import appleDevices_webp_1 from "@/assets/mockups/webp/mockup-iphone@1.webp";
+import appleDevices_webp_2 from "@/assets/mockups/webp/mockup-iphone@2.webp";
+import appleDevices_webp_3 from "@/assets/mockups/webp/mockup-iphone@3.webp";
+import appleDevices_avif from "@/assets/mockups/avif/mockup-iphone.avif";
+import appleDevices_avif_1 from "@/assets/mockups/avif/mockup-iphone@1.avif";
+import appleDevices_avif_2 from "@/assets/mockups/avif/mockup-iphone@2.avif";
+import appleDevices_avif_3 from "@/assets/mockups/avif/mockup-iphone@3.avif";
 
 export default {
   name: "PreiseView",
@@ -193,10 +188,14 @@ export default {
   data() {
     return {
       bbblurry,
-      appleDevices,
-      appleDevices_1123,
-      appleDevices_783,
-      appleDevices_200,
+      appleDevices_webp,
+      appleDevices_webp_1,
+      appleDevices_webp_2,
+      appleDevices_webp_3,
+      appleDevices_avif,
+      appleDevices_avif_1,
+      appleDevices_avif_2,
+      appleDevices_avif_3,
       funktionenItems: [
         {
           " ": "Benutzer",

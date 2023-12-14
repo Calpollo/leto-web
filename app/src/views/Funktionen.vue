@@ -97,32 +97,26 @@
     <!-- Termine -->
     <section role="region" aria-label="Termine">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
-        <b-col cols="12" md="6" class="d-none d-md-block">
-          <img
-            :src="paarArbeit"
-            :srcset="`${paarArbeit_1245} 1245w, ${paarArbeit_977} 977w, ${paarArbeit_842} 842w, ${paarArbeit_522} 522w, ${paarArbeit_200} 200w, ${paarArbeit} 1920w`"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            alt="Kollegen, die an einem Macbook an Leto arbeiten und darüber reden."
-            width="100%"
-            :style="{
-              height: '90vh',
-              objectFit: 'cover',
-            }"
-          />
-        </b-col>
-        <b-col cols="12" md="6" class="d-md-none">
-          <img
-            :src="paarArbeit"
-            :srcset="`${paarArbeit_522} 522w, ${paarArbeit_200} 200w, ${paarArbeit} 1920w`"
-            sizes="100vw"
-            alt="Kollegen, die an einem Macbook an Leto arbeiten und darüber reden."
-            width="100%"
-            :style="{
-              height: '40vh',
-              minHeight: '100%',
-              objectFit: 'cover',
-            }"
-          />
+        <b-col cols="12" md="6">
+          <picture>
+            <source
+              :srcset="`${paarArbeit_avif_1} 960w, ${paarArbeit_avif_2} 640w, ${paarArbeit_avif_3} 480w, ${paarArbeit_avif_4} 384w, ${paarArbeit_avif_5} 320w, ${paarArbeit_avif} 1920w`"
+            />
+            <source
+              :srcset="`${paarArbeit_webp_1} 960w, ${paarArbeit_webp_2} 640w, ${paarArbeit_webp_3} 480w, ${paarArbeit_webp_4} 384w, ${paarArbeit_webp_5} 320w, ${paarArbeit_webp} 1920w`"
+            />
+            <img
+              :src="paarArbeit_webp"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              alt="Kollegen, die an einem Macbook an Leto arbeiten und darüber reden."
+              width="100%"
+              :style="{
+                height: this.$vuetify.breakpoint.width < 768 ? '40vh' : '90vh',
+                minHeight: '100%',
+                objectFit: 'cover',
+              }"
+            />
+          </picture>
         </b-col>
         <b-col>
           <div
@@ -169,22 +163,7 @@
     <!-- Verwaltung -->
     <section role="region" aria-label="Verwaltung">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
-        <b-col cols="12" md="6" class="d-md-none">
-          <img
-            :src="verwaltungLaptop"
-            :srcset="`${verwaltungLaptop_200} 200w,${verwaltungLaptop_846} 846w,${verwaltungLaptop_1119} 1119w, ${verwaltungLaptop_1352} 1352w, ${verwaltungLaptop} 1920w`"
-            sizes="100vw"
-            alt="Eine Frau hält einen Laptop in beiden Hängen vor einer farbigen Wand. Auf dem Display ist die Anwendung Leto zu sehen."
-            width="100%"
-            :style="{
-              height: '40vh',
-              minHeight: '100%',
-              objectFit: 'cover',
-              // objectPosition: '70%',
-            }"
-          />
-        </b-col>
-        <b-col>
+        <b-col :order="this.$vuetify.breakpoint.width < 768 ? 2 : 1">
           <div
             :style="{ display: 'grid', height: '100%', placeItems: 'center' }"
           >
@@ -214,19 +193,30 @@
             </div>
           </div>
         </b-col>
-        <b-col cols="12" md="6" class="d-none d-md-block">
-          <img
-            :src="verwaltungLaptop"
-            :srcset="`${verwaltungLaptop_200} 200w,${verwaltungLaptop_846} 846w,${verwaltungLaptop_1119} 1119w, ${verwaltungLaptop_1352} 1352w, ${verwaltungLaptop} 1920w`"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            alt="Eine Frau hält einen Laptop in beiden Hängen vor einer farbigen Wand. Auf dem Display ist die Anwendung Leto zu sehen."
-            width="100%"
-            :style="{
-              height: '90vh',
-              objectFit: 'cover',
-              // objectPosition: '70%',
-            }"
-          />
+        <b-col
+          cols="12"
+          md="6"
+          :order="this.$vuetify.breakpoint.width < 768 ? 1 : 2"
+        >
+          <picture>
+            <source
+              :srcset="`${verwaltungLaptop_avif_1} 960w,${verwaltungLaptop_avif_2} 640w,${verwaltungLaptop_avif_3} 480w, ${verwaltungLaptop_avif_4} 384w, ${verwaltungLaptop_avif_5} 320w, ${verwaltungLaptop_avif} 1920w`"
+            />
+            <source
+              :srcset="`${verwaltungLaptop_webp_1} 960w,${verwaltungLaptop_webp_2} 640w,${verwaltungLaptop_webp_3} 480w, ${verwaltungLaptop_webp_4} 384w, ${verwaltungLaptop_webp_4} 320w, ${verwaltungLaptop_webp} 1920w`"
+            />
+            <img
+              :src="verwaltungLaptop_webp"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              alt="Eine Frau hält einen Laptop in beiden Hängen vor einer farbigen Wand. Auf dem Display ist die Anwendung Leto zu sehen."
+              width="100%"
+              :style="{
+                height: this.$vuetify.breakpoint.width < 768 ? '40vh' : '90vh',
+                objectFit: 'cover',
+                // objectPosition: '70%',
+              }"
+            />
+          </picture>
         </b-col>
       </b-row>
     </section>
@@ -234,32 +224,26 @@
     <!-- Abrechnung -->
     <section role="region" aria-label="Abrechnung">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
-        <b-col cols="12" md="6" class="d-none d-md-block">
-          <img
-            :src="floatingMac"
-            :srcset="`${floatingMac_200} 200w, ${floatingMac_562} 562w, ${floatingMac_789} 789w, ${floatingMac_924} 924w, ${floatingMac_1077} 1077w, ${floatingMac} 1440w`"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
-            width="100%"
-            :style="{
-              height: '90vh',
-              objectFit: 'cover',
-            }"
-          />
-        </b-col>
-        <b-col cols="12" md="6" class="d-md-none">
-          <img
-            :src="floatingMac"
-            :srcset="`${floatingMac_200} 200w, ${floatingMac_562} 562w, ${floatingMac_789} 789w, ${floatingMac_924} 924w, ${floatingMac_1077} 1077w, ${floatingMac} 1440w`"
-            sizes="100vw"
-            alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
-            width="100%"
-            :style="{
-              height: '40vh',
-              minHeight: '100%',
-              objectFit: 'cover',
-            }"
-          />
+        <b-col cols="12" md="6">
+          <picture>
+            <source
+              :srcset="`${floatingMac_avif_1} 720w, ${floatingMac_avif_2} 480w, ${floatingMac_avif_3} 360w, ${floatingMac_avif_4} 288w, ${floatingMac_avif_5} 240w, ${floatingMac_avif} 1440w`"
+            />
+            <source
+              :srcset="`${floatingMac_webp_1} 720w, ${floatingMac_webp_2} 480w, ${floatingMac_webp_3} 360w, ${floatingMac_webp_4} 288w, ${floatingMac_webp_5} 240w, ${floatingMac_webp} 1440w`"
+            />
+            <img
+              :src="floatingMac_webp"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
+              width="100%"
+              :style="{
+                height: this.$vuetify.breakpoint.width < 768 ? '40vh' : '90vh',
+                minHeight: '100%',
+                objectFit: 'cover',
+              }"
+            />
+          </picture>
         </b-col>
         <b-col>
           <div
@@ -295,23 +279,42 @@
 
 <script>
 import bbblurry from "@/assets/backgrounds/bbblurry.svg";
-import verwaltungLaptop from "@/assets/mockups/webp/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall.webp";
-import verwaltungLaptop_200 from "@/assets/mockups/webp/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall_@200.webp";
-import verwaltungLaptop_846 from "@/assets/mockups/webp/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall_@846.webp";
-import verwaltungLaptop_1119 from "@/assets/mockups/webp/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall_@1119.webp";
-import verwaltungLaptop_1352 from "@/assets/mockups/webp/mockup-of-a-girl-holding-a-macbook-in-front-of-a-solid-color-wall_@1352.webp";
-import paarArbeit from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it.webp";
-import paarArbeit_200 from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it_@200.webp";
-import paarArbeit_522 from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it_@522.webp";
-import paarArbeit_842 from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it_@842.webp";
-import paarArbeit_977 from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it_@977.webp";
-import paarArbeit_1245 from "@/assets/mockups/webp/coworkers-working-on-a-macbook-mockup-while-talking-about-it_@1245.webp";
-import floatingMac from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors.webp";
-import floatingMac_200 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@200.webp";
-import floatingMac_562 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@562.webp";
-import floatingMac_789 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@789.webp";
-import floatingMac_924 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@924.webp";
-import floatingMac_1077 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@1077.webp";
+import verwaltungLaptop_webp from "@/assets/mockups/webp/mockup-girl-holding-macbook.webp";
+import verwaltungLaptop_webp_1 from "@/assets/mockups/webp/mockup-girl-holding-macbook@1.webp";
+import verwaltungLaptop_webp_2 from "@/assets/mockups/webp/mockup-girl-holding-macbook@2.webp";
+import verwaltungLaptop_webp_3 from "@/assets/mockups/webp/mockup-girl-holding-macbook@3.webp";
+import verwaltungLaptop_webp_4 from "@/assets/mockups/webp/mockup-girl-holding-macbook@4.webp";
+import verwaltungLaptop_webp_5 from "@/assets/mockups/webp/mockup-girl-holding-macbook@5.webp";
+import verwaltungLaptop_avif from "@/assets/mockups/avif/mockup-girl-holding-macbook.avif";
+import verwaltungLaptop_avif_1 from "@/assets/mockups/avif/mockup-girl-holding-macbook@1.avif";
+import verwaltungLaptop_avif_2 from "@/assets/mockups/avif/mockup-girl-holding-macbook@2.avif";
+import verwaltungLaptop_avif_3 from "@/assets/mockups/avif/mockup-girl-holding-macbook@3.avif";
+import verwaltungLaptop_avif_4 from "@/assets/mockups/avif/mockup-girl-holding-macbook@4.avif";
+import verwaltungLaptop_avif_5 from "@/assets/mockups/avif/mockup-girl-holding-macbook@5.avif";
+import paarArbeit_webp from "@/assets/mockups/webp/mockup-coworkers.webp";
+import paarArbeit_webp_1 from "@/assets/mockups/webp/mockup-coworkers@1.webp";
+import paarArbeit_webp_2 from "@/assets/mockups/webp/mockup-coworkers@2.webp";
+import paarArbeit_webp_3 from "@/assets/mockups/webp/mockup-coworkers@3.webp";
+import paarArbeit_webp_4 from "@/assets/mockups/webp/mockup-coworkers@4.webp";
+import paarArbeit_webp_5 from "@/assets/mockups/webp/mockup-coworkers@5.webp";
+import paarArbeit_avif from "@/assets/mockups/avif/mockup-coworkers.avif";
+import paarArbeit_avif_1 from "@/assets/mockups/avif/mockup-coworkers@1.avif";
+import paarArbeit_avif_2 from "@/assets/mockups/avif/mockup-coworkers@2.avif";
+import paarArbeit_avif_3 from "@/assets/mockups/avif/mockup-coworkers@3.avif";
+import paarArbeit_avif_4 from "@/assets/mockups/avif/mockup-coworkers@4.avif";
+import paarArbeit_avif_5 from "@/assets/mockups/avif/mockup-coworkers@5.avif";
+import floatingMac_webp from "@/assets/mockups/webp/mockup-floating-macbook.webp";
+import floatingMac_webp_1 from "@/assets/mockups/webp/mockup-floating-macbook@1.webp";
+import floatingMac_webp_2 from "@/assets/mockups/webp/mockup-floating-macbook@2.webp";
+import floatingMac_webp_3 from "@/assets/mockups/webp/mockup-floating-macbook@3.webp";
+import floatingMac_webp_4 from "@/assets/mockups/webp/mockup-floating-macbook@4.webp";
+import floatingMac_webp_5 from "@/assets/mockups/webp/mockup-floating-macbook@5.webp";
+import floatingMac_avif from "@/assets/mockups/avif/mockup-floating-macbook.avif";
+import floatingMac_avif_1 from "@/assets/mockups/avif/mockup-floating-macbook@1.avif";
+import floatingMac_avif_2 from "@/assets/mockups/avif/mockup-floating-macbook@2.avif";
+import floatingMac_avif_3 from "@/assets/mockups/avif/mockup-floating-macbook@3.avif";
+import floatingMac_avif_4 from "@/assets/mockups/avif/mockup-floating-macbook@4.avif";
+import floatingMac_avif_5 from "@/assets/mockups/avif/mockup-floating-macbook@5.avif";
 
 export default {
   name: "FunktionenView",
@@ -321,23 +324,42 @@ export default {
   data() {
     return {
       bbblurry,
-      verwaltungLaptop,
-      verwaltungLaptop_200,
-      verwaltungLaptop_846,
-      verwaltungLaptop_1119,
-      verwaltungLaptop_1352,
-      paarArbeit,
-      paarArbeit_200,
-      paarArbeit_522,
-      paarArbeit_842,
-      paarArbeit_977,
-      paarArbeit_1245,
-      floatingMac,
-      floatingMac_200,
-      floatingMac_562,
-      floatingMac_789,
-      floatingMac_924,
-      floatingMac_1077,
+      verwaltungLaptop_webp,
+      verwaltungLaptop_webp_1,
+      verwaltungLaptop_webp_2,
+      verwaltungLaptop_webp_3,
+      verwaltungLaptop_webp_4,
+      verwaltungLaptop_webp_5,
+      verwaltungLaptop_avif,
+      verwaltungLaptop_avif_1,
+      verwaltungLaptop_avif_2,
+      verwaltungLaptop_avif_3,
+      verwaltungLaptop_avif_4,
+      verwaltungLaptop_avif_5,
+      paarArbeit_webp,
+      paarArbeit_webp_1,
+      paarArbeit_webp_2,
+      paarArbeit_webp_3,
+      paarArbeit_webp_4,
+      paarArbeit_webp_5,
+      paarArbeit_avif,
+      paarArbeit_avif_1,
+      paarArbeit_avif_2,
+      paarArbeit_avif_3,
+      paarArbeit_avif_4,
+      paarArbeit_avif_5,
+      floatingMac_webp,
+      floatingMac_webp_1,
+      floatingMac_webp_2,
+      floatingMac_webp_3,
+      floatingMac_webp_4,
+      floatingMac_webp_5,
+      floatingMac_avif,
+      floatingMac_avif_1,
+      floatingMac_avif_2,
+      floatingMac_avif_3,
+      floatingMac_avif_4,
+      floatingMac_avif_5,
     };
   },
 };

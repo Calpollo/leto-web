@@ -69,32 +69,26 @@
     </section>
     <section ref="sectionB" role="region" aria-label="Funktionen">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
-        <b-col cols="12" md="6" class="d-none d-md-block">
-          <img
-            :src="floatingMac"
-            :srcset="`${floatingMac_200} 200w, ${floatingMac_562} 562w, ${floatingMac_789} 789w, ${floatingMac_924} 924w, ${floatingMac_1077} 1077w, ${floatingMac} 1440w`"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
-            width="100%"
-            :style="{
-              height: '90vh',
-              objectFit: 'cover',
-            }"
-          />
-        </b-col>
-        <b-col cols="12" md="6" class="d-md-none">
-          <img
-            :src="floatingMac"
-            :srcset="`${floatingMac_200} 200w, ${floatingMac_562} 562w, ${floatingMac_789} 789w, ${floatingMac_924} 924w, ${floatingMac_1077} 1077w, ${floatingMac} 1440w`"
-            sizes="100vw"
-            alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
-            width="100%"
-            :style="{
-              height: '40vh',
-              objectFit: 'cover',
-              objectPosition: 'center 42%',
-            }"
-          />
+        <b-col cols="12" md="6">
+          <picture>
+            <source
+              :srcset="`${floatingMac_avif_1} 720w, ${floatingMac_avif_2} 480w, ${floatingMac_avif_3} 360w, ${floatingMac_avif_4} 288w, ${floatingMac_avif_5} 240w, ${floatingMac_avif} 1440w`"
+            />
+            <source
+              :srcset="`${floatingMac_webp_1} 720w, ${floatingMac_webp_2} 480w, ${floatingMac_webp_3} 360w, ${floatingMac_webp_4} 288w, ${floatingMac_webp_5} 240w, ${floatingMac_webp} 1440w`"
+            />
+            <img
+              :src="floatingMac_webp"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
+              width="100%"
+              :style="{
+                height: this.$vuetify.breakpoint.width < 768 ? '40vh' : '90vh',
+                objectFit: 'cover',
+                objectPosition: 'center 42%',
+              }"
+            />
+          </picture>
         </b-col>
         <b-col cols="12" md="6">
           <div
@@ -133,17 +127,11 @@
     </section>
     <section id="sectionC" role="region" aria-label="Preise">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
-        <b-col cols="12" md="6" class="d-md-none">
-          <img
-            :src="workingLady"
-            :srcset="`${workingLady_1291} 1291w, ${workingLady_1088} 1088w, ${workingLady_659} 659w, ${workingLady_200} 200w, ${workingLady} 1920w`"
-            sizes="100vw"
-            alt="Eine junge Frau arbeitet am Schreibtisch an einem Laptop. Auf dem Display ist die Anwendung Leto zu sehen."
-            width="100%"
-            :style="{ height: '40vh', objectFit: 'cover', minHeight: '100%' }"
-          />
-        </b-col>
-        <b-col cols="12" md="6">
+        <b-col
+          cols="12"
+          md="6"
+          :order="this.$vuetify.breakpoint.width < 768 ? 2 : 1"
+        >
           <div
             :style="{
               display: 'grid',
@@ -173,15 +161,29 @@
             </div>
           </div>
         </b-col>
-        <b-col cols="12" md="6" class="d-none d-md-block">
-          <img
-            :src="workingLady"
-            :srcset="`${workingLady_1291} 1291w, ${workingLady_1088} 1088w, ${workingLady_659} 659w, ${workingLady_200} 200w, ${workingLady} 1920w`"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            alt="Eine junge Frau arbeitet am Schreibtisch an einem Laptop. Auf dem Display ist die Anwendung Leto zu sehen."
-            width="100%"
-            :style="{ height: '90vh', objectFit: 'cover' }"
-          />
+        <b-col
+          cols="12"
+          md="6"
+          :order="this.$vuetify.breakpoint.width < 768 ? 1 : 2"
+        >
+          <picture>
+            <source
+              :srcset="`${workingLady_avif_1} 960w, ${workingLady_avif_2} 640w, ${workingLady_avif_3} 480w, ${workingLady_avif_4} 384w, ${workingLady_avif} 1920w`"
+            />
+            <source
+              :srcset="`${workingLady_webp_1} 960w, ${workingLady_webp_2} 640w, ${workingLady_webp_3} 480w, ${workingLady_webp_4} 384w, ${workingLady_webp} 1920w`"
+            />
+            <img
+              :src="workingLady_webp"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              alt="Eine junge Frau arbeitet am Schreibtisch an einem Laptop. Auf dem Display ist die Anwendung Leto zu sehen."
+              width="100%"
+              :style="{
+                height: this.$vuetify.breakpoint.width < 768 ? '40vh' : '90vh',
+                objectFit: 'cover',
+              }"
+            />
+          </picture>
         </b-col>
       </b-row>
     </section>
@@ -191,17 +193,30 @@
 <script>
 import bbblurry from "@/assets/backgrounds/bbblurry.svg";
 import LetoText from "@/assets/Leto - Text.svg";
-import floatingMac from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors.webp";
-import floatingMac_200 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@200.webp";
-import floatingMac_562 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@562.webp";
-import floatingMac_789 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@789.webp";
-import floatingMac_924 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@924.webp";
-import floatingMac_1077 from "@/assets/mockups/webp/mockup-of-a-macbook-floating-on-a-surface-with-two-colors_@1077.webp";
-import workingLady from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework.webp";
-import workingLady_1291 from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_@1291.webp";
-import workingLady_1088 from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_@1088.webp";
-import workingLady_659 from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_@659.webp";
-import workingLady_200 from "@/assets/mockups/webp/macbook-mockup-featuring-a-young-student-doing-homework_@200.webp";
+import floatingMac_webp from "@/assets/mockups/webp/mockup-floating-macbook.webp";
+import floatingMac_webp_1 from "@/assets/mockups/webp/mockup-floating-macbook@1.webp";
+import floatingMac_webp_2 from "@/assets/mockups/webp/mockup-floating-macbook@2.webp";
+import floatingMac_webp_3 from "@/assets/mockups/webp/mockup-floating-macbook@3.webp";
+import floatingMac_webp_4 from "@/assets/mockups/webp/mockup-floating-macbook@4.webp";
+import floatingMac_webp_5 from "@/assets/mockups/webp/mockup-floating-macbook@5.webp";
+import floatingMac_avif from "@/assets/mockups/avif/mockup-floating-macbook.avif";
+import floatingMac_avif_1 from "@/assets/mockups/avif/mockup-floating-macbook@1.avif";
+import floatingMac_avif_2 from "@/assets/mockups/avif/mockup-floating-macbook@2.avif";
+import floatingMac_avif_3 from "@/assets/mockups/avif/mockup-floating-macbook@3.avif";
+import floatingMac_avif_4 from "@/assets/mockups/avif/mockup-floating-macbook@4.avif";
+import floatingMac_avif_5 from "@/assets/mockups/avif/mockup-floating-macbook@5.avif";
+import workingLady_webp from "@/assets/mockups/webp/mockup-student-homework.webp";
+import workingLady_webp_1 from "@/assets/mockups/webp/mockup-student-homework@1.webp";
+import workingLady_webp_2 from "@/assets/mockups/webp/mockup-student-homework@2.webp";
+import workingLady_webp_3 from "@/assets/mockups/webp/mockup-student-homework@3.webp";
+import workingLady_webp_4 from "@/assets/mockups/webp/mockup-student-homework@4.webp";
+import workingLady_webp_5 from "@/assets/mockups/webp/mockup-student-homework@5.webp";
+import workingLady_avif from "@/assets/mockups/avif/mockup-student-homework.avif";
+import workingLady_avif_1 from "@/assets/mockups/avif/mockup-student-homework@1.avif";
+import workingLady_avif_2 from "@/assets/mockups/avif/mockup-student-homework@2.avif";
+import workingLady_avif_3 from "@/assets/mockups/avif/mockup-student-homework@3.avif";
+import workingLady_avif_4 from "@/assets/mockups/avif/mockup-student-homework@4.avif";
+import workingLady_avif_5 from "@/assets/mockups/avif/mockup-student-homework@5.avif";
 
 export default {
   name: "HomeView",
@@ -212,18 +227,31 @@ export default {
   data() {
     return {
       bbblurry,
-      floatingMac,
-      floatingMac_200,
-      floatingMac_562,
-      floatingMac_789,
-      floatingMac_924,
-      floatingMac_1077,
       LetoText,
-      workingLady,
-      workingLady_1291,
-      workingLady_1088,
-      workingLady_659,
-      workingLady_200,
+      floatingMac_webp,
+      floatingMac_webp_1,
+      floatingMac_webp_2,
+      floatingMac_webp_3,
+      floatingMac_webp_4,
+      floatingMac_webp_5,
+      floatingMac_avif,
+      floatingMac_avif_1,
+      floatingMac_avif_2,
+      floatingMac_avif_3,
+      floatingMac_avif_4,
+      floatingMac_avif_5,
+      workingLady_webp,
+      workingLady_webp_1,
+      workingLady_webp_2,
+      workingLady_webp_3,
+      workingLady_webp_4,
+      workingLady_webp_5,
+      workingLady_avif,
+      workingLady_avif_1,
+      workingLady_avif_2,
+      workingLady_avif_3,
+      workingLady_avif_4,
+      workingLady_avif_5,
     };
   },
 };
