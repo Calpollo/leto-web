@@ -72,14 +72,15 @@
         <b-col cols="12" md="6">
           <picture>
             <source
-              :srcset="`${floatingMac_avif_1} 720w, ${floatingMac_avif_2} 480w, ${floatingMac_avif_3} 360w, ${floatingMac_avif_4} 288w, ${floatingMac_avif_5} 240w, ${floatingMac_avif} 1440w`"
+              :srcset="`${floatingMac_avif_1} 1200w, ${floatingMac_avif_2} 960w, ${floatingMac_avif_3} 720w, ${floatingMac_avif_4} 480w, ${floatingMac_avif_5} 240w, ${floatingMac_avif} 1440w`"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <source
-              :srcset="`${floatingMac_webp_1} 720w, ${floatingMac_webp_2} 480w, ${floatingMac_webp_3} 360w, ${floatingMac_webp_4} 288w, ${floatingMac_webp_5} 240w, ${floatingMac_webp} 1440w`"
+              :srcset="`${floatingMac_webp_1} 1200w, ${floatingMac_webp_2} 960w, ${floatingMac_webp_3} 720w, ${floatingMac_webp_4} 480w, ${floatingMac_webp_5} 240w, ${floatingMac_webp} 1440w`"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <img
               :src="floatingMac_webp"
-              sizes="(max-width: 768px) 100vw, 50vw"
               alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
               width="100%"
               :style="{
@@ -168,14 +169,15 @@
         >
           <picture>
             <source
-              :srcset="`${workingLady_avif_1} 960w, ${workingLady_avif_2} 640w, ${workingLady_avif_3} 480w, ${workingLady_avif_4} 384w, ${workingLady_avif} 1920w`"
+              :srcset="`${workingLady_avif_1} 1600w, ${workingLady_avif_2} 1280w, ${workingLady_avif_3} 960w, ${workingLady_avif_4} 640w, ${workingLady_avif_5} 320w, ${workingLady_avif} 1920w`"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <source
-              :srcset="`${workingLady_webp_1} 960w, ${workingLady_webp_2} 640w, ${workingLady_webp_3} 480w, ${workingLady_webp_4} 384w, ${workingLady_webp} 1920w`"
+              :srcset="`${workingLady_webp_1} 1600w, ${workingLady_webp_2} 1280w, ${workingLady_webp_3} 960w, ${workingLady_webp_4} 640w, ${workingLady_webp_5} 320w, ${workingLady_webp} 1920w`"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <img
               :src="workingLady_webp"
-              sizes="(max-width: 768px) 100vw, 50vw"
               alt="Eine junge Frau arbeitet am Schreibtisch an einem Laptop. Auf dem Display ist die Anwendung Leto zu sehen."
               width="100%"
               :style="{

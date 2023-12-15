@@ -105,10 +105,12 @@
         <b-col cols="12" md="5">
           <picture>
             <source
-              :srcset="`${appleDevices_avif_1} 200w, ${appleDevices_avif_2} 783w, ${appleDevices_avif_3} 1123w, ${appleDevices_avif} 1920w`"
+              :srcset="`${appleDevices_avif_1} 1600w, ${appleDevices_avif_2} 1280w, ${appleDevices_avif_3} 960w, ${appleDevices_avif_4} 640w, ${appleDevices_avif_5} 320w, ${appleDevices_avif} 1920w`"
+              sizes="(max-width: 768px) 100vw, 41.67vw"
             />
             <source
-              :srcset="`${appleDevices_webp_1} 200w, ${appleDevices_webp_2} 783w, ${appleDevices_webp_3} 1123w, ${appleDevices_webp} 1920w`"
+              :srcset="`${appleDevices_webp_1} 1600w, ${appleDevices_webp_2} 1280w, ${appleDevices_webp_3} 960w, ${appleDevices_webp_4} 640w, ${appleDevices_webp_5} 320w, ${appleDevices_webp} 1920w`"
+              sizes="(max-width: 768px) 100vw, 41.67vw"
             />
             <img
               :src="appleDevices_webp"
@@ -175,10 +177,14 @@ import appleDevices_webp from "@/assets/mockups/webp/mockup-iphone.webp";
 import appleDevices_webp_1 from "@/assets/mockups/webp/mockup-iphone@1.webp";
 import appleDevices_webp_2 from "@/assets/mockups/webp/mockup-iphone@2.webp";
 import appleDevices_webp_3 from "@/assets/mockups/webp/mockup-iphone@3.webp";
+import appleDevices_webp_4 from "@/assets/mockups/webp/mockup-iphone@4.webp";
+import appleDevices_webp_5 from "@/assets/mockups/webp/mockup-iphone@5.webp";
 import appleDevices_avif from "@/assets/mockups/avif/mockup-iphone.avif";
 import appleDevices_avif_1 from "@/assets/mockups/avif/mockup-iphone@1.avif";
 import appleDevices_avif_2 from "@/assets/mockups/avif/mockup-iphone@2.avif";
 import appleDevices_avif_3 from "@/assets/mockups/avif/mockup-iphone@3.avif";
+import appleDevices_avif_4 from "@/assets/mockups/avif/mockup-iphone@4.avif";
+import appleDevices_avif_5 from "@/assets/mockups/avif/mockup-iphone@5.avif";
 
 export default {
   name: "PreiseView",
@@ -192,10 +198,14 @@ export default {
       appleDevices_webp_1,
       appleDevices_webp_2,
       appleDevices_webp_3,
+      appleDevices_webp_4,
+      appleDevices_webp_5,
       appleDevices_avif,
       appleDevices_avif_1,
       appleDevices_avif_2,
       appleDevices_avif_3,
+      appleDevices_avif_4,
+      appleDevices_avif_5,
       funktionenItems: [
         {
           " ": "Benutzer",

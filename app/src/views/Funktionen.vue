@@ -100,14 +100,15 @@
         <b-col cols="12" md="6">
           <picture>
             <source
-              :srcset="`${paarArbeit_avif_1} 960w, ${paarArbeit_avif_2} 640w, ${paarArbeit_avif_3} 480w, ${paarArbeit_avif_4} 384w, ${paarArbeit_avif_5} 320w, ${paarArbeit_avif} 1920w`"
+              :srcset="`${paarArbeit_avif_1} 1600w, ${paarArbeit_avif_2} 1280w, ${paarArbeit_avif_3} 960w, ${paarArbeit_avif_4} 640w, ${paarArbeit_avif_5} 320w, ${paarArbeit_avif} 1920w`"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <source
-              :srcset="`${paarArbeit_webp_1} 960w, ${paarArbeit_webp_2} 640w, ${paarArbeit_webp_3} 480w, ${paarArbeit_webp_4} 384w, ${paarArbeit_webp_5} 320w, ${paarArbeit_webp} 1920w`"
+              :srcset="`${paarArbeit_webp_1} 1600w, ${paarArbeit_webp_2} 1280w, ${paarArbeit_webp_3} 960w, ${paarArbeit_webp_4} 640w, ${paarArbeit_webp_5} 320w, ${paarArbeit_webp} 1920w`"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <img
               :src="paarArbeit_webp"
-              sizes="(max-width: 768px) 100vw, 50vw"
               alt="Kollegen, die an einem Macbook an Leto arbeiten und darüber reden."
               width="100%"
               :style="{
@@ -200,14 +201,15 @@
         >
           <picture>
             <source
-              :srcset="`${verwaltungLaptop_avif_1} 960w,${verwaltungLaptop_avif_2} 640w,${verwaltungLaptop_avif_3} 480w, ${verwaltungLaptop_avif_4} 384w, ${verwaltungLaptop_avif_5} 320w, ${verwaltungLaptop_avif} 1920w`"
+              :srcset="`${verwaltungLaptop_avif_1} 1600w,${verwaltungLaptop_avif_2} 1280w,${verwaltungLaptop_avif_3} 960w, ${verwaltungLaptop_avif_4} 640w, ${verwaltungLaptop_avif_5} 320w, ${verwaltungLaptop_avif} 1920w`"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <source
-              :srcset="`${verwaltungLaptop_webp_1} 960w,${verwaltungLaptop_webp_2} 640w,${verwaltungLaptop_webp_3} 480w, ${verwaltungLaptop_webp_4} 384w, ${verwaltungLaptop_webp_4} 320w, ${verwaltungLaptop_webp} 1920w`"
+              :srcset="`${verwaltungLaptop_webp_1} 1600w,${verwaltungLaptop_webp_2} 1280w,${verwaltungLaptop_webp_3} 960w, ${verwaltungLaptop_webp_4} 640w, ${verwaltungLaptop_webp_5} 320w, ${verwaltungLaptop_webp} 1920w`"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <img
               :src="verwaltungLaptop_webp"
-              sizes="(max-width: 768px) 100vw, 50vw"
               alt="Eine Frau hält einen Laptop in beiden Hängen vor einer farbigen Wand. Auf dem Display ist die Anwendung Leto zu sehen."
               width="100%"
               :style="{
@@ -227,14 +229,15 @@
         <b-col cols="12" md="6">
           <picture>
             <source
-              :srcset="`${floatingMac_avif_1} 720w, ${floatingMac_avif_2} 480w, ${floatingMac_avif_3} 360w, ${floatingMac_avif_4} 288w, ${floatingMac_avif_5} 240w, ${floatingMac_avif} 1440w`"
+              :srcset="`${floatingMac_avif_1} 1200w, ${floatingMac_avif_2} 960w, ${floatingMac_avif_3} 720w, ${floatingMac_avif_4} 480w, ${floatingMac_avif_5} 240w, ${floatingMac_avif} 1440w`"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <source
-              :srcset="`${floatingMac_webp_1} 720w, ${floatingMac_webp_2} 480w, ${floatingMac_webp_3} 360w, ${floatingMac_webp_4} 288w, ${floatingMac_webp_5} 240w, ${floatingMac_webp} 1440w`"
+              :srcset="`${floatingMac_webp_1} 1200w, ${floatingMac_webp_2} 960w, ${floatingMac_webp_3} 720w, ${floatingMac_webp_4} 480w, ${floatingMac_webp_5} 240w, ${floatingMac_webp} 1440w`"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <img
               :src="floatingMac_webp"
-              sizes="(max-width: 768px) 100vw, 50vw"
               alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
               width="100%"
               :style="{
