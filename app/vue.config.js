@@ -37,6 +37,15 @@ module.exports = defineConfig({
     if (process.env.NODE_ENV === "production") {
       config.plugins.push(...productionPlugins);
     }
+    config.optimization = {
+      runtimeChunk: 'single',
+      splitChunks: {
+        chunks: 'all',
+        maxInitialRequests: Infinity,
+        // minSize: 120000,
+        maxSize: 500_000,
+      }
+    }
   },
   pluginOptions: {
     sitemap: {
