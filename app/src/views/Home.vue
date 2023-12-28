@@ -20,47 +20,30 @@
             :style="{ width: '100%' }"
             width="475"
             height="220"
-            data-aos="fade-up"
           />
         </h1>
-        <p class="mt-2" data-aos="fade-up">
+        <p class="mt-2">
           <b>Dein Terminplaner</b>
         </p>
       </div>
       <div :style="{ width: '50%', maxWidth: '500px', minWidth: '250px' }">
         <b-row id="tags">
-          <b-col
-            data-aos="fade-up"
-            data-aos-delay="200"
-            data-aos-anchor-placement="bottom"
-          >
+          <b-col>
             <b>Schnell</b>
           </b-col>
-          <b-col
-            data-aos="fade-up"
-            data-aos-delay="500"
-            data-aos-anchor-placement="bottom"
-          >
+          <b-col>
             <b>Sicher</b>
           </b-col>
-          <b-col
-            data-aos="fade-up"
-            data-aos-delay="800"
-            data-aos-anchor-placement="bottom"
-          >
+          <b-col>
             <b>Kostenlos</b>
           </b-col>
         </b-row>
-        <div
-          data-aos="fade-up"
-          data-aos-delay="1100"
-          data-aos-anchor-placement="bottom"
-        >
+        <div>
           <b-button
             variant="transparent"
             pill
             class="mt-4"
-            @click="$refs.sectionB.scrollIntoView()"
+            @click="$refs.sectionB.scrollIntoView(false)"
           >
             <b-icon-arrow-down variant="primary" />
           </b-button>

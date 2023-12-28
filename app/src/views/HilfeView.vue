@@ -27,7 +27,7 @@
           </b-button>
           <b-button
             variant="primary"
-            @click="$refs.probleme.scrollIntoView()"
+            @click="$refs.probleme.scrollIntoView(false)"
             class="mx-4 my-2"
           >
             <b-icon-arrow-down />
