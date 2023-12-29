@@ -116,6 +116,7 @@
               :src="appleDevices_webp"
               alt="Ein iPhone, eine Apple Watch, Apple Airpods und eine weiße Tastatur liegen auf violettem Grund. Auf dem Display des iPhones ist das Leto-Logo zu sehen."
               width="100%"
+              loading="lazy"
               :style="{
                 height: this.$vuetify.breakpoint.width < 768 ? '40vh' : '90vh',
                 objectFit: 'cover',

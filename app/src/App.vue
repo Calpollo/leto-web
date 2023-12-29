@@ -8,6 +8,7 @@
           width="100"
           height="46"
           alt="Leto"
+          loading="lazy"
         />
       </b-navbar-brand>
 
@@ -118,6 +119,7 @@
             width="200"
             height="92"
             alt="Leto"
+            loading="lazy"
           />
           <hr />
           <p><b>Projekt Leto</b></p>

@@ -111,6 +111,7 @@
               :src="paarArbeit_webp"
               alt="Kollegen, die an einem Macbook an Leto arbeiten und darüber reden."
               width="100%"
+              loading="lazy"
               :style="{
                 height: this.$vuetify.breakpoint.width < 768 ? '40vh' : '90vh',
                 minHeight: '100%',
@@ -212,6 +213,7 @@
               :src="verwaltungLaptop_webp"
               alt="Eine Frau hält einen Laptop in beiden Hängen vor einer farbigen Wand. Auf dem Display ist die Anwendung Leto zu sehen."
               width="100%"
+              loading="lazy"
               :style="{
                 height: this.$vuetify.breakpoint.width < 768 ? '40vh' : '90vh',
                 objectFit: 'cover',
@@ -240,6 +242,7 @@
               :src="floatingMac_webp"
               alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
               width="100%"
+              loading="lazy"
               :style="{
                 height: this.$vuetify.breakpoint.width < 768 ? '40vh' : '90vh',
                 minHeight: '100%',

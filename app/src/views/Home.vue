@@ -20,6 +20,7 @@
             :style="{ width: '100%' }"
             width="475"
             height="220"
+            loading="lazy"
           />
         </h1>
         <p class="mt-2">
@@ -66,6 +67,7 @@
               :src="floatingMac_webp"
               alt="Ein Macbook schwebt über einem weißen Tisch vor einer violetten Wand. Auf dem Display ist die Anwendung Leto zu sehen."
               width="100%"
+              loading="lazy"
               :style="{
                 height: this.$vuetify.breakpoint.width < 768 ? '40vh' : '90vh',
                 objectFit: 'cover',
@@ -163,6 +165,7 @@
               :src="workingLady_webp"
               alt="Eine junge Frau arbeitet am Schreibtisch an einem Laptop. Auf dem Display ist die Anwendung Leto zu sehen."
               width="100%"
+              loading="lazy"
               :style="{
                 height: this.$vuetify.breakpoint.width < 768 ? '40vh' : '90vh',
                 objectFit: 'cover',
