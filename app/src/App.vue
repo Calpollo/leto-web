@@ -8,7 +8,6 @@
           width="100"
           height="46"
           alt="Leto"
-          loading="lazy"
         />
       </b-navbar-brand>
 

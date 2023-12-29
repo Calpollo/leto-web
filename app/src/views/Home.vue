@@ -20,7 +20,6 @@
             :style="{ width: '100%' }"
             width="475"
             height="220"
-            loading="lazy"
           />
         </h1>
         <p class="mt-2">
