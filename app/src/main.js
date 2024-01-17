@@ -15,7 +15,7 @@ Vue.use(VueMeta, {
 })
 
 if (!window.__PRERENDER_INJECTED) Vue.use(VueMatomo, {
-  host: 'https://matomo.andreasnicklaus.de/',
+  host: 'https://matomo.andreasnicklaus.de',
   siteId: 2,
   router,
 });
