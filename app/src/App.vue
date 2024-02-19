@@ -57,6 +57,7 @@
           </b-nav-item>
           <b-nav-item v-if="!this.$store.state.loggedIn">
             <b-button
+              class="pulse-button"
               :to="{ name: 'Login' }"
               variant="outline-primary"
               v-b-toggle.nav-collapse
@@ -236,6 +237,58 @@ footer {
   & h1 {
     @extend h4;
     color: $primary;
+  }
+}
+
+.pulse-button {
+  box-shadow: 0 0 0 0 $primary;
+  -webkit-animation: pulsing 4s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulsing 4s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulsing 4s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulsing 4s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+.pulse-button:hover {
+  -webkit-animation: none;
+  -moz-animation: none;
+  -ms-animation: none;
+  animation: none;
+  color: #ffffff;
+}
+
+@-webkit-keyframes pulsing {
+  50% {
+    box-shadow: 0 0 0 20px #6927d300;
+  }
+  100% {
+    box-shadow: 0 0 0 20px #6927d300;
+  }
+}
+
+@-moz-keyframes pulsing {
+  50% {
+    box-shadow: 0 0 0 20px #6927d300;
+  }
+  100% {
+    box-shadow: 0 0 0 20px #6927d300;
+  }
+}
+
+@-ms-keyframes pulsing {
+  50% {
+    box-shadow: 0 0 0 20px #6927d300;
+  }
+  100% {
+    box-shadow: 0 0 0 20px #6927d300;
+  }
+}
+
+@keyframes pulsing {
+  50% {
+    box-shadow: 0 0 0 20px #6927d300;
+  }
+  100% {
+    box-shadow: 0 0 0 20px #6927d300;
   }
 }
 </style>

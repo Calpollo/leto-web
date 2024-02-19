@@ -9,8 +9,13 @@
       role="region"
       aria-label="Downloadbereich"
     >
-      <div class="d-none d-lg-flex">
-        <!-- spacer -->
+      <div class="d-flex flex-row-reverse pr-3 pt-2" :style="{width: '100%'}">
+        <div>
+          <p class="h1" :style="{textAlign: 'right', marginRight: this.$vuetify.breakpoint.width < 768 ? '10px' : $store.state.loggedIn? '140px' : '100px'}">
+            <b-icon-arrow-up animation="cylon-vertical"/>
+          </p>
+          <p :style="{fontSize: '.9rem'}">Jetzt die <b>Web-Version</b> ausprobieren!</p>
+        </div>
       </div>
       <div :style="{ padding: '30px' }">
         <h1 data-aos="fade-up">Download</h1>
@@ -99,8 +104,11 @@ section {
   min-height: 90vh;
 
   &#landingsection {
-    display: grid;
-    place-items: center;
+    display: flex;
+    // place-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 10vh;
     min-height: 90vh;
 
     & h1 {
