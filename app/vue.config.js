@@ -51,6 +51,11 @@ module.exports = defineConfig({
     sitemap: {
       baseURL: 'https://leto.andreasnicklaus.de',
       routes,
+      trailingSlash: true,
+      pretty: true,
+      defaults: {
+        lastmod: new Date().toISOString().split('T')[0],
+      },
     }
   }
 })
