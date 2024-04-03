@@ -42,7 +42,7 @@ jobs:
             .
           echo ::endgroup::
         env:
-          INPUT_PATH: ./app/dist
+          INPUT_PATH: dist
 
       - name: Upload Built files
         uses: actions/upload-artifact@v4
