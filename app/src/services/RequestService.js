@@ -4,7 +4,7 @@ import UserService from "./UserService";
 const ax = axios.create({
     baseURL:
         process.env.NODE_ENV == "production"
-            ? "/api/"
+            ? "https://api.leto.andreasnicklaus.de/api/"
             : "http://localhost:8080/api/",
     // "https://leto.andreasnicklaus.de/api/"
 });

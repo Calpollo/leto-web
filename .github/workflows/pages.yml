@@ -29,6 +29,9 @@ jobs:
       - name: Build app
         run: npm run build
 
+      - name: Create CNAME file
+        run: echo leto.andreasnicklaus.de > dist/CNAME
+
       - name: Archive artifact
         shell: sh
         run: |
