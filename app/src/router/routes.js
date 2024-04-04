@@ -42,6 +42,12 @@ module.exports = [
     meta: { prerender: true }
   },
   {
+    path: "/status",
+    name: 'Status',
+    component: () => import("@/views/StatusView.vue"),
+    meta: { prerender: true }
+  },
+  {
     path: "/einloggen",
     name: 'Login',
     component: () => import("@/views/Login.vue"),

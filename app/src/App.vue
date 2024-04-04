@@ -24,9 +24,9 @@
             Funktionen
           </b-nav-item>
           <b-nav-item :to="{ name: 'Preise' }" class="my-1">Preise</b-nav-item>
-          <b-nav-item :to="{ name: 'Download' }" class="my-1"
-            >Download</b-nav-item
-          >
+          <b-nav-item :to="{ name: 'Download' }" class="my-1">
+            Download
+          </b-nav-item>
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto">
@@ -97,6 +97,7 @@
               Kundeninformationen
             </b-nav-item>
             <b-nav-item :to="{ name: 'Download' }">Download</b-nav-item>
+            <b-nav-item :to="{ name: 'Status' }">Service Status</b-nav-item>
           </b-nav>
         </b-col>
         <b-col cols="11" md="auto">
@@ -135,7 +136,17 @@
           </p>
         </b-col>
       </b-row>
-      <div class="bottom-bar">Leto @ 2023</div>
+      <div class="bottom-bar">
+        Leto @ 2023
+        <iframe
+          src="https://leto.betteruptime.com/badge?theme=dark"
+          width="250"
+          height="30"
+          frameborder="0"
+          scrolling="no"
+          class="ml-2"
+        ></iframe>
+      </div>
     </footer>
   </div>
 </template>
@@ -210,6 +221,9 @@ div .bottom-bar {
   background-color: $primary;
   color: white;
   padding: 8pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar {
