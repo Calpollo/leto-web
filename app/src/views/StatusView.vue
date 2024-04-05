@@ -1,5 +1,5 @@
 <template>
-  <div id="StatusView" data-view>
+  <div id="StatusView" data-view class="py-2">
     <iframe
       src="https://leto.betteruptime.com"
       width="100%"

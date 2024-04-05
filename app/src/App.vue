@@ -136,11 +136,11 @@
           </p>
         </b-col>
       </b-row>
-      <div class="bottom-bar">
-        Leto @ 2023
+      <div class="bottom-bar flex-column flex-md-row">
+        <span>Leto @ 2024</span>
         <iframe
           src="https://leto.betteruptime.com/badge?theme=dark"
-          width="250"
+          width="200"
           height="30"
           frameborder="0"
           scrolling="no"
