@@ -14,7 +14,7 @@
       id="register-card"
       :style="{ display: 'grid', placeItems: 'center' }"
     >
-      <b-card title="Konto erstellen">
+      <b-card title="Konto erstellen" title-tag="h1">
         <b-form @submit="register">
           <b-form-group label="E-Mail-Adresse" label-for="email-input">
             <b-form-input

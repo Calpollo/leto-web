@@ -84,12 +84,12 @@
       </b-collapse>
     </b-navbar>
 
-    <router-view class="view" />
+    <router-view class="view" role="main" />
 
     <footer class="pt-4">
       <b-row align-h="around" class="p-2">
         <b-col cols="11" md="auto">
-          <h1>Über Leto</h1>
+          <h2>Über Leto</h2>
           <b-nav vertical>
             <b-nav-item :to="{ name: 'Funktionen' }">Funktionen</b-nav-item>
             <b-nav-item :to="{ name: 'Preise' }">Preise</b-nav-item>
@@ -101,7 +101,7 @@
           </b-nav>
         </b-col>
         <b-col cols="11" md="auto">
-          <h1>Nutzerbereich</h1>
+          <h2>Nutzerbereich</h2>
           <b-nav vertical>
             <b-nav-item :to="{ name: 'Kontakt' }">Kontakt</b-nav-item>
             <b-nav-item href="https://app.leto.andreasnicklaus.de">
@@ -139,6 +139,7 @@
       <div class="bottom-bar flex-column flex-md-row">
         <span>Leto @ 2024</span>
         <iframe
+          title="Status-Badge der Leto-Services"
           src="https://leto.betteruptime.com/badge?theme=dark"
           width="200"
           height="30"
@@ -166,13 +167,14 @@ export default {
       {
         name: "description",
         content:
-          "Dein Terminplaner für Physiotherapiepraxen. Schnell. Sicher. Kostenlos.",
+          "Dein Terminplaner für Physiotherapiepraxen. Schnell. Sicher. Kostenlos. Registriere dich jetzt und lege gleich los!",
       },
       {
         name: "author",
         content: "Leto",
       },
     ],
+    link: [{ rel: "canonical", href: window.location.href }],
   },
   mounted() {
     if (!window.__PRERENDER_INJECTED) this.$store.dispatch("updateMe");
