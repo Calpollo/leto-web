@@ -174,7 +174,12 @@ export default {
         content: "Leto",
       },
     ],
-    link: [{ rel: "canonical", href: window.location.href }],
+    link: [
+      {
+        rel: "canonical",
+        href: "https://leto.andreasnicklaus.de" + window.location.pathname,
+      },
+    ],
   },
   mounted() {
     if (!window.__PRERENDER_INJECTED) this.$store.dispatch("updateMe");

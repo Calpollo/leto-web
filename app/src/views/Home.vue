@@ -208,7 +208,7 @@ import workingLady_avif_5 from "@/assets/mockups/avif/mockup-student-homework@5.
 export default {
   name: "HomeView",
   metaInfo: {
-    title: "Leto",
+    title: "Leto - Terminplaner für Physiotherapie",
     titleTemplate: null,
   },
   data() {
