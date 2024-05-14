@@ -21,7 +21,7 @@ const productionPlugins = [
           /<link rel="stylesheet" (.*?)>/g,
           `<link rel="preload" $1 as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" $1></noscript>`
         )
-        .replace(/<script (.*?)>/g, '<script $1 defer>')
+        .replace(/<script (((?!defer).)*?)>/g, '<script $1 defer>')
         .replace('id="app"', 'id="app" data-server-rendered="true"');
 
       return renderedRoute;
