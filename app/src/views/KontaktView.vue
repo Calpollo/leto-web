@@ -37,6 +37,22 @@
         </div>
       </div>
     </section>
+    <section>
+      <b-card
+        title="Warum kann ich nicht anrufen?"
+        title-tag="h2"
+        class="mx-4 text-left"
+      >
+        <b-card-text>
+          Wir geben unsere Durchwahl <b>nur an Kontoinhaber</b> raus, um
+          sicherzustellen, dass unseren Leitungen frei sind, falls bei unseren
+          Nutzern Probleme anstehen.
+        </b-card-text>
+        <b-card-text>
+          Wir bitten um Entschuldigung für die Unannehmlichkeiten!
+        </b-card-text>
+      </b-card>
+    </section>
   </div>
 </template>
 
@@ -66,13 +82,17 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/colors.scss";
 
+b {
+  color: $primary;
+}
+
 section {
   min-height: 90vh;
 
-  &#landingsection {
-    display: grid;
-    place-items: center;
+  display: grid;
+  place-items: center;
 
+  &#landingsection {
     & h1 {
       color: $primary;
       font-size: 5em;

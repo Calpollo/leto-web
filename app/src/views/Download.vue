@@ -76,6 +76,55 @@
         </b-col>
       </b-row>
     </section>
+    <section role="region" id="anleitungen">
+      <b-list-group style="text-align: left">
+        <b-list-group-item class="flex-column align-items-start">
+          <h5 class="mb-1">Welche Version soll ich installieren?</h5>
+
+          <p class="mb-1">
+            Unabhängig von deinem Gerät und Betriebssystem kannst du über die
+            obige Downloadliste eine Version aussuchen und das zu deinem Gerät
+            passenden Programm herunterladen.
+          </p>
+
+          <p class="mb-1">
+            Hinweis: Wenn du alte Versionen downloadest, kann es zu funktionalen
+            Problemen kommen. Wir empfehlen deshalb, nur die neueste Version zu
+            nutzen.
+          </p>
+        </b-list-group-item>
+        <b-list-group-item class="flex-column align-items-start">
+          <h5 class="mb-1">Installationsanleitung</h5>
+
+          <ol style="margin-left: 16px">
+            <li>
+              Suche eine Version aus der obigen Downloadliste aus. (Empfehlung:
+              Wähle die neueste Version)
+            </li>
+            <li>
+              Lade von der Downloadseite die zu deinem Betriebssystem passende
+              Anwendung runter.
+            </li>
+            <li>Führe die runtergeladene Anwendung auf deinem Gerät aus.</li>
+            <li>Leto ist jetzt auf deinem Gerät installiert. Viel Spaß!</li>
+          </ol>
+        </b-list-group-item>
+        <b-list-group-item class="flex-column align-items-start">
+          <h5 class="mb-1">Ich habe noch Fragen</h5>
+
+          <p>Unsere Hilfeseite beantwortet viele häufig gestellte Fragen:</p>
+          <b-button :to="{ name: 'Hilfe' }" variant="primary">
+            Zur Hilfeseite
+          </b-button>
+          <p>
+            Über unsere Kontaktseite kannst du uns deine Fragen direkt stellen:
+          </p>
+          <b-button :to="{ name: 'Kontakt' }" variant="primary">
+            Zur Kontaktseite
+          </b-button>
+        </b-list-group-item>
+      </b-list-group>
+    </section>
   </div>
 </template>
 
@@ -140,6 +189,17 @@ section {
     & p {
       color: $primary;
     }
+  }
+}
+
+#anleitungen {
+  display: grid;
+  place-items: center;
+
+  padding: 32px 64px;
+
+  & p {
+    margin: 16px 0 8px;
   }
 }
 </style>

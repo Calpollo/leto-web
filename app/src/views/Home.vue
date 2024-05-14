@@ -22,8 +22,11 @@
             height="220"
           />
         </h1>
-        <p class="mt-2">
-          <b>Dein Terminplaner</b>
+        <p id="tag-text" class="mt-2">
+          Leto ist dein <b>Terminplaner für Physiotherapiepraxen</b>,
+          ausgerichtet auf Konformität mit allen Gesetzen und Regeln in
+          Deutschland und für deutsche Krankenkassen. In Deutschland entwickelt,
+          für deine Praxis <b>anpassbar und voll digital</b>.
         </p>
       </div>
       <div :style="{ width: '50%', maxWidth: '500px', minWidth: '250px' }">
@@ -86,15 +89,42 @@
           >
             <div data-aos="fade-left" class="feature">
               <b-icon-calendar2-week scale="3" class="mr-5" />
-              Termine automatisch planen
+              <div>
+                <p>
+                  <b> Termine automatisch planen</b>
+                </p>
+                <p>
+                  Nie wieder nach freien Terminen suchen. Leto schlägt
+                  automatisch freie Termine zur Auswahl vor. Natürlich kannst du
+                  es auch händisch weitermachen.
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-journal-medical scale="3" class="mr-5" />
-              Rechnungen verschicken
+
+              <div>
+                <p>
+                  <b>Rechnungen verschicken</b>
+                </p>
+                <p>
+                  Du kannst direkt im Programm deine Patienten kontaktieren,
+                  Terminerinnerungen und Rechnungen verschicken.
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-bar-chart scale="3" class="mr-5" />
-              Statistiken ansehen
+              <div>
+                <p>
+                  <b>Statistiken ansehen</b>
+                </p>
+                <p>
+                  Wir bereiten dir Statistiken vor, damit du weißt, woher deine
+                  Patienten kommen, mit welcher Versicherung du dich gut stellen
+                  solltest und welche Behandlungen du am meisten durchführst.
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" data-aos-anchor-placement="bottom">
               <b-button
@@ -127,16 +157,44 @@
           >
             <div data-aos="fade-left" class="feature">
               <b-icon-clock-history scale="3" class="mr-5" />
-              über 97% verfügbar
+              <div>
+                <p>
+                  <b>über 97% verfügbar</b>
+                </p>
+                <p>
+                  Unser Service ist rund um die Uhr von allen internetfähigen
+                  Geräten verfügbar. Checke gerne den
+                  <router-link :to="{ name: 'Status' }">
+                    aktuellen Status der Services
+                  </router-link>
+                  .
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-telephone scale="3" class="mr-5" />
               <b-icon-envelope scale="3" class="mr-5" />
-              Persönlicher Support
+              <div>
+                <p>
+                  <b>Persönlicher Support</b>
+                </p>
+                <p>
+                  Du kannst du uns jederzeit per Mail kontaktieren. Für
+                  Kontoinhaber sind wir auch telefonisch erreichbar.
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-person-badge scale="3" class="mr-5" />
-              Individuell anpassbar
+              <div>
+                <p>
+                  <b>Individuell anpassbar</b>
+                </p>
+                <p>
+                  Deine Preise, Kontaktdaten, Behandlungsarten und -zeiten etc.
+                  kannst du ganz individuell einstellen.
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" data-aos-anchor-placement="bottom">
               <b-button :to="{ name: 'Preise' }" variant="primary" size="md">
@@ -263,10 +321,28 @@ section {
   }
 }
 
+#tag-text {
+  color: $primary;
+  margin: 0 64px;
+  max-width: 500px;
+}
+
 .feature {
   color: $primary;
   font-weight: 500;
   // font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  max-width: 80%;
+
+  & p {
+    margin: 0;
+    text-align: left;
+
+    & a {
+      text-decoration: underline;
+    }
+  }
 }
 
 b {

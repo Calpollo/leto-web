@@ -127,35 +127,62 @@
             <h2>Termine</h2>
             <div data-aos="fade-left" class="feature">
               <b-icon-folder-plus scale="3" class="mr-4" />
-              <p>Neue Rezepte anlegen</p>
+              <div>
+                <p>
+                  <b>Neue Rezepte anlegen</b>
+                </p>
+                <p>
+                  Lege innerhalb von Sekunden neue Rezepte im System an! Alle
+                  unnötigen Informationen werden ausgelassen.
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-folder-symlink scale="3" class="mr-4" />
-              <p>Folgerezepte über Kopien oder Verlängerungen</p>
+              <div>
+                <p>
+                  <b>Folgerezepte</b>
+                </p>
+                <p>
+                  Erstelle Folgerezepte als Kopie oder Verlängerung von
+                  bestehenden Rezepten.
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-cloud-plus scale="3" class="mr-4" />
-              <p>
-                Ärzte, Krankenkasse, Heilmittel etc. werden automatisch geladen
-              </p>
+              <div>
+                <p>
+                  <b>Ärzte, Krankenkassen, Heilmittel</b>
+                </p>
+                <p>
+                  Alle bekannten externen Ressourcen werden automatisch geladen.
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-person-x scale="3" class="mr-4" />
-              <p>
-                Der Button "Patient nicht erschienen" bietet Optionen zur
-                Absage, Verlegung oder Ausfallberechnung des Termins
-              </p>
+              <div>
+                <p>
+                  <b>Patient nicht erschienen?</b>
+                </p>
+                <p>
+                  Mit nur einem Klick wählst du Optionen zur Absage, Verlegung
+                  oder Ausfallberechnung
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-printer scale="3" class="mr-4" />
-              <p>
-                Automatische PDF-Generation für Rechnungen, Terminübersichten
-                und Abrechnungen
-              </p>
-            </div>
-            <div data-aos="fade-left" class="feature">
-              <b-icon-envelope scale="3" class="mr-4" />
-              <p>Automatische E-Mail-Versand von Dokumenten</p>
+              <div>
+                <p>
+                  <b>PDF-Generierung</b>
+                </p>
+                <p>
+                  Per Mausklick erstellst du individuelle Rechnungen,
+                  Terminübersichten und Abrechnungen
+                </p>
+              </div>
             </div>
           </div>
         </b-col>
@@ -172,26 +199,53 @@
             <h2>Verwaltung</h2>
             <div data-aos="fade-left" class="feature">
               <b-icon-exclamation-circle scale="3" class="mr-4" />
-              <p>Fehlermeldungen und Warnungen</p>
+              <div>
+                <p>
+                  <b>Fehlermeldungen und Warnungen</b>
+                </p>
+                <p>
+                  Erhalte kurz und knapp ein Übersicht, welche Ungereimtheiten
+                  sich in deiner Planung auftun, selbst für ungeschulte
+                  Mitarbeiter!
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-pie-chart scale="3" class="mr-4" />
-              <p>Statistiken für deine Patienten und Rezepte</p>
+              <div>
+                <p>
+                  <b>Rezept- und Patientenstatistiken</b>
+                </p>
+                <p>
+                  Erhalte eine Auswertung über deine Zahlen: Von welchem Arzt
+                  kommen Patienten, wo sind sie versichert und welche Behandlung
+                  bekommen sie?
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-card-checklist scale="3" class="mr-4" />
-              <p>Patientenauflistungen</p>
-            </div>
-            <div data-aos="fade-left" class="feature">
-              <b-icon-view-list scale="3" class="mr-4" />
-              <p>Rezeptauflistungen</p>
+              <div>
+                <p>
+                  <b>Deine Patienten & Rezepte</b>
+                </p>
+                <p>
+                  Durchsuche deine Patientenakten in sekundenschnelle und finde
+                  die gesuchte Info sofort!
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-file-earmark-pdf scale="3" class="mr-4" />
-              <p>
-                PDF-Generation für Rechnungen, Terminübersichten und
-                Abrechnungen
-              </p>
+              <div>
+                <p>
+                  <b>Dokumente</b>
+                </p>
+                <p>
+                  Erstelle Rechnungen, Terminübersichten und Abrechnung mit nur
+                  einem Klick!
+                </p>
+              </div>
             </div>
           </div>
         </b-col>
@@ -258,23 +312,51 @@
             <h2>Abrechnung</h2>
             <div data-aos="fade-left" class="feature">
               <b-icon-ui-checks scale="3" class="mr-4" />
-              <p>Auswahl der abzurechnenden Rezepte & Patienten</p>
+              <div>
+                <p>
+                  <b>Abrechnungen für mehrere Patienten & Rezepte</b>
+                </p>
+                <p>
+                  Erstelle mehrere Dokumente gleichzeitig und wähle bloß die
+                  Rezepte aus, die du jetzt abrechnen möchtest.
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-file-pdf scale="3" class="mr-4" />
-              <p>Generierung von PDF-Dokumenten</p>
+              <div>
+                <p>
+                  <b>PDF-Generierung</b>
+                </p>
+                <p>
+                  Erhalte alle deine Dokumente in digitaler Form als PDF zum
+                  Abspeichern, Versenden oder Ausdrucken
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-envelope scale="3" class="mr-4" />
-              <p>E-Mailversand von Rechnungen und Terminübersichten</p>
+              <div>
+                <p>
+                  <b>E-Mailversand</b>
+                </p>
+                <p>
+                  Verschicke alle deine Rechnungen und Terminübersichten als
+                  E-Mail direkt in der App
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-card-checklist scale="3" class="mr-4" />
-              <p>Patientenauflistungen</p>
-            </div>
-            <div data-aos="fade-left" class="feature">
-              <b-icon-view-list scale="3" class="mr-4" />
-              <p>Rezeptauflistungen</p>
+              <div>
+                <p>
+                  <b>Patienten- & Rezeptlisten</b>
+                </p>
+                <p>
+                  Rechne gleich mehrere Patienten komplett mit all ihren
+                  Rezepten ab
+                </p>
+              </div>
             </div>
           </div>
         </b-col>
@@ -412,8 +494,16 @@ section {
     display: inline-block;
   }
 
-  & > p {
-    display: inline;
+  align-items: center;
+  max-width: 80%;
+
+  & p {
+    margin: 0;
+    text-align: left;
+
+    & a {
+      text-decoration: underline;
+    }
   }
 }
 

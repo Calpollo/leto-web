@@ -131,22 +131,51 @@
           >
             <div data-aos="fade-left" class="feature">
               <b-icon-currency-euro scale="3" class="mr-4" />
-              <p>1. Monat kostenlos</p>
+              <div>
+                <p>
+                  <b>1. Monat kostenlos</b>
+                </p>
+                <p>
+                  Erhalte beim Abschluss einer bezahlten Variante von Leto den
+                  ersten Monat geschenkt!
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-arrow-repeat scale="3" class="mr-4" />
-              <p>Jährlich oder monatlich zahlen</p>
+              <div>
+                <p>
+                  <b>Jährlich oder monatlich Zahlen</b>
+                </p>
+                <p>
+                  Bei uns entscheidest du, ob du von uns jährlich oder monatlich
+                  eine Rechnung erhalten möchtest.
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-cart-check scale="3" class="mr-4" />
-              <p>
-                Zahlung über alle gängige Zahlungsmethoden (Paypal, SEPA, Google
-                Pay, uvm.)
-              </p>
+              <div>
+                <p>
+                  <b>Zahlungsmethoden</b>
+                </p>
+                <p>
+                  Zahlung über alle gängige Zahlungsmethoden (Paypal, SEPA,
+                  Google Pay, uvm.) sind möglich.
+                </p>
+              </div>
             </div>
             <div data-aos="fade-left" class="feature">
               <b-icon-cart-x scale="3" class="mr-4" />
-              <p>monatl. kündbar</p>
+              <div>
+                <p>
+                  <b>monatl. kündbar</b>
+                </p>
+                <p>
+                  Du kannst deine Zahlungen immer monatlich kündigen, sogar wenn
+                  du jährlich zahlst!
+                </p>
+              </div>
             </div>
           </div>
         </b-col>
@@ -298,11 +327,19 @@ section {
 
 .feature {
   color: $primary;
-  font-weight: 500;
   min-height: 80px;
-  display: grid;
-  grid-template-columns: max-content fit-content(60vw);
-  place-items: center;
+  display: flex;
+  align-items: center;
+  max-width: 80%;
+
+  & p {
+    margin: 0;
+    text-align: left;
+
+    & a {
+      text-decoration: underline;
+    }
+  }
 
   & > .b-icon {
     display: inline-block;

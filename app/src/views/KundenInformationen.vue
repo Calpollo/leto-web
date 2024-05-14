@@ -31,13 +31,19 @@
         <b-col cols="11" md="7">
           <b-list-group>
             <b-list-group-item
-              v-for="{ filename, link } in kundeninformationen"
+              v-for="{ filename, link, description } in kundeninformationen"
               :key="link"
               class="d-flex justify-content-between align-items-center"
             >
-              <span>
-                {{ filename }}
-              </span>
+              <p class="m-0 text-left">
+                <b>
+                  {{ filename }}
+                </b>
+                <br />
+                <small class="text-muted">
+                  {{ description }}
+                </small>
+              </p>
               <b-button :href="link" target="_blank">
                 <b-icon-download />
               </b-button>
@@ -71,6 +77,8 @@ export default {
         {
           filename: "Kundeninformationen (Broschüre)",
           link: "2023-09-21 Kundeninformation.pdf",
+          description:
+            "Informationen für interessierte Kunden und persönliche Nachricht der Entwickler",
         },
       ],
     };
