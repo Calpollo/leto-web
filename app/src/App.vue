@@ -177,7 +177,10 @@ export default {
     link: [
       {
         rel: "canonical",
-        href: "https://leto.andreasnicklaus.de" + window.location.pathname,
+        href:
+          "https://leto.andreasnicklaus.de" +
+          window.location.pathname +
+          (window.location.pathname.endsWith("/") ? "" : "/"),
       },
     ],
   },
