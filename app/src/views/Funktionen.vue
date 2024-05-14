@@ -326,6 +326,13 @@ export default {
   name: "FunktionenView",
   metaInfo: {
     title: "Funktionen",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Erhalte eine Übersicht über die Funktionen von Leto, deinem Terminplaner für Physiotherapiepraxen. Wir erklären dir, wie Termine, Abrechnungen und Verwaltungsoptionen gemacht werden.",
+      },
+    ],
   },
   data() {
     return {

@@ -9,12 +9,25 @@
       role="region"
       aria-label="Downloadbereich"
     >
-      <div class="d-flex flex-row-reverse pr-3 pt-2" :style="{width: '100%'}">
+      <div class="d-flex flex-row-reverse pr-3 pt-2" :style="{ width: '100%' }">
         <div>
-          <p class="h1" :style="{textAlign: 'right', marginRight: this.$vuetify.breakpoint.width < 768 ? '10px' : $store.state.loggedIn? '140px' : '100px'}">
-            <b-icon-arrow-up animation="cylon-vertical"/>
+          <p
+            class="h1"
+            :style="{
+              textAlign: 'right',
+              marginRight:
+                this.$vuetify.breakpoint.width < 768
+                  ? '10px'
+                  : $store.state.loggedIn
+                  ? '140px'
+                  : '100px',
+            }"
+          >
+            <b-icon-arrow-up animation="cylon-vertical" />
           </p>
-          <p :style="{fontSize: '.9rem'}">Jetzt die <b>Web-Version</b> ausprobieren!</p>
+          <p :style="{ fontSize: '.9rem' }">
+            Jetzt die <b>Web-Version</b> ausprobieren!
+          </p>
         </div>
       </div>
       <div :style="{ padding: '30px' }">
@@ -73,6 +86,13 @@ export default {
   name: "DownloadView",
   metaInfo: {
     title: "Download",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Downloade Leto, deinen Terminplaner für Physiotherapiepraxen. Erhältlich für alle modernen Geräte unter Windows, macOS und Linux. Schnell. Sicher. Kostenlos.",
+      },
+    ],
   },
   data() {
     return {

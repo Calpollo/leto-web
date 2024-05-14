@@ -16,6 +16,13 @@ export default {
   name: "StatusView",
   metaInfo: {
     title: "Service Status",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Alle Leto-Services sind online! Leto ist dein Terminplaner für Physiotherapiepraxen. Schnell. Sicher. Kostenlos.",
+      },
+    ],
   },
 };
 </script>

@@ -39,6 +39,7 @@ module.exports = defineConfig({
     }
     config.optimization = {
       runtimeChunk: 'single',
+      minimize: true,
       splitChunks: {
         chunks: 'all',
         maxInitialRequests: Infinity,

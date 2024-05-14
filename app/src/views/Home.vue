@@ -210,6 +210,13 @@ export default {
   metaInfo: {
     title: "Leto - Terminplaner für Physiotherapie",
     titleTemplate: null,
+    meta: [
+      {
+        name: "description",
+        content:
+          "Leto ist dein Terminplaner für Physiotherapiepraxen. Schnell. Sicher. Kostenlos. Registriere dich jetzt und lege gleich los!",
+      },
+    ],
   },
   data() {
     return {

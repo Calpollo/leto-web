@@ -165,11 +165,6 @@ export default {
           "Leto, Calpollo, Physiotherapie, Terminplaner, Software, Leto by Calpollo, Praxis, Abrechnung",
       },
       {
-        name: "description",
-        content:
-          "Dein Terminplaner für Physiotherapiepraxen. Schnell. Sicher. Kostenlos. Registriere dich jetzt und lege gleich los!",
-      },
-      {
         name: "author",
         content: "Leto",
       },
@@ -258,7 +253,7 @@ div .bottom-bar {
 }
 
 footer {
-  & h1 {
+  & h2 {
     @extend h4;
     color: $primary;
   }

@@ -191,6 +191,13 @@ export default {
   name: "PreiseView",
   metaInfo: {
     title: "Preise",
+    meta: [
+      {
+        name: "description",
+        content:
+          "0,00€! Gratis! Komplett kostenlos! Alle Angebote für Leto, deinen Terminplaner für Physiotherapiepraxen. Schnell. Sicher. Kostenlos.",
+      },
+    ],
   },
   data() {
     return {

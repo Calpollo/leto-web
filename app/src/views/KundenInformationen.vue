@@ -56,6 +56,13 @@ export default {
   name: "KundenInformationen",
   metaInfo: {
     title: "Kundeninformationen",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Hier findest du alle Kundeninformationen über Leto, deinen Terminplaner für Physiotherapiepraxen. Schnell. Sicher. Kostenlos.",
+      },
+    ],
   },
   data() {
     return {

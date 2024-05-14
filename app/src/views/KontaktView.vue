@@ -47,6 +47,13 @@ export default {
   name: "KontaktView",
   metaInfo: {
     title: "Kontakt",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Kontaktiere das Team hinter Leto. Wir beantworten dir alle deine Fragen und Nachrichten so schnell wie möglich.",
+      },
+    ],
   },
   data() {
     return {

@@ -67,6 +67,13 @@ export default {
   name: "LoginView",
   metaInfo: {
     title: "Einloggen",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Logge dich ein und leg los! Leto ist dein Terminplaner für Physiotherapiepraxen. Schnell. Sicher. Kostenlos.",
+      },
+    ],
   },
   data() {
     return {

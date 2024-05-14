@@ -108,6 +108,13 @@ export default {
   name: "RegisterView",
   metaInfo: {
     title: "Registrieren",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Registriere dich jetzt und lege gleich los! Leto ist dein Terminplaner für Physiotherapiepraxen. Schnell. Sicher. Kostenlos.",
+      },
+    ],
   },
   data() {
     return {

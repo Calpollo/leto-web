@@ -455,6 +455,13 @@ export default {
   name: "HilfeView",
   metaInfo: {
     title: "Hilfe",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Erhalte Infos über Leto und Antworten auf deine Fragen und Probleme. In unserem FAQ beantworten alle häufig gestellten Fragen über die Nutzung und Funktionen von Leto.",
+      },
+    ],
   },
   data() {
     return {
