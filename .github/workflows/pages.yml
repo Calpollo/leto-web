@@ -29,6 +29,9 @@ jobs:
       - name: Build app
         run: npm run build
 
+      - name: Copy index.html to 404.html
+        run: cp dist/index.html dist/404.html
+
       - name: Create CNAME file
         run: echo leto.andreasnicklaus.de > dist/CNAME
 
