@@ -86,7 +86,7 @@
           Damit kannst du dir ein Konto neu einrichten. Alternativ
           <router-link
             :to="{ name: 'Register' }"
-            class="text-decoration-underline"
+            :style="{ textDecoration: 'underline' }"
           >
             klicke hier zum Registrieren
           </router-link>

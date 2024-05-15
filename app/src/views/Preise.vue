@@ -19,86 +19,7 @@
           haben wir einen Preis, der für jeden passt.
         </p>
       </div>
-      <b-row align-v="stretch" :style="{ width: '80%' }">
-        <b-col class="mb-1">
-          <b-card
-            title="Lokal"
-            title-tag="h2"
-            :style="{ height: '100%' }"
-            data-aos="zoom-in"
-            data-aos-delay="200"
-          >
-            <b-list-group>
-              <b-list-group-item>Für neue Gründer und Tester</b-list-group-item>
-              <b-list-group-item>Kostenlos, für immer</b-list-group-item>
-              <b-list-group-item>Basisfunktionen</b-list-group-item>
-              <b-list-group-item>Ohne Backup</b-list-group-item>
-            </b-list-group>
-
-            <template #footer>
-              <b-button variant="primary" :to="{ name: 'Register' }">
-                Jetzt kostenfrei loslegen
-              </b-button>
-            </template>
-          </b-card>
-        </b-col>
-        <b-col class="mb-1">
-          <b-card
-            title="Online"
-            title-tag="h2"
-            sub-title="+ Lokal"
-            sub-title-text-variant="primary"
-            sub-title-tag="h3"
-            :style="{ height: '100%' }"
-            data-aos="zoom-in"
-            data-aos-delay="500"
-          >
-            <b-list-group>
-              <b-list-group-item>Für seriöse Praxen</b-list-group-item>
-              <b-list-group-item>Mehrere Benutzer</b-list-group-item>
-              <b-list-group-item>Alle stabilen Funktionen</b-list-group-item>
-              <b-list-group-item>Cloud-Backup</b-list-group-item>
-            </b-list-group>
-            <template #footer>
-              <b-button variant="outline-primary" disabled>
-                <s>15,00€ / Monat</s>
-                bald verfügbar
-              </b-button>
-            </template>
-          </b-card>
-        </b-col>
-        <b-col class="mb-1">
-          <b-card
-            title="Kooperation"
-            title-tag="h2"
-            sub-title="+ Online"
-            sub-title-text-variant="primary"
-            sub-title-tag="h3"
-            :style="{ height: '100%' }"
-            data-aos="zoom-in"
-            data-aos-delay="800"
-          >
-            <b-list-group>
-              <b-list-group-item>Für alle, die mehr wollen</b-list-group-item>
-              <b-list-group-item
-                >Individuelle Softwareupdates</b-list-group-item
-              >
-              <b-list-group-item>
-                Alle stabilen Funktionen + Beta-Funktionen
-              </b-list-group-item>
-              <b-list-group-item>Cloud-Backup</b-list-group-item>
-            </b-list-group>
-            <template #footer>
-              <b-button
-                href="mailto:nicklaus.leto@gmail.com?subject=Anfrage für Kooperationskonto"
-                variant="primary"
-              >
-                Kooperation anfragen
-              </b-button>
-            </template>
-          </b-card>
-        </b-col>
-      </b-row>
+      <VersionCards />
     </section>
     <section role="region" aria-label="Leistungen">
       <b-row no-gutters :style="{ minHeight: '90vh' }">
@@ -181,22 +102,49 @@
         </b-col>
       </b-row>
     </section>
+    <section
+      role="region"
+      aria-label="Lokal"
+      class="vorstellung py-4"
+      :style="{
+        backgroundImage: 'url(' + bbblurry + ')',
+        backgroundSize: 'cover',
+      }"
+    >
+      <b-card title="Lokal" title-tag="h2" class="w-75 my-2">
+        <b-card-text class="text-muted">
+          Verwende Leto nur auf einem lokalen Gerät mit einem Nutzerkonto
+        </b-card-text>
+        <LokalVorstellung />
+      </b-card>
+
+      <b-card title="Online" title-tag="h2" class="w-75 my-2">
+        <b-card-text class="text-muted">
+          Verwende Leto nur auf all deinen Geräten mit mehreren Zugängen
+        </b-card-text>
+        <OnlineVorstellung />
+      </b-card>
+
+      <b-card title="Kooperation" title-tag="h2" class="w-75 my-2">
+        <b-card-text class="text-muted">
+          Passe Leto an deine Anforderungen an und nutze die neuesten Versionen
+          früher als alle anderen
+        </b-card-text>
+        <KooperationVorstellung />
+      </b-card>
+    </section>
     <section role="region" aria-label="Vergleich">
-      <b-row>
-        <b-col>
-          <h2 class="my-4">Vergleich</h2>
-          <div data-aos="zoom-in" data-aos-duration="1000">
-            <b-table
-              striped
-              hover
-              :items="funktionenItems"
-              head-variant="light"
-              responsive
-              class="m-2"
-            />
-          </div>
-        </b-col>
-      </b-row>
+      <h2 class="my-4">Vergleich</h2>
+      <div data-aos="zoom-in" data-aos-duration="1000" class="px-2 w-75">
+        <b-table
+          striped
+          hover
+          :items="funktionenItems"
+          head-variant="light"
+          responsive
+          class="m-2"
+        />
+      </div>
     </section>
   </div>
 </template>
@@ -215,9 +163,19 @@ import appleDevices_avif_2 from "@/assets/mockups/avif/mockup-iphone@2.avif";
 import appleDevices_avif_3 from "@/assets/mockups/avif/mockup-iphone@3.avif";
 import appleDevices_avif_4 from "@/assets/mockups/avif/mockup-iphone@4.avif";
 import appleDevices_avif_5 from "@/assets/mockups/avif/mockup-iphone@5.avif";
+import VersionCards from "@/components/VersionCards.vue";
+import LokalVorstellung from "@/components/LokalVorstellung.vue";
+import OnlineVorstellung from "@/components/OnlineVorstellung.vue";
+import KooperationVorstellung from "@/components/KooperationVorstellung.vue";
 
 export default {
   name: "PreiseView",
+  components: {
+    VersionCards,
+    LokalVorstellung,
+    OnlineVorstellung,
+    KooperationVorstellung,
+  },
   metaInfo: {
     title: "Preise",
     meta: [
@@ -297,6 +255,10 @@ export default {
 
 section {
   min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   &#landingsection {
     display: grid;
@@ -357,5 +319,13 @@ b {
 
 .b-table {
   text-align: start;
+}
+
+.vorstellung {
+  & h2 {
+    color: $primary;
+    font-weight: 900;
+    font-size: 3rem;
+  }
 }
 </style>

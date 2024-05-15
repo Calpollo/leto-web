@@ -232,6 +232,27 @@
         </b-col>
       </b-row>
     </section>
+    <section
+      id="sectionD"
+      role="region"
+      aria-label="Versionen"
+      class="d-flex flex-column justify-content-center align-items-center"
+      :style="{
+        backgroundImage: 'url(' + bbblurry + ')',
+        backgroundSize: 'cover',
+      }"
+    >
+      <h2>Unsere Versionen</h2>
+      <p class="w-50 mb-4">
+        Du kannst Leto in drei verschiedenen Versionen nutzen:
+      </p>
+      <VersionCards :showMore="true" />
+      <p class="w-50 mt-4">
+        Mehr Infos zu Preisen und Funktionsumfang findest du in unserer
+        <router-link :to="{ name: 'Preise' }">Versionsbeschreibung</router-link
+        >.
+      </p>
+    </section>
   </div>
 </template>
 
@@ -262,9 +283,11 @@ import workingLady_avif_2 from "@/assets/mockups/avif/mockup-student-homework@2.
 import workingLady_avif_3 from "@/assets/mockups/avif/mockup-student-homework@3.avif";
 import workingLady_avif_4 from "@/assets/mockups/avif/mockup-student-homework@4.avif";
 import workingLady_avif_5 from "@/assets/mockups/avif/mockup-student-homework@5.avif";
+import VersionCards from "@/components/VersionCards.vue";
 
 export default {
   name: "HomeView",
+  components: { VersionCards },
   metaInfo: {
     title: "Leto - Terminplaner für Physiotherapie",
     titleTemplate: null,
@@ -351,6 +374,10 @@ b {
 
 #tags b {
   font-weight: 900;
+  color: $primary;
+}
+
+h2 {
   color: $primary;
 }
 </style>

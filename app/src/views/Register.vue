@@ -110,7 +110,7 @@
           einloggen". Damit kannst du dich mit deinem Konto anmelden. Alternativ
           <router-link
             :to="{ name: 'Login' }"
-            class="text-decoration-underline"
+            :style="{ textDecoration: 'underline' }"
           >
             klicke hier zum Anmelden
           </router-link>

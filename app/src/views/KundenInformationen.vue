@@ -18,7 +18,14 @@
         </h1>
         <p data-aos="fade-up">
           Hier findest du all das Info-Material, das wir für dich
-          zusammengestellt haben, nochmal zum Download
+          zusammengestellt haben, nochmal zum Download. Wenn du eine Information
+          mal nicht finden solltest, schreib uns gerne eine Nachricht über
+          <router-link
+            :to="{ name: 'Kontakt' }"
+            :style="{ textDecoration: 'underline' }"
+          >
+            unsere Kontaktseite </router-link
+          >.
         </p>
       </div>
       <b-row
@@ -35,7 +42,7 @@
               :key="link"
               class="d-flex justify-content-between align-items-center"
             >
-              <p class="m-0 text-left">
+              <p class="m-0 mr-2 text-left">
                 <b>
                   {{ filename }}
                 </b>
