@@ -3,7 +3,7 @@
     <h1>Status unserer Services</h1>
     <iframe
       title="Statusseite der Leto-Service"
-      src="https://leto.betteruptime.com"
+      src="https://leto.betteruptime.com/de"
       width="100%"
       :style="{ minHeight: '90vh' }"
       frameborder="none"
